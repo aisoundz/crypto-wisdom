@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Crypto Wisdom</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0A0C0F;--bg2:#111318;--bg3:#181C22;--bg4:#1E232B;
+  --surface:#1E232B;--surface2:#252B35;
+  --text:#F0EEE8;--text2:#B8BCC8;--text3:#7A8090;--text4:#4A5060;
+  --teal:#00D4AA;--teal2:#00B892;
+  --teal-bg:rgba(0,212,170,0.08);--teal-border:rgba(0,212,170,0.22);
+  --amber:#F5A623;--amber-bg:rgba(245,166,35,0.08);--amber-border:rgba(245,166,35,0.25);
+  --red:#E54B4B;--red-bg:rgba(229,75,75,0.08);
+  --green:#2ECC8A;--green-bg:rgba(46,204,138,0.08);
+  --border:rgba(240,238,232,0.07);--border2:rgba(240,238,232,0.13);
+  --radius:10px;
+}
+html,body{height:100%;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+/* SCREENS */
+.screen{display:none}
+.screen.active{display:block}
+/* PERSISTENT TOP CHROME */
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:8px 16px;position:sticky;top:0;z-index:200}
+.tb-left{display:flex;align-items:center;gap:8px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,212,170,.4)}60%{opacity:.7;box-shadow:0 0 0 5px rgba(0,212,170,0)}}
+.topbar-txt{font-family:'DM Mono',monospace;font-size:10px;color:var(--teal);letter-spacing:.08em}
+.topbar-sub{font-family:'DM Mono',monospace;font-size:10px;color:var(--text4)}
+.topbar-clock{font-family:'DM Mono',monospace;font-size:10px;color:var(--text4)}
+/* TICKER */
+.ticker-wrap{background:#0D0F12;border-bottom:1px solid var(--border);overflow:hidden;padding:6px 0;position:relative}
+.ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;bottom:0;width:20px;z-index:2;pointer-events:none}
+.ticker-wrap::before{left:0;background:linear-gradient(to right,#0D0F12,transparent)}
+.ticker-wrap::after{right:0;background:linear-gradient(to left,#0D0F12,transparent)}
+.ticker-track{display:flex;white-space:nowrap;width:max-content}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tick{display:inline-flex;align-items:center;gap:4px;padding:0 14px;border-right:1px solid rgba(255,255,255,.04)}
+.tick-sym{font-family:'DM Mono',monospace;font-size:10px;color:var(--text);letter-spacing:.05em}
+.tick-price{font-family:'DM Mono',monospace;font-size:10px;color:var(--text2)}
+.tick-up{font-family:'DM Mono',monospace;font-size:9px;color:var(--green)}
+.tick-dn{font-family:'DM Mono',monospace;font-size:9px;color:var(--red)}
+/* COLOR SYSTEM: --teal = brand/interactive | --green = positive/up | --red = negative/down */
+.tick-up{font-family:'DM Mono',monospace;font-size:9px;color:var(--green)}
+.tick-dn{font-family:'DM Mono',monospace;font-size:9px;color:var(--red)}
+.fng-bar{background:#0C1C15;border-bottom:1px solid rgba(0,212,170,.1);padding:5px 16px;display:flex;align-items:center;justify-content:space-between}
+.fng-l{display:flex;align-items:center;gap:6px}
+.fng-dot{width:5px;height:5px;border-radius:50%;background:var(--text4);transition:background .3s;flex-shrink:0}
+.fng-lbl{font-family:'DM Mono',monospace;font-size:8px;color:var(--text4);letter-spacing:.06em}
+.fng-val{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;color:var(--text3);transition:color .3s}
+.fng-name{font-family:'DM Mono',monospace;font-size:8px;color:var(--text4)}
+.bia-btn{font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);padding:3px 9px;border-radius:99px;border:1px solid var(--teal-border);background:var(--teal-bg);cursor:pointer;letter-spacing:.04em}
+/* KEY BANNER */
+.key-banner{background:var(--bg2);border-bottom:1px solid var(--border);padding:6px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.key-banner input{flex:1;min-width:140px;font-family:'DM Mono',monospace;font-size:11px;padding:5px 9px;border-radius:6px;border:1px solid var(--teal-border);background:var(--bg3);color:var(--teal);outline:none;letter-spacing:.03em}
+.key-banner input::placeholder{color:var(--text4)}
+.key-banner button{font-family:'DM Mono',monospace;font-size:11px;padding:5px 12px;border-radius:6px;border:none;background:var(--teal);color:var(--bg);cursor:pointer;white-space:nowrap}
+.key-ok{font-family:'DM Mono',monospace;font-size:9px;padding:3px 7px;border-radius:99px;background:var(--teal-bg);border:1px solid var(--teal-border);color:var(--teal);white-space:nowrap}
+/* HEADER - distinct zone with subtle teal-tinted gradient */
+.hdr{padding:18px 16px 14px;display:flex;align-items:flex-start;justify-content:space-between;background:linear-gradient(180deg,#0C1C16 0%,var(--bg) 100%);border-bottom:1px solid rgba(0,212,170,.08)}
+/* TAB SPACER */
+.tab-spacer{height:14px;background:var(--bg)}
+.hdr-ctx{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.hdr-ctx::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--teal);display:inline-block}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:.04em;line-height:1;color:var(--text)}
+.logo span{color:var(--teal)}
+.tagline{font-size:12px;font-weight:300;color:var(--text2);margin-top:3px}
+.badges{display:flex;gap:5px;margin-top:8px}
+.badge{font-family:'DM Mono',monospace;font-size:8px;padding:2px 6px;border-radius:3px;border:1px solid var(--border2);color:var(--text3);letter-spacing:.06em;text-transform:uppercase}
+.badge.t{border-color:var(--teal-border);color:var(--teal);background:var(--teal-bg)}
+.badge.a{border-color:var(--amber-border);color:var(--amber);background:var(--amber-bg)}
+.menu-btn{width:36px;height:36px;border-radius:7px;border:1px solid var(--border2);background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex-shrink:0}
+.menu-btn span{display:block;width:13px;height:1.5px;background:var(--text2);border-radius:2px}
+/* MAIN TABS - underline style, clear contrast */
+.main-tabs{display:flex;gap:0;margin:0;background:var(--bg2);border-bottom:2px solid var(--border);padding:0 16px}
+.mtab{flex:1;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;padding:12px 4px;border:none;border-bottom:2px solid transparent;background:transparent;color:var(--text3);cursor:pointer;transition:all .15s;white-space:nowrap;margin-bottom:-2px}
+.mtab:hover{color:var(--text)}
+.mtab.active{color:var(--teal);border-bottom-color:var(--teal);font-weight:600}
+/* WRAPPER */
+.sw{padding:14px 16px 80px}
+/* EYEBROW */
+.ey{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;display:flex;align-items:center;gap:4px}
+.ey::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--teal);display:inline-block}
+/* CARDS */
+.card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:10px}
+.card-teal{background:linear-gradient(135deg,#0D1F1A,#0A1510);border:1px solid var(--teal-border);border-radius:var(--radius);overflow:hidden;margin-bottom:10px;position:relative}
+.card-teal::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal)}
+/* BRIEFING */
+.brief-pq{padding:14px}
+.brief-pq-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;display:flex;align-items:center;gap:4px}
+.brief-pq-lbl::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse 2s infinite}
+.brief-pq-text{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.03em;color:var(--text);line-height:1.2;min-height:24px}
+.brief-card-top{padding:9px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.brief-badge{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:3px}
+.brief-badge::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse 2s infinite}
+.brief-date{font-family:'DM Mono',monospace;font-size:8px;color:var(--text4)}
+.brief-body{font-size:13px;font-weight:300;color:var(--text2);line-height:1.8;padding:12px 14px;white-space:pre-line;word-wrap:break-word;min-height:40px}
+.brief-actions{padding:8px 14px;border-top:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap}
+.btn{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;padding:6px 11px;border-radius:6px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:all .12s}
+.btn:hover{background:var(--surface);color:var(--text)}
+.btn.primary{background:var(--teal);color:var(--bg);border-color:var(--teal)}
+.btn svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round}
+/* MARKET GRID */
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px}
+.mstat{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:11px;text-align:center;position:relative;overflow:hidden}
+.mstat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal)}
+.mstat-lbl{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
+.mstat-val{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.03em;color:var(--text);line-height:1}
+.mstat-sub{font-family:'DM Mono',monospace;font-size:8px;margin-top:3px;color:var(--text3)}
+/* FNG BIG */
+.fng-big{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.fng-num{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;flex-shrink:0;min-width:60px;text-align:center}
+.fng-info-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
+.fng-info-txt{font-size:12px;font-weight:300;color:var(--text2);line-height:1.55}
+/* TRENDING */
+.trend-pills{display:flex;flex-wrap:wrap;gap:5px}
+.tpill{font-family:'DM Mono',monospace;font-size:9px;padding:4px 8px;border-radius:99px;border:1px solid;cursor:pointer;transition:opacity .12s}
+.tpill:hover{opacity:.8}
+/* CWAI */
+.cwai{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+/* SESSION */
+.today-card{background:linear-gradient(135deg,#0D1F1A,#111A16);border:1px solid rgba(0,212,170,.3);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;cursor:pointer;transition:border-color .15s}
+.today-card:hover{border-color:var(--teal)}
+.today-top{padding:11px 14px 0;display:flex;align-items:center;justify-content:space-between}
+.today-live{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:3px}
+.today-live::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse 2s infinite}
+.today-pill{font-family:'DM Mono',monospace;font-size:8px;padding:2px 6px;border-radius:3px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.25);color:var(--teal)}
+.today-body{padding:9px 14px 0}
+.today-row{display:flex;align-items:center;gap:9px;margin-bottom:5px}
+.today-icon{width:38px;height:38px;border-radius:8px;background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.today-sym{font-family:'DM Mono',monospace;font-size:7px;font-weight:600;color:var(--teal);text-align:center;word-break:break-all;line-height:1.2;padding:2px}
+.today-name{font-size:17px;font-weight:700;color:var(--text);line-height:1.1}
+.today-price{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);margin-top:2px}
+.today-desc{font-size:12px;font-weight:300;color:var(--text2);line-height:1.5;margin-bottom:9px}
+.today-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-top:1px solid rgba(0,212,170,.1);background:rgba(0,212,170,.03)}
+.today-cta{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.today-prog{font-family:'DM Mono',monospace;font-size:8px;color:var(--text4)}
+/* MODE CARDS */
+.bia-card{background:var(--bg3);border:1px solid var(--teal-border);border-radius:var(--radius);padding:16px;margin-bottom:8px;cursor:pointer;transition:all .15s}
+.bia-card:hover{border-color:var(--teal);transform:translateY(-1px)}
+.bia-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.bia-tag{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:3px}
+.bia-tag::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse 2s infinite}
+.bia-timer{font-family:'DM Mono',monospace;font-size:8px;color:rgba(0,212,170,.5);border:1px solid var(--teal-border);padding:2px 6px;border-radius:99px}
+.bia-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.04em;color:var(--text);margin-bottom:4px}
+.bia-desc{font-size:12px;font-weight:300;color:var(--text2);line-height:1.6}
+.bia-foot{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.bia-cta{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.bia-arr{width:22px;height:22px;border-radius:50%;border:1px solid var(--teal-border);display:flex;align-items:center;justify-content:center}
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px}
+.mode-card{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:13px;cursor:pointer;transition:all .12s}
+.mode-card:hover{border-color:var(--border2);background:var(--surface);transform:translateY(-1px)}
+.mc-tag{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
+.mc-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:3px}
+.mc-out{font-size:10px;font-weight:300;color:var(--text4);line-height:1.4}
+.hodl-card{background:var(--bg3);border:1px solid var(--amber-border);border-radius:9px;padding:14px;cursor:pointer;transition:all .12s;display:flex;align-items:center;gap:10px;margin-bottom:10px;position:relative;overflow:hidden}
+.hodl-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--amber)}
+.hodl-card:hover{border-color:var(--amber);background:var(--amber-bg)}
+.hodl-left{flex:1;padding-left:5px}
+.hodl-tag{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:4px;display:flex;align-items:center;gap:4px}
+.hodl-badge{font-family:'DM Mono',monospace;font-size:7px;padding:1px 5px;border-radius:3px;background:var(--amber-bg);border:1px solid var(--amber-border);color:var(--amber)}
+.hodl-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
+.hodl-desc{font-size:10px;font-weight:300;color:var(--text3);line-height:1.5}
+.vault-link{background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:13px 16px;display:flex;align-items:center;gap:10px;cursor:pointer;margin-bottom:20px;transition:border-color .12s}
+.vault-link:hover{border-color:var(--teal-border)}
+/* CHAT */
+.chat-nav{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--bg2);position:sticky;top:0;z-index:10}
+.back-btn{font-family:'DM Mono',monospace;font-size:9px;padding:5px 9px;border-radius:5px;border:1px solid var(--border2);background:transparent;color:var(--text3);cursor:pointer}
+.back-btn:hover{background:var(--bg3);color:var(--text2)}
+.chat-badge{font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vtog{font-family:'DM Mono',monospace;font-size:8px;padding:4px 8px;border-radius:5px;border:1px solid var(--teal-border);background:var(--teal-bg);color:var(--teal);cursor:pointer;flex-shrink:0}
+.vtog.off{border-color:var(--border2);background:transparent;color:var(--text4)}
+.chat-wrap{padding:12px 16px 20px}
+/* WISDOM INTRO */
+.w-intro{background:linear-gradient(135deg,#0D1F1A,#0A1510);border:1px solid var(--teal-border);border-radius:var(--radius);padding:13px;margin-bottom:11px}
+.w-intro-top{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.w-av{width:34px;height:34px;border-radius:50%;background:var(--teal-bg);border:2px solid var(--teal-border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.w-av-txt{font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--teal);letter-spacing:.04em}
+.w-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.04em;color:var(--text)}
+.w-status{font-family:'DM Mono',monospace;font-size:8px;color:var(--teal);display:flex;align-items:center;gap:3px}
+.w-status::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse 2s infinite}
+.w-ctx{font-size:12px;font-weight:300;color:var(--text2);line-height:1.65}
+/* STARTERS */
+.starters-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.starters-lbl::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse 2s infinite}
+.starters{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.starter{background:var(--bg3);border:1px solid var(--border2);border-left:3px solid var(--teal);border-radius:0 9px 9px 0;padding:11px 13px;cursor:pointer;text-align:left;transition:all .15s;display:flex;flex-direction:column;gap:4px}
+.starter:hover{border-color:var(--teal-border);border-left-color:var(--teal);background:var(--surface);transform:translateX(2px)}
+.starter-type{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.starter-text{font-size:12px;font-weight:400;color:var(--text);line-height:1.5}
+.starter-sub{font-size:10px;font-weight:300;color:var(--text3);line-height:1.4}
+.disclaimer{font-size:10px;color:var(--text4);text-align:center;margin-bottom:7px;line-height:1.5}
+/* CHAT BOX */
+.chat-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);min-height:200px;max-height:360px;overflow-y:auto;padding:12px;margin-bottom:9px;display:flex;flex-direction:column;gap:11px;scroll-behavior:smooth}
+.chat-box::-webkit-scrollbar{width:3px}
+.chat-box::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+.msg{display:flex;gap:7px;align-items:flex-start}
+.msg.user{flex-direction:row-reverse}
+.av{width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:7px;flex-shrink:0;margin-top:2px;font-weight:600}
+.msg.agent .av{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)}
+.msg.user .av{background:var(--surface);color:var(--text2);border:1px solid var(--border)}
+.bubble{max-width:86%;padding:9px 12px;border-radius:14px;font-size:13px;font-weight:300;line-height:1.7;color:var(--text)}
+.msg.agent .bubble{background:var(--bg3);border:1px solid var(--border);border-bottom-left-radius:3px}
+.msg.user .bubble{background:var(--teal);color:var(--bg);font-weight:400;border-bottom-right-radius:3px}
+.dots{display:flex;gap:4px;align-items:center;padding:3px 2px}
+.dots span{width:5px;height:5px;border-radius:50%;background:var(--text3);animation:dotb 1.3s infinite ease-in-out}
+.dots span:nth-child(2){animation-delay:.18s}
+.dots span:nth-child(3){animation-delay:.36s}
+@keyframes dotb{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-4px);opacity:1}}
+.thinking{background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:7px;padding:7px 11px;margin-bottom:7px;display:none;align-items:center;gap:7px}
+.thinking.show{display:flex}
+.think-txt{font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);letter-spacing:.04em}
+.err-msg{background:var(--red-bg);border:1px solid rgba(229,75,75,.3);border-radius:7px;padding:8px 12px;font-size:12px;color:var(--red);margin-bottom:7px;display:none}
+.err-msg.show{display:block}
+.controls{display:flex;gap:7px;align-items:center;margin-bottom:5px}
+.mic-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--border2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.mic-btn:hover{border-color:var(--teal);background:var(--teal-bg)}
+.mic-btn.on{background:var(--red-bg);border-color:var(--red);animation:recpulse 1s infinite}
+@keyframes recpulse{0%{box-shadow:0 0 0 0 rgba(229,75,75,.4)}70%{box-shadow:0 0 0 9px rgba(229,75,75,0)}100%{box-shadow:0 0 0 0 rgba(229,75,75,0)}}
+.mic-btn svg{width:15px;height:15px;stroke:var(--text2);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.mic-btn.on svg{stroke:var(--red)}
+.input-wrap{flex:1;display:flex;gap:6px}
+.msg-inp{flex:1;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;padding:10px 13px;border-radius:20px;border:1px solid var(--border2);background:var(--bg3);color:var(--text);outline:none;transition:border-color .12s}
+.msg-inp:focus{border-color:var(--teal-border)}
+.msg-inp::placeholder{color:var(--text3)}
+.send-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:10px 15px;border-radius:20px;border:none;background:var(--teal);color:var(--bg);cursor:pointer;white-space:nowrap}
+.send-btn:hover{background:var(--teal2)}
+.voice-hint{font-size:10px;color:var(--text4);text-align:center;min-height:13px;margin-bottom:7px}
+.end-btn{display:block;width:100%;font-family:'DM Mono',monospace;font-size:9px;padding:9px;border-radius:7px;border:1px solid var(--teal-border);background:transparent;color:var(--teal);cursor:pointer;text-align:center;letter-spacing:.07em;text-transform:uppercase;transition:background .12s}
+.end-btn:hover{background:var(--teal-bg)}
+/* SUMMARY */
+.summary{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius);padding:16px;margin:12px 16px}
+.sum-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:5px}
+.sum-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.04em;color:var(--text)}
+.sum-date{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3)}
+.score-block{display:flex;align-items:flex-start;gap:11px;margin-bottom:12px;padding:13px;background:rgba(0,212,170,.07);border:1px solid rgba(0,212,170,.2);border-radius:9px}
+.score-n{font-family:'Bebas Neue',sans-serif;font-size:46px;color:var(--teal);line-height:1;flex-shrink:0}
+.score-lbl{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase}
+.score-stage{display:inline-block;font-family:'DM Mono',monospace;font-size:8px;padding:2px 6px;border-radius:3px;margin-top:3px;background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.score-why{font-size:11px;color:var(--text2);margin-top:4px;line-height:1.5;font-style:italic}
+.score-note{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);margin-top:4px;line-height:1.5;border-top:1px solid var(--border);padding-top:4px}
+.ss{margin-bottom:9px}
+.slbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;display:flex;align-items:center;gap:4px}
+.slbl::before{content:'';display:inline-block;width:2px;height:7px;background:var(--teal);border-radius:1px}
+.pill-row{display:flex;flex-wrap:wrap;gap:4px}
+.cpill{font-family:'DM Mono',monospace;font-size:9px;padding:2px 7px;border-radius:3px;background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)}
+.did-well{background:rgba(46,204,138,.08);border:1px solid rgba(46,204,138,.18);border-radius:8px;padding:9px 11px;font-size:12px;font-weight:300;color:#C6F6E0;line-height:1.65}
+.pattern{background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.2);border-radius:8px;padding:9px 11px;font-size:12px;font-weight:300;color:#FDE68A;line-height:1.65}
+.reflect{background:var(--bg2);border-left:2px solid var(--teal);padding:9px 11px;font-size:12px;font-style:italic;font-weight:300;color:#C8CDD8;line-height:1.7}
+.saved-note{font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);display:flex;align-items:center;gap:4px;margin-top:9px}
+.new-sess-btn{display:block;width:100%;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:11px;border-radius:8px;border:none;background:var(--teal);color:var(--bg);cursor:pointer;text-align:center;margin-top:9px}
+/* DOSSIER */
+.dos-hdr{background:linear-gradient(135deg,#0D1F1A,#111A16);border:1px solid var(--teal-border);border-radius:var(--radius);padding:13px;margin-bottom:12px}
+.dos-icon{width:42px;height:42px;border-radius:9px;background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dos-sym{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;color:var(--teal)}
+.dos-name{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.04em;color:var(--text);line-height:1}
+/* UNDERLINE TABS */
+.utabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:14px;overflow-x:auto}
+.utab{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;padding:8px 11px;border:none;border-bottom:2px solid transparent;background:transparent;color:var(--text4);cursor:pointer;white-space:nowrap;margin-bottom:-2px;transition:all .12s;flex-shrink:0}
+.utab:hover{color:var(--text2)}
+.utab.active{color:var(--teal);border-bottom-color:var(--teal);font-weight:500}
+.upane{display:none;min-height:60px}
+.upane.active{display:block}
+.dos-loading{font-family:'DM Mono',monospace;font-size:10px;color:var(--text4);text-align:center;padding:22px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{display:inline-block;width:14px;height:14px;border-radius:50%;border:2px solid var(--border2);border-top-color:var(--teal);animation:spin .8s linear infinite;vertical-align:middle;margin-right:7px}
+/* INTEL GRID */
+.intel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:4px;width:100%}
+.intel-card{background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:9px;padding:11px 13px;position:relative;overflow:hidden;text-align:left}
+.intel-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal)}
+.intel-card:first-child{grid-column:1/-1}
+.intel-lbl{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:5px;display:block}
+.intel-val{font-size:12px;font-weight:300;color:var(--text);line-height:1.6;display:block}
+.dsec{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:12px;margin-bottom:7px}
+.dsec-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:3px}
+.dsec-lbl::before{content:'';width:3px;height:3px;border-radius:50%;display:inline-block}
+.dsec-body{font-size:13px;font-weight:300;color:var(--text2);line-height:1.75}
+.bull-bear{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:9px}
+.bull{background:rgba(46,204,138,.07);border:1px solid rgba(46,204,138,.16);border-radius:9px;padding:10px}
+.bear{background:rgba(229,75,75,.07);border:1px solid rgba(229,75,75,.16);border-radius:9px;padding:10px}
+.bull-lbl{font-family:'DM Mono',monospace;font-size:8px;color:var(--green);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.bear-lbl{font-family:'DM Mono',monospace;font-size:8px;color:var(--red);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.quiz-q{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:13px;margin-bottom:9px}
+.quiz-q-txt{font-size:13px;font-weight:500;color:var(--text);margin-bottom:9px;line-height:1.5}
+.quiz-opt{width:100%;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;padding:8px 11px;border-radius:7px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;text-align:left;margin-bottom:5px;transition:all .12s}
+.quiz-opt:hover{border-color:var(--teal-border);background:var(--teal-bg)}
+.quiz-opt.right{border-color:var(--green);background:var(--green-bg);color:var(--green)}
+.quiz-opt.wrong{border-color:var(--red);background:var(--red-bg);color:var(--red)}
+/* VAULT */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px}
+.stat-card{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:12px;text-align:center;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal)}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--text);line-height:1}
+.stat-l{font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;letter-spacing:.04em;text-transform:uppercase}
+.stage-bar{background:var(--bg3);border:1px solid var(--teal-border);border-radius:9px;padding:12px 13px;margin-bottom:12px}
+.stage-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;display:flex;justify-content:space-between}
+.stage-val{color:var(--teal)}
+.stage-track{height:3px;background:var(--bg4);border-radius:99px;overflow:hidden;margin-bottom:4px}
+.stage-fill{height:100%;background:var(--teal);border-radius:99px;transition:width .5s}
+.stage-steps{display:flex;justify-content:space-between}
+.sstep{font-family:'DM Mono',monospace;font-size:7px;color:var(--text4)}
+.sstep.done{color:var(--teal)}
+.sess-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:5px}
+.si-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
+.si-date{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3)}
+.si-mode{font-family:'DM Mono',monospace;font-size:8px;color:var(--teal);background:var(--teal-bg);padding:2px 5px;border-radius:3px;border:1px solid var(--teal-border)}
+.si-score{font-size:12px;font-weight:500;color:var(--text);margin-bottom:2px}
+.si-note{font-size:11px;font-weight:300;color:var(--text3);line-height:1.5}
+.empty-state{text-align:center;padding:24px 14px;color:var(--text3);font-size:12px;line-height:1.8;background:var(--bg3);border:1px solid var(--border);border-radius:9px;margin-bottom:12px}
+.dl-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.dl-btn{font-family:'DM Sans',sans-serif;font-size:12px;padding:7px 13px;border-radius:7px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer}
+.dl-btn:hover{background:var(--bg3)}
+.dl-btn.accent{background:var(--teal);color:var(--bg);border-color:var(--teal)}
+.dl-btn.danger{color:var(--red)}
+.dl-btn.danger:hover{background:var(--red-bg);border-color:var(--red)}
+/* WISDOM BOOK */
+.book-form{background:var(--bg3);border:1px solid var(--teal-border);border-radius:var(--radius);padding:14px;margin-bottom:12px}
+.book-inp{width:100%;font-family:'DM Mono',monospace;font-size:11px;padding:6px 10px;border-radius:7px;border:1px solid var(--border2);background:var(--bg);color:var(--text);outline:none;margin-bottom:6px}
+.book-inp:focus{border-color:var(--teal-border)}
+.book-inp::placeholder{color:var(--text4)}
+.book-ta{width:100%;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;padding:6px 10px;border-radius:7px;border:1px solid var(--border2);background:var(--bg);color:var(--text);outline:none;resize:none;margin-bottom:6px;line-height:1.5}
+.book-ta:focus{border-color:var(--teal-border)}
+.book-ta::placeholder{color:var(--text4)}
+.book-row{display:flex;gap:6px;align-items:center}
+.book-sel{font-family:'DM Mono',monospace;font-size:11px;padding:6px 10px;border-radius:7px;border:1px solid var(--border2);background:var(--bg);color:var(--text);outline:none;flex:1}
+.book-add{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:6px 14px;border-radius:7px;border:none;background:var(--teal);color:var(--bg);cursor:pointer;white-space:nowrap}
+.thesis-card{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:12px;margin-bottom:6px}
+.thesis-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.thesis-asset{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;color:var(--text)}
+.thesis-status{font-family:'DM Mono',monospace;font-size:7px;padding:2px 6px;border-radius:3px;cursor:pointer;border:1px solid}
+.thesis-status.active{background:var(--teal-bg);color:var(--teal);border-color:var(--teal-border)}
+.thesis-status.watching{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-border)}
+.thesis-status.confirmed{background:var(--green-bg);color:var(--green);border-color:rgba(46,204,138,.2)}
+.thesis-status.invalidated{background:var(--red-bg);color:var(--red);border-color:rgba(229,75,75,.2)}
+.thesis-statement{font-size:12px;font-weight:300;color:var(--text2);line-height:1.6;margin-bottom:6px}
+.thesis-meta{display:flex;gap:9px;flex-wrap:wrap}
+.thesis-mi{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3)}
+.thesis-mi span{color:var(--text2)}
+/* PORTFOLIO */
+.port-hdr{background:linear-gradient(135deg,#0D1F1A,#111A16);border:1px solid var(--teal-border);border-radius:var(--radius);padding:13px;margin-bottom:11px}
+.port-total-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:4px}
+.port-total-val{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--text);line-height:1}
+.port-pnl{font-family:'DM Mono',monospace;font-size:10px;margin-top:2px}
+.port-pnl.pos{color:var(--green)}
+.port-pnl.neg{color:var(--red)}
+.port-add-btn{font-family:'DM Mono',monospace;font-size:9px;padding:6px 12px;border-radius:6px;border:1px solid var(--teal-border);background:var(--teal-bg);color:var(--teal);cursor:pointer;margin-bottom:9px;letter-spacing:.04em}
+.port-form{background:var(--bg3);border:1px solid var(--teal-border);border-radius:9px;padding:13px;margin-bottom:10px;display:none}
+.port-form-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:9px;display:flex;align-items:center;gap:3px}
+.port-form-lbl::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--teal);display:inline-block}
+.port-inp-row{display:flex;gap:6px;margin-bottom:5px;flex-wrap:wrap}
+.port-inp{font-family:'DM Mono',monospace;font-size:11px;padding:6px 8px;border-radius:7px;border:1px solid var(--border2);background:var(--bg);color:var(--text);outline:none}
+.port-inp:focus{border-color:var(--teal-border)}
+.port-inp::placeholder{color:var(--text4)}
+.port-sub-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:6px 11px;border-radius:7px;border:none;background:var(--teal);color:var(--bg);cursor:pointer;white-space:nowrap}
+.holding{background:var(--bg3);border:1px solid var(--border);border-radius:9px;margin-bottom:5px;overflow:hidden;transition:border-color .12s;cursor:pointer}
+.holding:hover{border-color:var(--border2)}
+.holding.open{border-color:var(--teal-border)}
+.h-main{display:flex;align-items:center;gap:9px;padding:10px 12px}
+.h-ico{width:34px;height:34px;border-radius:7px;background:var(--surface2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.h-ico-txt{font-family:'DM Mono',monospace;font-size:8px;font-weight:600;color:var(--text2)}
+.h-info{flex:1}
+.h-name{font-size:12px;font-weight:500;color:var(--text);margin-bottom:1px}
+.h-qty{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3)}
+.h-right{text-align:right;flex-shrink:0}
+.h-val{font-size:12px;font-weight:600;color:var(--text)}
+.h-pnl{font-family:'DM Mono',monospace;font-size:8px}
+.h-pnl.pos{color:var(--green)}
+.h-pnl.neg{color:var(--red)}
+.h-chevron{font-family:'DM Mono',monospace;font-size:10px;color:var(--text4);margin-left:3px}
+.h-detail{border-top:1px solid var(--border);padding:10px 12px;background:var(--bg2);display:none}
+.holding.open .h-detail{display:block}
+.h-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:9px}
+.h-stat{text-align:center}
+.h-stat-lbl{font-family:'DM Mono',monospace;font-size:7px;color:var(--text4);text-transform:uppercase;margin-bottom:2px}
+.h-stat-val{font-family:'DM Mono',monospace;font-size:10px;color:var(--text)}
+.h-insight{background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:7px;padding:8px 10px;font-size:11px;font-weight:300;color:var(--text2);line-height:1.6;margin-bottom:7px;min-height:42px}
+.h-actions{display:flex;gap:5px}
+.h-action-btn{font-family:'DM Mono',monospace;font-size:9px;padding:5px 9px;border-radius:5px;cursor:pointer;transition:all .12s;flex:1;text-align:center}
+.h-action-btn.ask{border:1px solid var(--teal-border);background:var(--teal-bg);color:var(--teal)}
+.h-action-btn.remove{border:1px solid rgba(229,75,75,.3);background:transparent;color:var(--red)}
+.port-insight-wrap{background:var(--bg3);border:1px solid var(--teal-border);border-radius:9px;overflow:hidden;margin-bottom:10px}
+.pi-top{padding:8px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:4px}
+.pi-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.pi-body{padding:11px 12px;font-size:12px;font-weight:300;color:var(--text2);line-height:1.7}
+.pi-actions{padding:6px 12px;border-top:1px solid var(--border);display:flex;gap:6px}
+/* GUIDE */
+.guide-search{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:9px 13px;display:flex;align-items:center;gap:7px;margin-bottom:14px;cursor:pointer;transition:border-color .12s}
+.guide-search:hover{border-color:var(--teal-border)}
+.guide-search-txt{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3)}
+.guide-sec{margin-bottom:20px}
+.guide-sec-title{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.04em;color:var(--text);margin-bottom:3px}
+.guide-sec-sub{font-size:11px;font-weight:300;color:var(--text3);margin-bottom:9px;line-height:1.5}
+.guide-card{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:13px;margin-bottom:6px;cursor:pointer;transition:all .12s}
+.guide-card:hover{border-color:var(--teal-border);background:var(--surface);transform:translateY(-1px)}
+.gc-top{display:flex;align-items:center;gap:9px;margin-bottom:5px}
+.gc-icon{font-size:18px;flex-shrink:0}
+.gc-title{font-size:14px;font-weight:500;color:var(--text);line-height:1.2}
+.gc-cat{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--text4);margin-top:1px}
+.gc-hook{font-size:11px;font-weight:300;color:var(--amber);line-height:1.5;font-style:italic}
+/* LESSON */
+.lesson-cat{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:3px;display:flex;align-items:center;gap:3px}
+.lesson-cat::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse 2s infinite}
+.lesson-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.04em;color:var(--text);line-height:1.1;margin-bottom:5px}
+.lesson-hook{font-size:13px;font-weight:300;color:var(--amber);line-height:1.55;font-style:italic;margin-bottom:12px}
+/* SETTINGS */
+.set-card{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:9px}
+.set-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
+.set-desc{font-size:11px;font-weight:300;color:var(--text3);line-height:1.6;margin-bottom:10px}
+.set-row{display:flex;gap:6px}
+.set-row input{flex:1;font-family:'DM Mono',monospace;font-size:11px;padding:6px 10px;border-radius:7px;border:1px solid var(--border2);background:var(--bg);color:var(--teal);outline:none}
+.set-row input:focus{border-color:var(--teal-border)}
+.set-save{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:6px 13px;border-radius:7px;border:none;background:var(--teal);color:var(--bg);cursor:pointer}
+.set-ok{font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);margin-top:4px;display:none}
+.set-hint{font-size:11px;font-weight:300;color:var(--text3);margin-top:6px;line-height:1.6}
+.set-hint a{color:var(--teal);text-decoration:none}
+.depth-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.depth-btn{font-family:'DM Sans',sans-serif;font-size:11px;padding:8px 6px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;text-align:center;transition:all .1s}
+.depth-btn small{display:block;font-family:'DM Mono',monospace;font-size:8px;opacity:.7;margin-top:1px}
+.depth-btn.active{border-color:var(--teal-border);color:var(--teal);background:var(--teal-bg)}
+.speed-row{display:flex;gap:4px;margin-bottom:9px}
+.speed-btn{flex:1;font-family:'DM Mono',monospace;font-size:9px;padding:5px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;transition:all .1s}
+.speed-btn.active{border-color:var(--teal-border);color:var(--teal);background:var(--teal-bg)}
+/* PRICE */
+.price-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:9px}
+.price-card.featured{border-color:var(--teal-border)}
+.price-tier{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
+.price-tier.t{color:var(--teal)}
+.price-amount{font-size:19px;font-weight:700;color:var(--text);margin-bottom:6px}
+.price-amount span{font-size:12px;font-weight:300;color:var(--text3)}
+.price-desc{font-size:11px;font-weight:300;color:var(--text2);line-height:1.7}
+.price-cta{margin-top:9px;width:100%;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:10px;border-radius:8px;border:none;background:var(--teal);color:var(--bg);cursor:pointer}
+.rights-card{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:13px;margin-bottom:7px}
+.rights-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.rights-desc{font-size:11px;font-weight:300;color:var(--text2);line-height:1.6}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.04em;color:var(--text);margin-bottom:3px}
+.sec-sub{font-size:12px;font-weight:300;color:var(--text3);line-height:1.6;margin-bottom:12px}
+/* SIDE MENU */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.overlay.open{opacity:1;pointer-events:all}
+.side-menu{position:fixed;top:0;right:0;bottom:0;width:270px;background:var(--bg2);z-index:301;transform:translateX(100%);transition:transform .24s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-left:1px solid var(--border)}
+.side-menu.open{transform:translateX(0)}
+.sm-top{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.sm-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.04em;color:var(--text)}
+.sm-logo span{color:var(--teal)}
+.sm-close{width:26px;height:26px;border-radius:5px;border:1px solid var(--border);background:transparent;cursor:pointer;color:var(--text3);font-size:13px;display:flex;align-items:center;justify-content:center}
+.sm-profile{padding:12px 16px;border-bottom:1px solid var(--border)}
+.sm-pl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:9px}
+.sm-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px}
+.sm-stat{background:var(--bg3);border-radius:7px;padding:8px 6px;text-align:center;border:1px solid var(--border)}
+.sm-stat-n{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--text);line-height:1}
+.sm-stat-l{font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;letter-spacing:.03em;text-transform:uppercase;line-height:1.3}
+.sm-score-wrap{padding:12px 16px;border-bottom:1px solid var(--border)}
+.sm-score-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;display:flex;justify-content:space-between}
+.sm-score-v{color:var(--teal)}
+.sm-score-track{height:3px;background:var(--bg4);border-radius:99px;overflow:hidden}
+.sm-score-fill{height:100%;background:var(--teal);border-radius:99px;transition:width .5s}
+.sm-score-stage{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);margin-top:6px;display:flex;align-items:center;gap:3px}
+.sm-score-stage::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.sm-nav{flex:1;overflow-y:auto;padding:4px 0}
+.sm-nav-lbl{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);padding:8px 16px 2px;opacity:.6}
+.sm-divider{height:1px;background:var(--border);margin:2px 0}
+.sm-item{width:100%;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;padding:11px 16px;border:none;background:transparent;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:9px;text-align:left;transition:all .1s}
+.sm-item:hover{background:var(--bg3);color:var(--text)}
+.sm-icon{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);width:22px;text-align:center}
+.sm-arr{margin-left:auto;color:var(--text3);font-size:12px}
+.sm-nbadge{font-family:'DM Mono',monospace;font-size:7px;padding:1px 4px;border-radius:3px;background:var(--teal-bg);border:1px solid var(--teal-border);color:var(--teal);margin-left:auto;margin-right:4px}
+.sm-pbadge{font-family:'DM Mono',monospace;font-size:7px;padding:1px 4px;border-radius:3px;background:var(--amber-bg);border:1px solid var(--amber-border);color:var(--amber);margin-left:auto;margin-right:4px}
+.sm-footer{padding:12px 16px;border-top:1px solid var(--border)}
+.sm-tag{font-size:11px;font-weight:300;color:var(--text3);font-style:italic;margin-bottom:1px}
+.sm-ver{font-family:'DM Mono',monospace;font-size:8px;color:var(--text4)}
+/* STICKY NAV BAR BOTTOM */
+.sub-nav{display:flex;align-items:center;gap:7px;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--bg2);position:sticky;top:0;z-index:10}
+/* TOAST */
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--surface2);border:1px solid var(--teal-border);border-radius:8px;padding:9px 18px;font-family:'DM Mono',monospace;font-size:11px;color:var(--teal);z-index:999;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<!-- TOP CHROME (always visible) -->
+<div class="topbar">
+  <div class="tb-left"><div class="live-dot"></div><span class="topbar-txt">LIVE</span><span class="topbar-sub" style="color:var(--text4)"> · </span><span class="topbar-sub">Crypto markets never close</span></div>
+  <div class="topbar-clock" id="clock">00:00:00</div>
+</div>
+<div class="ticker-wrap"><div class="ticker-track" id="ticker"><div class="tick"><span class="tick-sym">BTC</span><span class="tick-price">Loading...</span></div></div></div>
+<div class="fng-bar">
+  <div class="fng-l"><div class="fng-dot" id="fngDot"></div><span class="fng-lbl">Fear & Greed</span><span class="fng-val" id="fngVal">—</span><span class="fng-name" id="fngName">Loading...</span></div>
+  <button class="bia-btn" onclick="startChat('bia')">Before I Act ›</button>
+</div>
+<div class="key-banner" id="keyBanner">
+  <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)">API Key</span>
+  <input type="text" id="keyInput" placeholder="sk-ant-api03-..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter'){saveKey();this.blur()}" style="font-size:12px"/>
+  <button onclick="saveKey()">Save</button>
+  <span class="key-ok" id="keyOk">No key</span>
+</div>
+<div class="hdr">
+  <div>
+    <div class="hdr-ctx" id="sessionCtx">Late Session</div>
+    <div class="logo">Crypto <span>Wisdom</span></div>
+    <div class="tagline">Think before you trade. Think better after.</div>
+    <div class="badges"><span class="badge t">Decision Coach</span><span class="badge a">Beta</span></div>
+  </div>
+  <button class="menu-btn" onclick="openMenu()"><span></span><span></span><span></span></button>
+</div>
+<div class="main-tabs">
+  <button class="mtab active" id="mt-briefing" onclick="goScreen('briefing')">Briefing</button>
+  <button class="mtab" id="mt-session" onclick="goScreen('session')">Wisdom</button>
+  <button class="mtab" id="mt-guide" onclick="goScreen('guide')">Web3 Guide</button>
+  <button class="mtab" id="mt-portfolio" onclick="goScreen('portfolio')">Portfolio</button>
+</div>
+<div class="tab-spacer"></div>
+
+<!-- ===== BRIEFING ===== -->
+<div class="screen active" id="screen-briefing"><div class="sw">
+  <div class="cwai" style="background:#0C1C15;border:1px solid var(--teal-border);border-radius:var(--radius);padding:10px 13px">
+    <svg width="38" height="25" viewBox="0 0 44 28" style="flex-shrink:0"><path d="M 4 24 A 18 18 0 0 1 40 24" fill="none" stroke="#1E232B" stroke-width="5" stroke-linecap="round"/><path d="M 4 24 A 18 18 0 0 1 40 24" fill="none" stroke="#00D4AA" stroke-width="5" stroke-linecap="round" stroke-dasharray="57" stroke-dashoffset="18"/><line x1="22" y1="24" x2="22" y2="9" stroke="#F0EEE8" stroke-width="1.5" stroke-linecap="round" transform="rotate(-18 22 24)"/><circle cx="22" cy="24" r="2.5" fill="#F0EEE8"/></svg>
+    <div><div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:1px">Crypto Wisdom Adoption Index</div><div style="font-size:12px;font-weight:600;color:var(--text)">CWAI 68 · Early Majority phase</div><div style="font-size:10px;color:var(--text3)">2030 mainstream thesis on track</div></div>
+  </div>
+  <div class="card-teal" style="margin-top:10px"><div class="brief-pq">
+    <div class="brief-pq-lbl">Key Insight Today</div>
+    <div id="briefPQ" style="font-size:13px;font-weight:300;color:var(--text3);font-style:italic;min-height:20px">Add your API key above to unlock your daily intelligence</div>
+  </div></div>
+  <div class="card">
+    <div class="brief-card-top"><div class="brief-badge">Daily Intelligence Report</div><div class="brief-date" id="briefDate">—</div></div>
+    <div class="brief-body" id="briefBody" style="color:var(--text3);font-style:italic">Add your API key to unlock your daily intelligence report.</div>
+    <div class="brief-actions">
+      <button class="btn primary" onclick="toggleRead()"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg><span id="readTxt">Read aloud</span></button>
+      <button class="btn" onclick="refreshBrief()"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Refresh</button>
+      <button class="btn" onclick="goScreen('session')">Start a session →</button>
+    </div>
+  </div>
+  <div class="card" style="padding:12px"><div class="fng-big">
+    <div><div class="fng-num" id="bFngNum" style="color:var(--text3)">—</div><div style="font-family:'DM Mono',monospace;font-size:8px;text-align:center;color:var(--text4);text-transform:uppercase;letter-spacing:.05em" id="bFngLbl">Loading</div></div>
+    <div style="flex:1"><div class="fng-info-lbl">Crypto Fear &amp; Greed Index</div><div class="fng-info-txt" id="bFngDesc">Loading market sentiment...</div></div>
+  </div></div>
+  <div class="mgrid">
+    <div class="mstat"><div class="mstat-lbl">Market Cap</div><div class="mstat-val" id="bMcap">—</div><div class="mstat-sub" id="bMcapChg">—</div></div>
+    <div class="mstat"><div class="mstat-lbl">BTC Dom</div><div class="mstat-val" id="bDom">—</div><div class="mstat-sub" id="bDomNote">—</div></div>
+    <div class="mstat"><div class="mstat-lbl">DeFi TVL</div><div class="mstat-val" id="bTvl">—</div><div class="mstat-sub">Total locked</div></div>
+  </div>
+  <div class="ey">Trending Now</div>
+  <div class="trend-pills" id="bTrending"><span class="tpill" style="color:var(--text3);border-color:var(--border)">Loading...</span></div>
+</div></div>
+
+<!-- ===== SESSION (WISDOM) ===== -->
+<div class="screen" id="screen-session"><div class="sw">
+  <div id="todayCard" style="display:none">
+    <div class="today-card" onclick="openDossier()">
+      <div class="today-top"><div class="today-live">Today's Project</div><span class="today-pill">Learn Today</span></div>
+      <div class="today-body">
+        <div class="today-row"><div class="today-icon"><span class="today-sym" id="tpSym">—</span></div><div><div class="today-name" id="tpName">Loading...</div><div class="today-price"><span id="tpPrice">—</span><span id="tpChg" style="font-family:'DM Mono',monospace;font-size:9px;margin-left:5px"></span></div></div></div>
+        <div class="today-desc" id="tpDesc"></div>
+      </div>
+      <div class="today-foot"><span class="today-cta">Open dossier → 5 tabs</span><span class="today-prog" id="tpProg">0 of 50 learned</span><button onclick="event.stopPropagation();nextCoin()" style="font-family:'DM Mono',monospace;font-size:8px;padding:2px 7px;border-radius:4px;border:1px solid var(--teal-border);background:transparent;color:var(--teal);cursor:pointer">Next →</button></div>
+    </div>
+  </div>
+  <div class="ey">Choose your session</div>
+  <div class="bia-card" onclick="startChat('bia')">
+    <div class="bia-top"><div class="bia-tag">Before I Act</div><div class="bia-timer">60 sec check</div></div>
+    <div class="bia-title">About to make a move?</div>
+    <div class="bia-desc">Stop. Check your reasoning. Act with clarity — or decide not to act at all.</div>
+    <div class="bia-foot"><div class="bia-cta">Start now</div><div class="bia-arr"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+  </div>
+  <div class="mode-grid">
+    <div class="mode-card" onclick="startChat('checkin')"><div class="mc-tag">Check-in</div><div class="mc-title">What's on your mind?</div><div class="mc-out">Leave with: clarity on today's market</div></div>
+    <div class="mode-card" onclick="startChat('scenario')"><div class="mc-tag">Scenario</div><div class="mc-title">Something just moved</div><div class="mc-out">Leave with: a framework</div></div>
+    <div class="mode-card" onclick="startChat('concept')"><div class="mc-tag">Deep Dive</div><div class="mc-title">Understand a concept</div><div class="mc-out">Leave with: real understanding</div></div>
+    <div class="mode-card" onclick="startChat('protocol')"><div class="mc-tag">Breakdown</div><div class="mc-title">Protocol Breakdown</div><div class="mc-out">Leave with: full picture</div></div>
+    <div class="mode-card" onclick="startChat('review')"><div class="mc-tag">Decision Review</div><div class="mc-title">Examine your reasoning</div><div class="mc-out">Leave with: stress-tested logic</div></div>
+    <div class="mode-card" onclick="startChat('macro')"><div class="mc-tag">Macro</div><div class="mc-title">Fed, dollar, yields</div><div class="mc-out">Leave with: macro clarity</div></div>
+  </div>
+  <div class="hodl-card" onclick="startChat('hodl')">
+    <div class="hodl-left"><div class="hodl-tag">HODL or Fold <span class="hodl-badge">Hard Mode</span></div><div class="hodl-title">You're down. Conviction or sunk cost?</div><div class="hodl-desc">The hardest question in crypto. Let's be honest.</div></div>
+    <div style="font-size:22px;flex-shrink:0">💎</div>
+  </div>
+</div></div>
+
+<!-- ===== CHAT ===== -->
+<div class="screen" id="screen-chat">
+  <div class="chat-nav">
+    <button class="back-btn" onclick="backFromChat()">← Back</button>
+    <span class="chat-badge" id="chatBadge"></span>
+    <button class="vtog" id="vtog" onclick="toggleVoice()">🔊 ON</button>
+  </div>
+  <div class="chat-wrap">
+    <div class="w-intro" id="wIntro">
+      <div class="w-intro-top"><div class="w-av"><div class="w-av-txt">W</div></div><div><div class="w-name">Wisdom</div><div class="w-status">Reading live market data</div></div></div>
+      <div class="w-ctx" id="wCtx">Loading context...</div>
+    </div>
+    <div id="startersWrap"><div class="starters-lbl">Wisdom is reading today's market — tap a signal to begin</div><div class="starters" id="starters"></div></div>
+    <div class="disclaimer">Crypto Wisdom is an educational tool only. Nothing here is financial advice.</div>
+    <div class="thinking" id="thinking"><div class="live-dot"></div><span class="think-txt">Wisdom is thinking...</span></div>
+    <div class="err-msg" id="errMsg">Connection issue. Check your API key in Settings and try again.</div>
+    <div class="chat-box" id="chatBox" style="display:none"></div>
+    <div class="controls">
+      <button class="mic-btn" id="micBtn" onclick="handleMic()">
+        <svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+      </button>
+      <div class="input-wrap">
+        <input class="msg-inp" id="msgInp" placeholder="Ask Wisdom anything..." onkeydown="if(event.key==='Enter')sendMsg()"/>
+        <button class="send-btn" onclick="sendMsg()">Send</button>
+      </div>
+    </div>
+    <div class="voice-hint" id="voiceHint">Tap the mic to speak</div>
+    <button class="end-btn" id="endBtn" onclick="endSession()" style="display:none">End session — save to vault →</button>
+  </div>
+</div>
+
+<!-- ===== SUMMARY ===== -->
+<div class="screen" id="screen-summary">
+  <div class="sub-nav"><button class="back-btn" onclick="goScreen('session')">← Wisdom</button><span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);letter-spacing:.06em;text-transform:uppercase">Session Complete</span></div>
+  <div class="summary">
+    <div class="sum-hdr"><div class="sum-title">Session Complete</div><div class="sum-date" id="sumDate"></div></div>
+    <div class="score-block"><div class="score-n" id="scoreN">—</div><div class="score-meta"><div class="score-lbl">Crypto Wisdom Score</div><div class="score-stage" id="scoreStage">Observer</div><div class="score-why" id="scoreWhy"></div><div class="score-note">Measures reasoning quality — not whether prices moved in your favour.</div></div></div>
+    <div class="ss"><div class="slbl">What you did well</div><div class="did-well" id="didWell"></div></div>
+    <div class="ss"><div class="slbl">Pattern to watch</div><div class="pattern" id="pattern"></div></div>
+    <div class="ss"><div class="slbl">Concepts from this session</div><div class="pill-row" id="concepts"></div></div>
+    <div class="ss"><div class="slbl">One question to sit with</div><div class="reflect" id="sitWith"></div></div>
+    <div class="saved-note">✓ Session saved to your vault</div>
+    <button class="new-sess-btn" onclick="newSession()">Start a new session</button>
+    <button onclick="goScreen('session')" style="display:block;width:100%;font-family:'DM Mono',monospace;font-size:10px;padding:9px;border-radius:8px;border:1px solid var(--teal-border);background:transparent;color:var(--teal);cursor:pointer;text-align:center;margin-top:7px;letter-spacing:.07em;text-transform:uppercase">← Back to Wisdom</button>
+  </div>
+</div>
+
+<!-- ===== DOSSIER ===== -->
+<div class="screen" id="screen-dossier">
+  <div class="sub-nav"><button class="back-btn" onclick="goScreen(prevScreen||'session')">← Back</button><span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);letter-spacing:.06em;text-transform:uppercase">Today's Project</span></div>
+  <div class="sw" style="padding-top:12px">
+    <div class="dos-hdr">
+      <div style="display:flex;align-items:center;gap:9px">
+        <div class="dos-icon"><span class="dos-sym" id="dosSym">—</span></div>
+        <div style="flex:1"><div class="dos-name" id="dosName">—</div><div style="display:flex;align-items:center;gap:7px;margin-top:2px;flex-wrap:wrap"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text2)" id="dosPrice">—</span><span id="dosChg" style="font-family:'DM Mono',monospace;font-size:10px"></span><span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text4)" id="dosRank">—</span></div></div>
+      </div>
+    </div>
+    <div class="utabs">
+      <button class="utab active" onclick="dosTap('intel',this)">Intel</button>
+      <button class="utab" onclick="dosTap('story',this)">Story</button>
+      <button class="utab" onclick="dosTap('works',this)">How It Works</button>
+      <button class="utab" onclick="dosTap('thecase',this)">The Case</button>
+      <button class="utab" onclick="dosTap('quiz',this)">Quiz ✓</button>
+    </div>
+    <div id="dp-intel" class="upane active"><div class="dos-loading" id="db-intel">Tap Intel to load</div></div>
+    <div id="dp-story" class="upane"><div class="dos-loading" id="db-story">Tap Story to load</div></div>
+    <div id="dp-works" class="upane"><div class="dos-loading" id="db-works">Tap How It Works to load</div></div>
+    <div id="dp-thecase" class="upane"><div class="dos-loading" id="db-thecase">Tap The Case to load</div></div>
+    <div id="dp-quiz" class="upane"><div class="dos-loading" id="db-quiz">Tap Quiz to load</div></div>
+    <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:13px">
+      <button onclick="talkDossier()" style="display:block;width:100%;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:12px;border-radius:9px;border:none;background:var(--teal);color:var(--bg);cursor:pointer">Talk to Wisdom →</button>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text4);text-align:center;margin-top:6px">Ask anything from the dossier</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== VAULT ===== -->
+<div class="screen" id="screen-vault">
+  <div class="sub-nav"><button class="back-btn" onclick="goScreen('session')">← Wisdom</button><span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);letter-spacing:.06em;text-transform:uppercase">Vault</span></div>
+<div class="sw">
+  <div class="sec-title" style="margin-top:4px">Vault</div>
+  <div class="sec-sub">How you think about crypto — stored only on your device.</div>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-n" id="vSess">0</div><div class="stat-l">Sessions</div></div>
+    <div class="stat-card"><div class="stat-n" id="vScore">—</div><div class="stat-l">Wisdom Score</div></div>
+    <div class="stat-card"><div class="stat-n" id="vConcepts">0</div><div class="stat-l">Concepts</div></div>
+  </div>
+  <div class="stage-bar">
+    <div class="stage-lbl"><span>Stage</span><span class="stage-val" id="stageVal">Complete a session</span></div>
+    <div class="stage-track"><div class="stage-fill" id="stageFill" style="width:0%"></div></div>
+    <div class="stage-steps"><span class="sstep done">Seeker</span><span class="sstep" id="ss-ob">Observer</span><span class="sstep" id="ss-an">Analyst</span><span class="sstep" id="ss-st">Strategist</span><span class="sstep" id="ss-so">Sovereign</span></div>
+  </div>
+  <div class="ey">Session History</div>
+  <div id="sessList"><div class="empty-state">No sessions yet.<br/>Complete your first session to build your profile.</div></div>
+  <div class="dl-row"><button class="dl-btn accent" onclick="dlJSON()">Download JSON</button><button class="dl-btn" onclick="dlReport()">Download Report</button><button class="dl-btn danger" onclick="clearAll()">Clear all data</button></div>
+  <div class="sec-title">The Wisdom <span style="color:var(--teal)">Book</span></div>
+  <div class="sec-sub">Your documented theses — tested against reality.</div>
+  <div class="book-form card" style="padding:14px;border-color:var(--teal-border)">
+    <div class="ey">Document a new thesis</div>
+    <input class="book-inp" id="tAsset" placeholder="Asset (e.g. ETH, SOL, DeFi TVL)"/>
+    <textarea class="book-ta" id="tStatement" placeholder="Your thesis — what do you believe will happen and why?" rows="2"></textarea>
+    <input class="book-inp" id="tSignal" placeholder="Key signal to watch"/>
+    <input class="book-inp" id="tInvalidation" placeholder="What would invalidate this thesis?"/>
+    <div class="book-row"><select class="book-sel" id="tTimeframe"><option value="30">30 days</option><option value="90" selected>90 days</option><option value="180">6 months</option><option value="365">1 year</option><option value="730">2 years</option></select><button class="book-add" onclick="addThesis()">Document →</button></div>
+  </div>
+  <div class="ey">Active Theses</div>
+  <div id="thesisList"><div class="empty-state">No theses yet. Document your first above.</div></div>
+</div></div>
+
+<!-- ===== PORTFOLIO ===== -->
+<div class="screen" id="screen-portfolio"><div class="sw" style="padding-top:4px">
+  <div class="sec-title">Portfolio</div>
+  <div class="sec-sub">Your holdings. No trading. Stored only on your device.</div>
+  <div id="portDisplay" style="display:none">
+    <div class="port-hdr" id="portHdr"></div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;display:flex;align-items:center;justify-content:space-between"><span style="display:flex;align-items:center;gap:4px"><span style="width:3px;height:3px;border-radius:50%;background:var(--teal);display:inline-block"></span>Holdings</span><button onclick="refreshPrices()" style="font-family:'DM Mono',monospace;font-size:8px;color:var(--teal);background:transparent;border:none;cursor:pointer">↻ Refresh</button></div>
+    <div id="holdingsList"></div>
+    <div class="port-insight-wrap">
+      <div class="pi-top"><div class="live-dot" style="width:5px;height:5px"></div><span class="pi-lbl">Analyst Portfolio Insight</span></div>
+      <div class="pi-body" id="piBody">Loading insight...</div>
+      <div class="pi-actions"><button onclick="startPortChat()" style="font-family:'DM Mono',monospace;font-size:9px;padding:5px 11px;border-radius:5px;border:1px solid var(--teal-border);background:var(--teal-bg);color:var(--teal);cursor:pointer">Discuss with Wisdom →</button><button onclick="reloadInsight()" style="font-family:'DM Mono',monospace;font-size:9px;padding:5px 11px;border-radius:5px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer">Refresh</button></div>
+    </div>
+    <button class="port-add-btn" onclick="togglePortForm()" id="portAddBtn">+ Add holding</button>
+    <div class="port-form" id="portForm">
+      <div class="port-form-lbl">Add a holding</div>
+      <div class="port-inp-row"><input class="port-inp" id="phSym" placeholder="BTC" style="width:65px;text-transform:uppercase"/><input type="number" class="port-inp" id="phQty" placeholder="Quantity" step="any" style="flex:1;min-width:65px"/><input type="number" class="port-inp" id="phCost" placeholder="Cost ($)" step="any" style="flex:1;min-width:65px"/><button class="port-sub-btn" onclick="addHolding()">Add</button></div>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text4)">Symbol · Quantity · Total cost basis</div>
+    </div>
+    <div style="text-align:center;margin-bottom:8px"><button onclick="clearPortfolio()" style="font-family:'DM Mono',monospace;font-size:8px;color:var(--red);background:transparent;border:none;cursor:pointer">Clear all holdings</button></div>
+  </div>
+  <div id="portEmpty">
+    <div class="port-form" style="display:block">
+      <div class="port-form-lbl">Add your first holding</div>
+      <div class="port-inp-row"><input class="port-inp" id="phSym2" placeholder="BTC" style="width:65px;text-transform:uppercase"/><input type="number" class="port-inp" id="phQty2" placeholder="Quantity" step="any" style="flex:1;min-width:65px"/><input type="number" class="port-inp" id="phCost2" placeholder="Cost ($)" step="any" style="flex:1;min-width:65px"/><button class="port-sub-btn" onclick="addHolding2()">Add</button></div>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text4)">Symbol · Quantity · Total cost basis</div>
+    </div>
+    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:22px 14px;text-align:center"><div style="font-size:22px;margin-bottom:6px">📊</div><div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px">Add your holdings above</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);line-height:1.8">Wisdom gives you specific insight about your positioning<br/>in today's market context.</div></div>
+  </div>
+</div></div>
+
+<!-- ===== WEB3 GUIDE ===== -->
+<div class="screen" id="screen-guide"><div class="sw" style="padding-top:4px">
+  <div class="sec-title">Web3 <span style="color:var(--teal)">Guide</span></div>
+  <div class="sec-sub">Every concept explained clearly. Tap anything to go deep.</div>
+  <div class="guide-search" onclick="focusGuideSearch()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="guideSearchInp" class="guide-search-txt" placeholder="Search any crypto concept..." style="background:transparent;border:none;outline:none;flex:1;font-family:'DM Mono',monospace;font-size:11px;color:var(--text2);cursor:text" onkeydown="if(event.key==='Enter'&&this.value.trim())doGuideSearch(this.value.trim())"/>
+    <button id="guideSearchBtn" onclick="event.stopPropagation();doGuideSearch(document.getElementById('guideSearchInp').value.trim())" style="font-family:'DM Mono',monospace;font-size:9px;padding:3px 8px;border-radius:5px;border:1px solid var(--teal-border);background:var(--teal-bg);color:var(--teal);cursor:pointer;display:none">Go →</button>
+  </div>
+  <div class="guide-sec"><div class="guide-sec-title">Start Here</div><div class="guide-sec-sub">Three concepts every serious crypto person understands. Start with these.</div><div id="gStart"></div></div>
+  <div class="guide-sec"><div class="guide-sec-title">Going Deeper</div><div class="guide-sec-sub">Once you have the foundation, these unlock the next level.</div><div id="gDeep"></div></div>
+  <div class="guide-sec"><div class="guide-sec-title">Advanced</div><div class="guide-sec-sub">On-chain signals, macro mechanics, DeFi. This is where edge is built.</div><div id="gAdv"></div></div>
+</div></div>
+
+<!-- ===== LESSON ===== -->
+<div class="screen" id="screen-lesson">
+  <div class="sub-nav"><button class="back-btn" onclick="goScreen('guide')">← Guide</button><span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);letter-spacing:.06em;text-transform:uppercase" id="lessonCat">Concept</span></div>
+  <div class="sw" style="padding-top:12px">
+    <div class="lesson-cat" id="lessonCatTxt">Web3 Guide</div>
+    <div class="lesson-title" id="lessonTitle">—</div>
+    <div class="lesson-hook" id="lessonHook">—</div>
+    <div class="utabs">
+      <button class="utab active" onclick="lessonTap('simple',this)">Simple</button>
+      <button class="utab" onclick="lessonTap('real',this)">Real</button>
+      <button class="utab" onclick="lessonTap('now',this)">Right Now</button>
+      <button class="utab" onclick="lessonTap('wrong',this)">Most Get Wrong</button>
+    </div>
+    <div id="lp-simple" class="upane active"><div class="dos-loading" id="lb-simple">Tap to load</div></div>
+    <div id="lp-real" class="upane"><div class="dos-loading" id="lb-real">Tap to load</div></div>
+    <div id="lp-now" class="upane"><div class="dos-loading" id="lb-now">Tap to load</div></div>
+    <div id="lp-wrong" class="upane"><div class="dos-loading" id="lb-wrong">Tap to load</div></div>
+    <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:13px">
+      <button onclick="askLesson()" style="display:block;width:100%;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:12px;border-radius:9px;border:none;background:var(--teal);color:var(--bg);cursor:pointer">Ask Wisdom →</button>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text4);text-align:center;margin-top:6px" id="lessonNext"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SETTINGS ===== -->
+<div class="screen" id="screen-settings">
+  <div class="sub-nav"><button class="back-btn" onclick="goScreen(prevScreen||'briefing')">← Back</button><span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);letter-spacing:.06em;text-transform:uppercase">Settings</span></div>
+  <div class="sw" style="padding-top:12px">
+    <div class="set-card"><div class="set-title">Claude API Key</div><div class="set-desc">Powers your coaching sessions and briefings. Stored only in your browser.</div><div class="set-row"><input type="text" id="settingsKey" placeholder="sk-ant-api03-..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter')saveSettingsKey()"/><button class="set-save" onclick="saveSettingsKey()">Save</button></div><div class="set-ok" id="settingsOk">✓ Key saved</div><div class="set-hint">Get your key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a> → API Keys. Add $5 credit.</div></div>
+    <div class="set-card"><div class="set-title">Agent Voice</div><div class="set-desc">Choose how Wisdom sounds. Google voices (🟢) sound most natural.</div><div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px" id="langFilter"><button onclick="filterVoices('',this)" style="font-family:'DM Mono',monospace;font-size:9px;padding:3px 8px;border-radius:5px;border:1px solid var(--teal-border);background:var(--teal-bg);color:var(--teal);cursor:pointer">All</button><button onclick="filterVoices('en',this)" style="font-family:'DM Mono',monospace;font-size:9px;padding:3px 8px;border-radius:5px;border:1px solid var(--border2);background:transparent;color:var(--text3);cursor:pointer">EN</button><button onclick="filterVoices('Google',this)" style="font-family:'DM Mono',monospace;font-size:9px;padding:3px 8px;border-radius:5px;border:1px solid var(--border2);background:transparent;color:var(--text3);cursor:pointer">🟢 Google</button></div><select id="voiceSelect" style="width:100%;font-family:'DM Mono',monospace;font-size:11px;padding:6px 9px;border-radius:7px;border:1px solid var(--border2);background:var(--bg);color:var(--text);outline:none;margin-bottom:7px" onchange="saveVoicePref()"><option>Loading voices...</option></select><div class="speed-row"><button class="speed-btn" onclick="setSpeed(0.8,this)">Slower</button><button class="speed-btn active" onclick="setSpeed(1.0,this)">Normal</button><button class="speed-btn" onclick="setSpeed(1.2,this)">Faster</button></div><button onclick="previewVoice()" style="font-family:'DM Mono',monospace;font-size:9px;padding:6px 11px;border-radius:6px;border:1px solid var(--teal-border);background:var(--teal-bg);color:var(--teal);cursor:pointer">▶ Preview voice</button></div>
+    <div class="set-card"><div class="set-title">Response Depth</div><div class="set-desc">Control how detailed Wisdom's responses are.</div><div class="depth-grid"><button class="depth-btn" onclick="setLen('short',this)">Short<small>Quick + focused</small></button><button class="depth-btn active" onclick="setLen('medium',this)">Medium<small>Default</small></button><button class="depth-btn" onclick="setLen('long',this)">Long<small>Deep exploration</small></button><button class="depth-btn" onclick="setLen('technical',this)">Technical<small>Protocol depth</small></button></div></div>
+  </div>
+</div>
+
+<!-- ===== PRICING ===== -->
+<div class="screen" id="screen-pricing">
+  <div class="sub-nav"><button class="back-btn" onclick="goScreen(prevScreen||'briefing')">← Back</button><span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);letter-spacing:.06em;text-transform:uppercase">Pricing</span></div>
+  <div class="sw" style="padding-top:12px">
+    <div class="sec-title">Beta <span style="color:var(--teal)">Pricing</span></div>
+    <div class="sec-sub">Most crypto apps charge for signals. Crypto Wisdom sharpens how you reason.</div>
+    <div class="price-card"><div class="price-tier">Free</div><div class="price-amount">$0 <span>/ forever</span></div><div class="price-desc">3 sessions/week · Daily briefing · Wisdom Score · Before I Act</div></div>
+    <div class="price-card featured"><div class="price-tier t">Pro — Most Popular</div><div class="price-amount">$9.99 <span>/ month</span></div><div class="price-desc">Unlimited sessions · Full vault · All modes · Data export · Voice coaching</div><button class="price-cta" onclick="goScreen('session')">Get Pro</button></div>
+    <div class="price-card"><div class="price-tier">Elite</div><div class="price-amount">$29.99 <span>/ month</span></div><div class="price-desc">Everything in Pro · Multi-cycle analysis · Priority depth · Early access</div></div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);text-align:center">Beta pricing. Cancel anytime. Your data is always yours.</div>
+  </div>
+</div>
+
+<!-- ===== DATA RIGHTS ===== -->
+<div class="screen" id="screen-data">
+  <div class="sub-nav"><button class="back-btn" onclick="goScreen(prevScreen||'briefing')">← Back</button><span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);letter-spacing:.06em;text-transform:uppercase">Your Data Rights</span></div>
+  <div class="sw" style="padding-top:12px">
+    <div class="sec-title">Your Data <span style="color:var(--teal)">Rights</span></div>
+    <div class="sec-sub">Three commitments. Not marketing.</div>
+    <div class="rights-card"><div class="rights-title">No advice. Ever.</div><div class="rights-desc">We will never give financial advice. This is structural — not a disclaimer.</div></div>
+    <div class="rights-card"><div class="rights-title">Local first. Always.</div><div class="rights-desc">Your session history, score, and vault are stored only on your device. Fully exportable.</div></div>
+    <div class="rights-card"><div class="rights-title">Your thinking is your asset.</div><div class="rights-desc">We do not sell or share your data. The way you think about crypto belongs to you.</div></div>
+    <div class="dl-row" style="margin-top:12px"><button class="dl-btn accent" onclick="dlJSON()">Export my data</button><button class="dl-btn danger" onclick="clearAll()">Delete all data</button></div>
+  </div>
+</div>
+
+<!-- SIDE MENU -->
+<div class="toast" id="toast"></div>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<div class="side-menu" id="sideMenu">
+  <div class="sm-top"><div class="sm-logo">Crypto <span>Wisdom</span></div><button class="sm-close" onclick="closeMenu()">✕</button></div>
+  <div class="sm-profile"><div class="sm-pl">Vault</div><div class="sm-stats"><div class="sm-stat"><div class="sm-stat-n" id="smSess">0</div><div class="sm-stat-l">Sessions</div></div><div class="sm-stat"><div class="sm-stat-n" id="smScore">—</div><div class="sm-stat-l">Score</div></div><div class="sm-stat"><div class="sm-stat-n" id="smCon">0</div><div class="sm-stat-l">Concepts</div></div></div></div>
+  <div class="sm-score-wrap"><div class="sm-score-lbl"><span>Wisdom Score</span><span class="sm-score-v" id="smScoreV">—</span></div><div class="sm-score-track"><div class="sm-score-fill" id="smScoreFill" style="width:0%"></div></div><div class="sm-score-stage" id="smStage">Complete your first session</div></div>
+  <nav class="sm-nav">
+    <div class="sm-nav-lbl">Core</div>
+    <button class="sm-item" onclick="menuGo('briefing')"><span class="sm-icon">01</span>Daily Briefing<span class="sm-arr">›</span></button>
+    <button class="sm-item" onclick="menuGo('session')"><span class="sm-icon">02</span>Wisdom Sessions<span class="sm-arr">›</span></button>
+    <button class="sm-item" onclick="menuGo('vault')"><span class="sm-icon">03</span>Vault<span class="sm-arr">›</span></button>
+    <div class="sm-divider"></div>
+    <div class="sm-nav-lbl">Learn</div>
+    <button class="sm-item" onclick="menuGo('guide')"><span class="sm-icon">04</span>Web3 Guide<span class="sm-nbadge">New</span><span class="sm-arr">›</span></button>
+    <div class="sm-divider"></div>
+    <div class="sm-nav-lbl">Explore</div>
+    <button class="sm-item" onclick="menuGo('portfolio')"><span class="sm-icon">05</span>Portfolio<span class="sm-arr">›</span></button>
+    <div class="sm-divider"></div>
+    <div class="sm-nav-lbl">Account</div>
+    <button class="sm-item" onclick="menuGoSub('pricing')"><span class="sm-icon">06</span>Pricing<span class="sm-pbadge">Pro</span><span class="sm-arr">›</span></button>
+    <button class="sm-item" onclick="menuGoSub('data')"><span class="sm-icon">07</span>Your Data Rights<span class="sm-arr">›</span></button>
+    <button class="sm-item" onclick="menuGoSub('settings')"><span class="sm-icon">08</span>Settings<span class="sm-arr">›</span></button>
+  </nav>
+  <div class="sm-footer"><div class="sm-tag">Think before you trade.</div><div class="sm-ver">Crypto Wisdom · Beta v1.0</div></div>
+</div>
+<script>
+'use strict';
+/* ===== CONSTANTS ===== */
+var CK='cw_key',VK='cw_vault5',HK='cw_hold5',TK='cw_thesis',LK='cw_len';
+
+/* ===== STATE ===== */
+var claudeKey='',answerLen='medium',autoVoice=true,voiceSpeed=1.0;
+var top50=[],holdings=[],theses=[],liveIntel={};
+var todayCoin=null,curLesson=null,curMode='',prevScreen='briefing';
+var messages=[],sessionActive=false;
+var isSpeaking=false,isListening=false,mic=null,curUtterance=null;
+var allVoices=[],selVoice=null,_voiceCancelled=false;
+var expandedH=null,hInsights={},editingH=null;
+var briefText='',isBriefReading=false;
+var GUIDE=[
+  {lv:'start',icon:'📈',cat:'Foundations',title:'Market Cycles',hook:'Every crypto bull market follows the same four-phase pattern. We are in one right now. Do you know which?',topic:'Crypto market cycles — the four phases, how the halving maps to price, and how to identify which phase we are in'},
+  {lv:'start',icon:'🔐',cat:'Foundations',title:'Wallets & Keys',hook:'"Not your keys, not your coins" has cost people billions. This one concept protects everything you own.',topic:'Crypto wallets — custodial vs non-custodial, seed phrases, hardware wallets, and how people lose their crypto'},
+  {lv:'start',icon:'💰',cat:'Macro',title:'BTC Dominance',hook:'When BTC dominance rises, altcoins bleed. When it falls, altcoin season begins. One number tells you where capital moves.',topic:'BTC dominance — what it measures, what rising or falling means, and how to use it as a market timing signal'},
+  {lv:'deep',icon:'⛓',cat:'Foundations',title:'Layer 1s vs L2s',hook:'Why does Ethereum cost $4 and Solana costs $0.001? The answer changes everything about where crypto is going.',topic:'Layer 1 blockchains vs Layer 2 scaling — how they differ, why fees exist, and which L2s are winning'},
+  {lv:'deep',icon:'🌐',cat:'Macro',title:'Macro & Crypto',hook:'BTC dropped 20% every time the Fed raised rates in 2022. Understanding why is the edge most retail investors never get.',topic:'How macro forces affect crypto — Fed policy, dollar strength, yield curves, and risk-on vs risk-off sentiment'},
+  {lv:'deep',icon:'📊',cat:'Foundations',title:'Tokenomics',hook:'Why does one crypto go to zero while another holds value forever? The answer is in how it was designed before launch.',topic:'Tokenomics — supply mechanics, inflation schedules, burn mechanisms, and what actually drives price long term'},
+  {lv:'advanced',icon:'🔍',cat:'On-Chain',title:'On-Chain Analysis',hook:'Whales moved $400M to exchanges on a Tuesday. Three days later the market dropped 18%. This is how you read those signals.',topic:'On-chain analysis — whale movements, exchange flows, active addresses, and funding rates'},
+  {lv:'advanced',icon:'🏦',cat:'DeFi',title:'DeFi Fundamentals',hook:'Banks make billions from your money while you earn 0.1%. Here is exactly how DeFi cuts them out.',topic:'DeFi — lending protocols, liquidity pools, yield generation, and the real risks most people ignore'},
+  {lv:'advanced',icon:'⚡',cat:'DeFi',title:'Impermanent Loss',hook:'You provide liquidity, the pool goes up, but you end up with less than if you had just held. This catches everyone once.',topic:'Impermanent loss — what it is, why it happens, how to calculate it, and when providing liquidity is worth it'}
+];
+
+/* ===== INIT ===== */
+function init(){
+  try{var k=localStorage.getItem(CK);if(k){claudeKey=k;markKeySaved();}}catch(e){}
+  try{var h=localStorage.getItem(HK);if(h)holdings=JSON.parse(h);}catch(e){}
+  try{var t=localStorage.getItem(TK);if(t)theses=JSON.parse(t);}catch(e){}
+  try{var l=localStorage.getItem(LK);if(l){answerLen=l;document.querySelectorAll('.depth-btn').forEach(function(b){b.classList.toggle('active',b.textContent.toLowerCase().startsWith(l));});}}catch(e){}
+  try{var s=localStorage.getItem('cw_speed');if(s)voiceSpeed=parseFloat(s);}catch(e){}
+  setHalving();
+  setInterval(function(){
+    var d=new Date();
+    document.getElementById('clock').textContent=d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')+':'+d.getSeconds().toString().padStart(2,'0');
+  },1000);
+  var h2=new Date().getHours();
+  document.getElementById('sessionCtx').textContent=h2<12?'Morning Session':h2<17?'Afternoon Session':h2<21?'Evening Session':'Late Session';
+  renderGuide();
+  goScreen('briefing');
+  fetchData();
+}
+window.addEventListener('DOMContentLoaded',init);
+
+function setHalving(){
+  var last=new Date('2024-04-19'),next=new Date('2028-04-20'),now=new Date();
+  var days=Math.round((now-last)/86400000),until=Math.round((next-now)/86400000);
+  var pct=Math.round((days/Math.round((next-last)/86400000))*100);
+  liveIntel.halving=days+' days post-halving ('+pct+'% through cycle). Next in ~'+until+' days.';
+}
+
+/* ===== KEY ===== */
+function toast(msg,isError){
+  var el=document.getElementById('toast');
+  if(!el)return;
+  el.textContent=msg;
+  el.style.borderColor=isError?'rgba(229,75,75,.4)':'var(--teal-border)';
+  el.style.color=isError?'var(--red)':'var(--teal)';
+  el.classList.add('show');
+  setTimeout(function(){el.classList.remove('show');},2500);
+}
+
+function requireKey(msg){
+  if(!claudeKey){
+    toast(msg||'Add your API key first — tap the key field at the top.',true);
+    var b=document.getElementById('keyBanner');
+    if(b){b.style.display='flex';b.style.borderColor='var(--red)';setTimeout(function(){b.style.borderColor='';},2000);}
+    return true;
+  }
+  return false;
+}
+
+function saveKey(){
+  var v=document.getElementById('keyInput').value.trim();
+  if(!v){
+    var inp=document.getElementById('keyInput');
+    inp.style.borderColor='var(--red)';
+    setTimeout(function(){inp.style.borderColor='';},1500);
+    return;
+  }
+  claudeKey=v;
+  try{localStorage.setItem(CK,v);}catch(e){}
+  // Show confirmation in the banner before hiding
+  var inp=document.getElementById('keyInput');
+  var btn=document.querySelector('.key-banner button');
+  if(inp){inp.value='';inp.placeholder='✓ Key saved';}
+  if(btn){btn.textContent='✓';btn.style.background='var(--green)';}
+  var el=document.getElementById('keyOk');
+  if(el){el.textContent='✓ Active';el.style.background='var(--teal-bg)';el.style.borderColor='var(--teal-border)';el.style.color='var(--teal)';}
+  // Hide after 1.5s so user sees confirmation
+  setTimeout(function(){
+    var b=document.getElementById('keyBanner');
+    if(b)b.style.display='none';
+    if(btn){btn.textContent='Save';btn.style.background='';}
+  },1500);
+  if(!window._briefDone)refreshBrief();
+}
+function saveSettingsKey(){
+  var v=document.getElementById('settingsKey').value.trim();
+  if(!v)return;
+  claudeKey=v;
+  try{localStorage.setItem(CK,v);}catch(e){}
+  var el=document.getElementById('keyOk');
+  if(el){el.textContent='✓ Active';el.style.background='var(--teal-bg)';el.style.borderColor='var(--teal-border)';el.style.color='var(--teal)';}
+  var ok=document.getElementById('settingsOk');
+  if(ok){ok.style.display='block';setTimeout(function(){ok.style.display='none';},2000);}
+  if(!window._briefDone)refreshBrief();
+}
+function markKeySaved(){
+  // Called on init when key found in localStorage - hide banner silently
+  var el=document.getElementById('keyOk');
+  if(el){el.textContent='✓ Active';el.style.background='var(--teal-bg)';el.style.borderColor='var(--teal-border)';el.style.color='var(--teal)';}
+  var b=document.getElementById('keyBanner');
+  if(b)b.style.display='none';
+}
+
+/* ===== SCREEN NAV ===== */
+var MAIN=['briefing','session','guide','portfolio'];
+var curScreen='briefing';
+function goScreen(name){
+  document.querySelectorAll('.screen').forEach(function(s){
+    var want=s.id==='screen-'+name;
+    var has=s.classList.contains('active');
+    if(want&&!has)s.classList.add('active');
+    else if(!want&&has)s.classList.remove('active');
+  });
+  MAIN.forEach(function(n){var b=document.getElementById('mt-'+n);if(b)b.classList.toggle('active',n===name);});
+  curScreen=name;
+  window.scrollTo(0,0);
+  if(name==='vault')renderVault();
+  if(name==='portfolio')renderPortfolio();
+  if(name==='guide')renderGuide();
+}
+function menuGo(name){closeMenu();goScreen(name);}
+function menuGoSub(name){prevScreen=curScreen;closeMenu();goScreen(name);}
+function goSub(name){prevScreen=curScreen;goScreen(name);}
+
+/* ===== MENU ===== */
+function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('overlay').classList.add('open');renderVault();}
+function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('overlay').classList.remove('open');}
+
+/* ===== FETCH DATA ===== */
+async function fetchData(){
+  fetchFNG();
+  await delay(200);
+  fetchTicker();
+  await delay(700);
+  fetchGlobal();
+  await delay(500);
+  fetchTrending();
+  fetchTVL();
+  if(claudeKey&&!window._briefDone)refreshBrief();
+}
+function delay(ms){return new Promise(function(r){setTimeout(r,ms);});}
+
+async function fetchFNG(){
+  try{
+    var c=new AbortController();setTimeout(function(){c.abort();},8000);
+    var r=await fetch('https://api.alternative.me/fng/?limit=1',{signal:c.signal});
+    if(!r.ok)return;
+    var d=await r.json();
+    var val=parseInt(d.data[0].value),lbl=d.data[0].value_classification;
+    var col=val>=60?'var(--green)':val>=40?'var(--amber)':'var(--red)';
+    var ctx=val<=25?'Extreme fear — historically the strongest accumulation zone. Smart money buys while retail panics.':val<=45?'Fear present — rational investors watch carefully here.':val<=55?'Neutral — market searching for direction.':val<=75?'Greed building — momentum strong, watch for euphoria.':'Extreme greed — corrections often follow.';
+    liveIntel.fng={value:val,label:lbl,color:col,context:ctx};
+    var dot=document.getElementById('fngDot');if(dot)dot.style.background=col;
+    var fv=document.getElementById('fngVal');if(fv){fv.textContent=val;fv.style.color=col;}
+    var fn=document.getElementById('fngName');if(fn)fn.textContent=lbl;
+    var bn=document.getElementById('bFngNum');if(bn){bn.textContent=val;bn.style.color=col;}
+    var bl=document.getElementById('bFngLbl');if(bl)bl.textContent=lbl;
+    var bd=document.getElementById('bFngDesc');if(bd)bd.textContent=ctx;
+  }catch(e){}
+}
+
+async function fetchTicker(){
+  try{
+    var c=new AbortController();setTimeout(function(){c.abort();},10000);
+    var r=await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=24h',{signal:c.signal});
+    if(r.status===429||!r.ok)return;
+    top50=await r.json();
+    var track=document.getElementById('ticker');
+    var items=top50.map(function(c){
+      var p=c.current_price>=1000?'$'+c.current_price.toLocaleString():c.current_price>=1?'$'+c.current_price.toFixed(2):'$'+c.current_price.toFixed(4);
+      var ch=(c.price_change_percentage_24h||0).toFixed(1);var up=parseFloat(ch)>=0;
+      return'<div class="tick"><span class="tick-sym">'+c.symbol.toUpperCase()+'</span><span class="tick-price">'+p+'</span><span class="'+(up?'tick-up':'tick-dn')+'">'+(up?'▲':'▼')+Math.abs(ch)+'%</span></div>';
+    });
+    var html=items.join('')+items.join('');
+    track.innerHTML=html;
+    setTimeout(function(){var w=track.scrollWidth/2;track.style.animation='ticker '+Math.max(60,Math.round(w/55))+'s linear infinite';},300);
+    renderToday();
+    refreshPrices();
+  }catch(e){}
+}
+
+async function fetchGlobal(){
+  try{
+    var c=new AbortController();setTimeout(function(){c.abort();},8000);
+    var r=await fetch('https://api.coingecko.com/api/v3/global',{signal:c.signal});
+    if(r.status===429||!r.ok)return;
+    var data=(await r.json()).data;
+    var mc=data.total_market_cap.usd,ch=data.market_cap_change_percentage_24h_usd,bd=data.market_cap_percentage.btc,vol=data.total_volume.usd;
+    var ms=mc>=1e12?'$'+(mc/1e12).toFixed(2)+'T':'$'+(mc/1e9).toFixed(0)+'B';
+    var vs=vol>=1e12?'$'+(vol/1e12).toFixed(2)+'T':'$'+(vol/1e9).toFixed(0)+'B';
+    liveIntel.global={mcap:ms,mcapChg:ch.toFixed(2),btcDom:bd.toFixed(1),vol:vs};
+    var bm=document.getElementById('bMcap');if(bm)bm.textContent=ms;
+    var bc=document.getElementById('bMcapChg');if(bc){bc.textContent=(ch>=0?'▲ ':'▼ ')+Math.abs(ch).toFixed(2)+'% 24h';bc.style.color=ch>=0?'var(--green)':'var(--red)';}
+    var bd2=document.getElementById('bDom');if(bd2)bd2.textContent=bd.toFixed(1)+'%';
+    var bn=document.getElementById('bDomNote');if(bn)bn.textContent=bd>55?'BTC leading':'Alt season building';
+  }catch(e){}
+}
+
+async function fetchTrending(){
+  try{
+    var c=new AbortController();setTimeout(function(){c.abort();},8000);
+    var r=await fetch('https://api.coingecko.com/api/v3/search/trending',{signal:c.signal});
+    if(r.status===429||!r.ok)return;
+    var d=await r.json();
+    var coins=(d.coins||[]).slice(0,7).map(function(c){return c.item.symbol.toUpperCase();});
+    liveIntel.trending=coins;
+    var tp=document.getElementById('bTrending');
+    if(tp)tp.innerHTML=coins.map(function(s){
+      var coin=findCoin(s);
+      var ch=coin?(coin.price_change_percentage_24h||0):null;
+      var up=ch!=null?ch>=0:true;
+      var col=ch!=null?(up?'var(--green)':'var(--red)'):'var(--teal)';
+      var bc=ch!=null?(up?'rgba(46,204,138,.2)':'rgba(229,75,75,.2)'):'var(--teal-border)';
+      var bg=ch!=null?(up?'rgba(46,204,138,.07)':'rgba(229,75,75,.07)'):'var(--teal-bg)';
+      return'<span class="tpill" style="color:'+col+';border-color:'+bc+';background:'+bg+'" onclick="openTrendLesson(\''+s+'\')">'+s+(ch!=null?' '+(up?'▲':'▼')+Math.abs(ch).toFixed(1)+'%':'')+'</span>';
+    }).join('');
+  }catch(e){}
+}
+
+async function fetchTVL(){
+  try{
+    var c=new AbortController();setTimeout(function(){c.abort();},8000);
+    var r=await fetch('https://api.llama.fi/v2/charts',{signal:c.signal});
+    if(!r.ok)throw new Error('');
+    var d=await r.json();
+    var last=d[d.length-1];
+    var total=last&&last.totalLiquidityUSD?last.totalLiquidityUSD:null;
+    if(!total)throw new Error('');
+    var s=total>=1e12?'$'+(total/1e12).toFixed(2)+'T':'$'+(total/1e9).toFixed(1)+'B';
+    liveIntel.tvl=s;
+    var el=document.getElementById('bTvl');if(el)el.textContent=s;
+  }catch(e){liveIntel.tvl='~$90B';var el=document.getElementById('bTvl');if(el)el.textContent='~$90B';}
+}
+
+/* ===== BRIEFING ===== */
+async function refreshBrief(){
+  window._briefDone=false;
+  var pqEl=document.getElementById('briefPQ');
+  var bodyEl=document.getElementById('briefBody');
+  if(!claudeKey){
+    if(pqEl){pqEl.textContent='Add your API key above';pqEl.style.cssText='font-size:13px;font-weight:300;color:var(--text3);font-style:italic';}
+    if(bodyEl){bodyEl.textContent='Add your API key to unlock your daily intelligence report.';bodyEl.style.color='var(--text3)';bodyEl.style.fontStyle='italic';}
+    return;
+  }
+  if(pqEl){pqEl.textContent='Generating...';pqEl.style.cssText='font-size:13px;font-weight:300;color:var(--text3);font-style:italic';}
+  if(bodyEl){bodyEl.textContent='';bodyEl.style.color='var(--text3)';bodyEl.style.fontStyle='italic';}
+  var h=new Date().getHours(),tc=h<12?'morning':h<17?'afternoon':h<21?'evening':'late night';
+  var ds=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+  document.getElementById('briefDate').textContent=ds;
+  var intel='';
+  if(liveIntel.fng)intel+='Fear & Greed: '+liveIntel.fng.value+' ('+liveIntel.fng.label+'). '+liveIntel.fng.context+'\n';
+  if(liveIntel.global)intel+='Market cap: '+liveIntel.global.mcap+' ('+liveIntel.global.mcapChg+'% 24h). BTC dom: '+liveIntel.global.btcDom+'%. Vol: '+liveIntel.global.vol+'.\n';
+  if(liveIntel.tvl)intel+='DeFi TVL: '+liveIntel.tvl+'\n';
+  if(liveIntel.halving)intel+=liveIntel.halving+'\n';
+  if(liveIntel.trending)intel+='Trending: '+liveIntel.trending.join(', ')+'\n';
+  if(top50.length){var pr=top50.slice(0,6).map(function(c){return c.symbol.toUpperCase()+' $'+c.current_price.toLocaleString()+' ('+(c.price_change_percentage_24h>=0?'+':'')+c.price_change_percentage_24h.toFixed(1)+'%)';});intel+='Prices: '+pr.join(' | ')+'\n';}
+  var prompt='Your name is Wisdom. You are the lead analyst at Crypto Wisdom.\n\nLIVE DATA:\n'+intel+'\nWrite a '+tc+' intelligence briefing for '+ds+'.\n\nFirst line: A sharp KEY INSIGHT (10-15 words max, specific to today\'s data — no generic statements)\nThen 3 tight paragraphs:\n1. The dominant theme — cite specific numbers\n2. What most people are missing right now\n3. One specific signal or condition to watch\n\nNo markdown. No asterisks. Direct and smart.';
+  try{
+    var reply=await callClaude([{role:'user',content:prompt}],700);
+    briefText=reply;
+    var lines=reply.replace(/\*\*/g,'').replace(/\*/g,'').split('\n').filter(function(l){return l.trim();});
+    var pq=lines[0].trim();
+    var body=lines.slice(1).join('\n\n').trim();
+    if(pqEl){
+      pqEl.textContent=pq||'Today\'s Intelligence';
+      pqEl.style.cssText='font-family:\'Bebas Neue\',sans-serif;font-size:20px;letter-spacing:.03em;color:var(--text);line-height:1.2;min-height:24px';
+    }
+    if(bodyEl){bodyEl.textContent=body;bodyEl.style.color='var(--text2)';bodyEl.style.fontStyle='normal';}
+    window._briefDone=true;
+  }catch(e){
+    if(pqEl)pqEl.textContent='Check your API key';
+    if(bodyEl){bodyEl.textContent='Error: '+e.message;bodyEl.style.color='var(--red)';}
+  }
+}
+
+function toggleRead(){
+  if(isBriefReading){window.speechSynthesis.cancel();isBriefReading=false;document.getElementById('readTxt').textContent='Read aloud';return;}
+  var text=briefText||document.getElementById('briefBody').textContent;
+  if(!text||text.length<10)return;
+  var u=new SpeechSynthesisUtterance(text.substring(0,1500));
+  u.rate=voiceSpeed;if(selVoice)u.voice=selVoice;
+  u.onend=function(){isBriefReading=false;document.getElementById('readTxt').textContent='Read aloud';};
+  isBriefReading=true;document.getElementById('readTxt').textContent='■ Stop';
+  window.speechSynthesis.speak(u);
+}
+
+/* ===== TODAY PROJECT ===== */
+function renderToday(){
+  if(!top50.length)return;
+  var learned=[];try{var l=localStorage.getItem('cw_learned');if(l)learned=JSON.parse(l);}catch(e){}
+  var pool=top50.filter(function(c){return!learned.includes(c.id);});
+  if(!pool.length){learned=[];pool=top50;}
+  var offset=0;try{offset=parseInt(localStorage.getItem('cw_coin_offset')||'0');}catch(e){}
+  var d=new Date();var base=(d.getUTCFullYear()*10000+(d.getUTCMonth()+1)*100+d.getUTCDate());
+  var seed=(base+offset)%pool.length;
+  todayCoin=pool[seed];
+  var c=todayCoin;
+  var p=c.current_price>=1000?'$'+c.current_price.toLocaleString():c.current_price>=1?'$'+c.current_price.toFixed(2):'$'+c.current_price.toFixed(4);
+  var ch=(c.price_change_percentage_24h||0).toFixed(1);var up=parseFloat(ch)>=0;
+  document.getElementById('tpSym').textContent=c.symbol.toUpperCase().substring(0,5);
+  document.getElementById('tpName').textContent=c.name;
+  document.getElementById('tpPrice').textContent=p;
+  var ce=document.getElementById('tpChg');ce.textContent=(up?'▲ ':'▼ ')+Math.abs(ch)+'%';ce.style.color=up?'var(--green)':'var(--red)';
+  document.getElementById('tpDesc').textContent=c.name+' — tap to open the 5-tab dossier. '+learned.length+' of 50 coins learned.';
+  document.getElementById('tpProg').textContent=learned.length+' of 50 learned';
+  document.getElementById('todayCard').style.display='block';
+}
+function nextCoin(){
+  var offset=0;try{offset=parseInt(localStorage.getItem('cw_coin_offset')||'0');}catch(e){}
+  try{localStorage.setItem('cw_coin_offset',String(offset+1));}catch(e){}
+  dosLoaded={};
+  renderToday();
+}
+
+function openDossier(){
+  if(!todayCoin){
+    var d=document.getElementById('tpDesc');
+    if(d)d.textContent='Live data still loading — wait a moment and try again.';
+    return;
+  }
+  if(!claudeKey){
+    goScreen('dossier');
+    prevScreen='session';
+    var c=todayCoin;
+    document.getElementById('dosSym').textContent=c.symbol.toUpperCase();
+    document.getElementById('dosName').textContent=c.name;
+    var p=c.current_price>=1000?'$'+c.current_price.toLocaleString():c.current_price>=1?'$'+c.current_price.toFixed(2):'$'+c.current_price.toFixed(4);
+    var ch=(c.price_change_percentage_24h||0).toFixed(1);var up=parseFloat(ch)>=0;
+    document.getElementById('dosPrice').textContent=p;
+    var ce=document.getElementById('dosChg');ce.textContent=' '+(up?'▲ ':'▼ ')+Math.abs(ch)+'%';ce.style.color=up?'var(--green)':'var(--red)';
+    document.getElementById('dosRank').textContent='#'+c.market_cap_rank+' by mkt cap';
+    ['db-intel','db-story','db-works','db-thecase','db-quiz'].forEach(function(id){var el=document.getElementById(id);if(el)el.innerHTML='<div class="dos-loading">Add your API key to unlock this content</div>';});
+    return;
+  }
+  dosLoaded={};
+  prevScreen=curScreen;
+  goScreen('dossier');
+  var c=todayCoin;
+  document.getElementById('dosSym').textContent=c.symbol.toUpperCase();
+  document.getElementById('dosName').textContent=c.name;
+  var p=c.current_price>=1000?'$'+c.current_price.toLocaleString():c.current_price>=1?'$'+c.current_price.toFixed(2):'$'+c.current_price.toFixed(4);
+  var ch=(c.price_change_percentage_24h||0).toFixed(1);var up=parseFloat(ch)>=0;
+  document.getElementById('dosPrice').textContent=p;
+  var ce=document.getElementById('dosChg');ce.textContent=' '+(up?'▲ ':'▼ ')+Math.abs(ch)+'%';ce.style.color=up?'var(--green)':'var(--red)';
+  document.getElementById('dosRank').textContent='#'+c.market_cap_rank+' by mkt cap';
+  resetTabs('#screen-dossier .utab','intel','dp-','db-');
+  loadDos('intel');
+}
+
+function dosTap(tab,btn){
+  document.querySelectorAll('#screen-dossier .utab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  ['intel','story','works','thecase','quiz'].forEach(function(t){
+    var p=document.getElementById('dp-'+t);if(p)p.classList.toggle('active',t===tab);
+  });
+  loadDos(tab);
+}
+
+async function loadDos(tab){
+  if(dosLoaded[tab]||!todayCoin)return;
+  var c=todayCoin;
+  var p=c.current_price>=1000?'$'+c.current_price.toLocaleString():c.current_price>=1?'$'+c.current_price.toFixed(2):'$'+c.current_price.toFixed(4);
+  var ch=(c.price_change_percentage_24h||0).toFixed(1);
+  var body=document.getElementById('db-'+tab);if(!body)return;
+  body.innerHTML='<div class="dos-loading"><span class="spin"></span>Loading...</div>';
+  var prompts={
+    intel:'Fast-facts for '+c.name+' ('+c.symbol.toUpperCase()+', '+p+', '+ch+'% today, #'+c.market_cap_rank+'). Format as plain text sections:\nPRICE ACTION: what price is doing and why it matters today\nMARKET POSITION: rank and what it means\nVOLUME: what volume tells us\nCATEGORY: what type of crypto this is\nKEY FACT: the single most important thing to know right now\nNo markdown.',
+    story:'Tell the origin story of '+c.name+' engagingly. Why created, what problem, who built it, what the journey looked like. Make it feel like a real story. Under 220 words. No markdown.',
+    works:'Explain how '+c.name+' works. Start with one clear analogy. Then the real mechanics — what makes it different, the core innovation, why someone would use it. Smart but new-to-crypto audience. Under 220 words. No markdown.',
+    thecase:'Honest bull and bear case for '+c.name+' at '+p+' today.\n\nBULL CASE:\n[reasons]\nKEY SIGNAL: [metric that confirms bull thesis]\n\nBEAR CASE:\n[risks]\nINVALIDATION: [what proves bear case]\n\nNo markdown. Be honest.',
+    quiz:'3 multiple choice questions testing '+c.name+' knowledge. Return ONLY valid JSON:\n[{"q":"question","options":["A. x","B. x","C. x","D. x"],"correct":0,"explanation":"why"}]\nProgressively harder. Return ONLY the JSON array.'
+  };
+  try{
+    var reply=await callClaude([{role:'user',content:prompts[tab]}],500);
+    dosLoaded[tab]=true;
+    if(tab==='quiz')renderQuiz(body,reply);
+    else if(tab==='intel')renderIntel(body,reply);
+    else if(tab==='thecase')renderCase(body,reply);
+    else{
+      var clean=reply.replace(/\*\*/g,'').replace(/\*/g,'').trim();
+      body.innerHTML=clean.split('\n\n').map(function(p){return'<div class="dsec"><div class="dsec-body">'+p.replace(/\n/g,'<br/>')+'</div></div>';}).join('');
+    }
+  }catch(e){body.innerHTML='<div class="dsec"><div class="dsec-body" style="color:var(--red)">Error: '+e.message+'</div></div>';}
+}
+
+function renderIntel(el,txt){
+  var lines=txt.split('\n').filter(function(l){return l.trim();});
+  var cards=lines.map(function(line){
+    var col=line.indexOf(':');
+    if(col>0&&col<22){
+      var lbl=line.substring(0,col).trim();
+      var val=line.substring(col+1).trim();
+      return'<div class="intel-card">'+
+        '<div class="intel-lbl">'+lbl+'</div>'+
+        '<div class="intel-val">'+val+'</div>'+
+      '</div>';
+    }
+    return'<div class="intel-card" style="grid-column:1/-1"><div class="intel-val">'+line+'</div></div>';
+  }).join('');
+  el.innerHTML='<div class="intel-grid">'+cards+'</div>';
+}
+
+function renderCase(el,txt){
+  var lines=txt.split('\n').filter(function(l){return l.trim();});
+  var bull=[],bear=[],inB=false,inBr=false;
+  lines.forEach(function(l){
+    if(l.startsWith('BULL')){inB=true;inBr=false;}
+    else if(l.startsWith('BEAR')){inBr=true;inB=false;}
+    else if(inB)bull.push(l);
+    else if(inBr)bear.push(l);
+  });
+  el.innerHTML='<div class="bull-bear"><div class="bull"><div class="bull-lbl">Bull Case</div><div style="font-size:12px;font-weight:300;color:var(--text2);line-height:1.65">'+bull.join('<br/>')+'</div></div><div class="bear"><div class="bear-lbl">Bear Case</div><div style="font-size:12px;font-weight:300;color:var(--text2);line-height:1.65">'+bear.join('<br/>')+'</div></div></div>';
+}
+
+function renderQuiz(el,raw){
+  try{
+    var qs=JSON.parse(raw.replace(/```json|```/g,'').trim());
+    el.innerHTML='<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:var(--text4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:9px">Tap your answer</div>'+
+      qs.map(function(q,qi){
+        return'<div class="quiz-q"><div class="quiz-q-txt">'+(qi+1)+'. '+q.q+'</div>'+
+          q.options.map(function(opt,oi){return'<button class="quiz-opt" onclick="answerQ(this,'+qi+','+oi+','+q.correct+',\''+encodeURIComponent(q.explanation)+'\')">'+opt+'</button>';}).join('')+
+          '<div id="qex-'+qi+'" style="display:none;margin-top:6px;font-size:11px;font-weight:300;color:var(--text2);line-height:1.6;padding:7px 9px;background:var(--bg4);border-radius:6px"></div></div>';
+      }).join('');
+  }catch(e){el.innerHTML='<div class="dsec"><div class="dsec-body">'+raw.replace(/\*\*/g,'').replace(/\*/g,'')+'</div></div>';}
+}
+function answerQ(btn,qi,oi,correct,exp){
+  var div=btn.parentElement;
+  div.querySelectorAll('.quiz-opt').forEach(function(b){b.disabled=true;});
+  btn.classList.add(oi===correct?'right':'wrong');
+  div.querySelectorAll('.quiz-opt')[correct].classList.add('right');
+  var ex=document.getElementById('qex-'+qi);if(ex){ex.style.display='block';ex.textContent=decodeURIComponent(exp);}
+}
+function talkDossier(){
+  if(!todayCoin)return;
+  prevScreen='dossier';
+  startChat('todayproject');
+}
+
+/* ===== CHAT ===== */
+var MODES={
+  bia:{label:'Before I Act · 60s Check',ctx:function(){return'Fear & Greed: '+(liveIntel.fng?liveIntel.fng.value+' ('+liveIntel.fng.label+')':'loading')+'. BTC Dom: '+(liveIntel.global?liveIntel.global.btcDom+'%':'loading')+'. Before you act, let\'s make sure your reasoning is solid.';},starters:['What trade am I about to make and what\'s my thesis?','Help me check if I\'m acting on conviction or emotion','What questions should I ask before any crypto trade?']},
+  checkin:{label:'Daily Check-in',ctx:function(){return'Good to see you. '+(liveIntel.fng?'Fear & Greed is at '+liveIntel.fng.value+' ('+liveIntel.fng.label+'). ':'')+( liveIntel.trending?'Trending: '+liveIntel.trending.slice(0,3).join(', ')+'. ':'')+'What\'s on your mind?';},starters:['What\'s the most important thing happening in crypto right now?','What should I be watching today given current conditions?','Give me your honest take on where we are in the cycle']},
+  scenario:{label:'Market Scenario',ctx:function(){return'Something moved. Let\'s think through it. '+(liveIntel.global?'Market cap: '+liveIntel.global.mcap+' ('+liveIntel.global.mcapChg+'% 24h). ':'')+'What happened?';},starters:['BTC just moved significantly — what does it mean?','An altcoin I hold just dropped 20% — help me think through it','Something is trending — how do I evaluate if it\'s real or noise?']},
+  concept:{label:'Deep Dive · Concept',ctx:function(){return'Let\'s build real understanding from the ground up. What concept do you want to master today?';},starters:['Explain DeFi to me — smart but new to it','What is tokenomics and why does it actually matter?','How do crypto market cycles actually work?']},
+  protocol:{label:'Protocol Breakdown',ctx:function(){return'Name any project and I\'ll break it down completely — technology, tokenomics, risks, bull vs bear.';},starters:['Break down Ethereum for me','What is Solana and why do people care?','Explain Chainlink — what problem does it solve?']},
+  hodl:{label:'HODL or Fold · Hard Mode',ctx:function(){return(liveIntel.fng?'Fear & Greed at '+liveIntel.fng.value+' — '+liveIntel.fng.label+'. ':'')+'This is the hardest question in crypto. What are you holding and how far down are you?';},starters:['I\'m down and don\'t know if I should hold or cut','Help me figure out if my original thesis still holds','I keep averaging down — is that smart or emotional?']},
+  review:{label:'Decision Review',ctx:function(){return'Before you commit, let\'s stress-test the reasoning. What are you about to decide?';},starters:['I\'m thinking about buying — help me review my reasoning','I want to DCA — is my logic sound?','Help me think through my exit strategy']},
+  macro:{label:'Macro · Fed & Markets',ctx:function(){var g=liveIntel.global;return(g?'Market cap: '+g.mcap+' ('+g.mcapChg+'% 24h). BTC Dom: '+g.btcDom+'%. ':'')+( liveIntel.halving?liveIntel.halving+' ':'')+' What do you want to understand about the macro picture?';},starters:['How is the Fed affecting crypto right now?','What does BTC dominance at this level mean?','How does the halving cycle affect where we are now']},
+  todayproject:{label:'Today\'s Project',ctx:function(){if(!todayCoin)return'Let\'s learn about today\'s project.';var c=todayCoin;var p=c.current_price>=1?'$'+c.current_price.toLocaleString():'$'+c.current_price.toFixed(4);var ch=(c.price_change_percentage_24h||0).toFixed(1);return'Today: '+c.name+' ('+c.symbol.toUpperCase()+') at '+p+', '+(parseFloat(ch)>=0?'▲':'▼')+Math.abs(ch)+'% today, #'+c.market_cap_rank+' by mkt cap.';},starters:['Start the 5-step lesson on this coin','What problem does this project actually solve?','Give me the honest bull and bear case right now']},
+  portfolio:{label:'Portfolio Analysis',ctx:function(){if(!holdings.length)return'No holdings tracked yet. Add them in Portfolio tab first.';var s=holdings.map(function(h){var c=findCoin(h.symbol);var v=c?'$'+(c.current_price*h.qty).toFixed(2):'?';return h.symbol+' ('+h.qty+', cost $'+h.cost+', value '+v+')';}).join(', ');return'Your portfolio: '+s+'. '+(liveIntel.fng?'Fear & Greed: '+liveIntel.fng.value+'.':'');},starters:['Give me your honest assessment of my portfolio','What\'s my biggest risk given current conditions?','Should I rebalance given where we are?']}
+};
+
+function buildStarters(mode){
+  var fng=liveIntel.fng;
+  var fv=fng?fng.value:null;
+  var fl=fng?fng.label:'loading';
+  var dom=liveIntel.global?liveIntel.global.btcDom+'%':'loading';
+  var trend=liveIntel.trending?liveIntel.trending.slice(0,2).join(' and '):'trending coins';
+  var tvl=liveIntel.tvl||'~$90B';
+
+  var sets={
+    bia:[
+      {type:'Position Check',text:'You\'re about to act with Fear & Greed at '+(fv||'extreme levels')+'. That\'s either perfect timing or a trap. One thing separates them: do you have a thesis?',sub:'Tap to stress-test your reasoning before you move.',msg:'I\'m about to make a trade. Fear & Greed is at '+(fv||'extreme levels')+'. Help me check if my reasoning is solid or if I\'m reacting emotionally.'},
+      {type:'Invalidation Check',text:'Most trades that go wrong share one thing in common: no invalidation condition. What price or event would prove you wrong?',sub:'If you can\'t answer in one sentence, stop.',msg:'Help me define my invalidation condition before I act. What should I be thinking about?'},
+      {type:'Pattern Alert',text:'Acting on conviction vs. reacting to price movement are two very different things. BTC Dom at '+dom+' right now. Does that change your position?',sub:'Tap to find out which one this is.',msg:'I need help figuring out if I\'m acting on conviction or reacting to price movement. BTC dominance is at '+dom+'.'}
+    ],
+    checkin:[
+      {type:'Market Signal',text:(fv!=null?'Fear & Greed at '+fv+' ('+fl+'). ':'')+'Last time sentiment was at these levels, something specific happened. Are you positioned for what usually comes next?',sub:'Tap to find out what history says.',msg:'Fear & Greed is at '+(fv||'current levels')+' ('+fl+'). What does this level historically signal and what should I be thinking about right now?'},
+      {type:'Capital Flow',text:'BTC dominance at '+dom+'. '+(parseFloat(dom)>55?'Capital is concentrating in Bitcoin. Altcoins are underperforming. This is a specific phase of the cycle.':'BTC dominance is falling. Altcoin season conditions are building. Do you know what to watch for?'),sub:'Tap to understand what this means for your positions.',msg:'BTC dominance is at '+dom+'. What does this tell me about where we are in the cycle and how should I be thinking about my positions?'},
+      {type:'Narrative Momentum',text:trend+' are trending right now. Trending coins often move 24-48 hours after search volume spikes. Is this signal or noise?',sub:'Tap to separate the real move from the hype.',msg:trend+' are trending right now. Help me figure out if there is real substance behind this or if it\'s just noise.'}
+    ],
+    scenario:[
+      {type:'Cause vs. Correlation',text:'Something moved. Before you react, one question: was this a macro event, a protocol-specific event, or just liquidity? Each requires a completely different response.',sub:'Tap to think through it properly.',msg:'Something just moved in the market. Help me trace whether this was macro-driven, protocol-specific, or just a liquidity event — and what the right response is.'},
+      {type:'Second-Order Thinking',text:'The obvious reaction to a market move is usually wrong. DeFi TVL is at '+tvl+'. If that\'s holding, where is the real money moving?',sub:'Tap to think two steps ahead.',msg:'I need to think through the second-order effects of what just happened in the market. DeFi TVL is '+tvl+'. Help me see what most people are missing.'},
+      {type:'Thesis Test',text:'Every market event either confirms or breaks your thesis. It doesn\'t leave it neutral. What does this move do to yours?',sub:'Tap to run the test.',msg:'A market event just happened. I want to figure out whether this confirms or breaks my existing thesis. Help me think it through.'}
+    ],
+    concept:[
+      {type:'Foundation',text:'Most people trade crypto without understanding the mechanics that drive price. That knowledge gap is expensive. Where do you want to start?',sub:'Tap to build real understanding from the ground up.',msg:'I want to build real understanding of crypto mechanics, not surface-level knowledge. Start by asking me what I already understand so you know where the gaps are.'},
+      {type:'Cycle Mechanics',text:'We are '+(liveIntel.halving?liveIntel.halving.split('.')[0]:'in a specific part of the cycle')+'. Most people cannot name which phase. Can you?',sub:'Tap to find out what this phase means.',msg:'We are '+( liveIntel.halving?liveIntel.halving.split('.')[0]:'in a specific part of the crypto cycle')+'. Explain what this phase typically looks like, what usually happens next, and how I should be thinking about it.'},
+      {type:'Edge Builder',text:'The investors who consistently outperform have one thing in common: they understand what most people don\'t. What concept would give you the biggest edge right now?',sub:'Tap to identify your knowledge gap.',msg:'What concept would give me the biggest edge right now given current market conditions? Fear & Greed is at '+(fv||'current levels')+' and BTC dom is '+dom+'.'}
+    ],
+    protocol:[
+      {type:'Deep Breakdown',text:'Name any project and I will break it down completely — the technology, tokenomics, real risks, and the honest bull vs bear case. No sugarcoating.',sub:'Tap to start the breakdown.',msg:'I want a complete protocol breakdown. Start by asking me which project I want to understand.'},
+      {type:'Competitive Analysis',text:'Every protocol exists in a competitive landscape. Understanding who wins and why is more valuable than understanding the tech alone.',sub:'Tap to go deeper than the whitepaper.',msg:'I want to understand not just how a project works but where it sits in the competitive landscape and what would make it win or lose. What project should we analyze?'},
+      {type:'Risk Assessment',text:'Most people research what a project does. Almost nobody researches the real risks — team, tokenomics, regulatory, competitive. That\'s where the edge is.',sub:'Tap to find the real risks.',msg:'I want to do a proper risk assessment on a crypto project — team risk, tokenomics risk, regulatory risk, competitive risk. Which project should we start with?'}
+    ],
+    hodl:[
+      {type:'Thesis Check',text:(fv!=null?'Fear & Greed at '+fv+'. ':'')+' The question is not whether you\'re down. It\'s whether the reason you bought still exists. Does it?',sub:'Tap to answer that honestly.',msg:'I\'m holding a position that is down. Fear & Greed is at '+(fv||'current levels')+'. Help me figure out whether my original thesis still holds or whether I\'m just holding out of hope.'},
+      {type:'Sunk Cost Test',text:'Sunk cost bias is the most expensive cognitive pattern in crypto. It makes bad positions feel like commitments. Let\'s check if you\'re paying it right now.',sub:'Tap to run the sunk cost test.',msg:'I need you to help me figure out if I\'m holding a losing position because I genuinely believe in the thesis, or because I\'m falling into sunk cost bias. Be ruthless.'},
+      {type:'Exit Framework',text:'Averaging down is either genius or denial. Everything depends on one thing: whether your original thesis accounts for this price level. Does yours?',sub:'Tap to find out.',msg:'I\'ve been averaging down on a position. Help me figure out if my thesis actually supports this or if I\'m just making a losing position bigger out of emotion.'}
+    ],
+    review:[
+      {type:'Logic Stress Test',text:'Every decision has assumptions buried inside it. Most go unexamined. Let\'s pull yours out and test them before you commit.',sub:'Tap to stress-test your reasoning.',msg:'I\'m about to make a decision and I want to stress-test my logic before I commit. Help me identify the assumptions I\'m making and whether they hold up.'},
+      {type:'Bias Check',text:'Confirmation bias, recency bias, FOMO, anchoring — one of these is probably influencing your thinking right now. Which one?',sub:'Tap to find out which cognitive trap you\'re in.',msg:'I want you to help me identify which cognitive biases might be influencing my current thinking. Walk me through the most common ones and help me figure out if I\'m affected.'},
+      {type:'Scenario Planning',text:'What happens to your position if you\'re right? What happens if you\'re wrong? Most people only model the first one.',sub:'Tap to model both scenarios.',msg:'Help me think through both scenarios — what happens if my thesis is right, and what happens if it\'s wrong. I want to make sure I\'m modeling both outcomes honestly.'}
+    ],
+    macro:[
+      {type:'Macro Signal',text:'BTC dominance at '+dom+'. '+(liveIntel.global?'Market cap: '+liveIntel.global.mcap+' ('+liveIntel.global.mcapChg+'% 24h). ':'')+'These two numbers together tell a specific story about where capital is moving. Do you know what it is?',sub:'Tap to read the macro picture.',msg:'BTC dominance is at '+dom+' and market cap is '+(liveIntel.global?liveIntel.global.mcap+' ('+liveIntel.global.mcapChg+'% 24h)':'at current levels')+'. What story are these numbers telling together about where we are?'},
+      {type:'Cycle Position',text:liveIntel.halving?liveIntel.halving.split('.')[0]+'. Most people cannot connect the halving cycle to current price action. The ones who can have a significant edge.':'We are in a specific part of the Bitcoin halving cycle. Most people cannot connect this to current price action.',sub:'Tap to understand where we actually are.',msg:'Help me understand how the current halving cycle position connects to what\'s happening in the market right now. '+(liveIntel.halving||'')},
+      {type:'Fed & Dollar',text:'Every major crypto move since 2020 has correlated with Fed policy and dollar strength. Understanding this connection is the single biggest macro edge most retail investors are missing.',sub:'Tap to close that gap.',msg:'Explain how Fed policy and dollar strength are currently affecting crypto. What should I be watching and how does it connect to what\'s happening in the market right now?'}
+    ],
+    todayproject:[
+      {type:'5-Step Lesson',text:'Today\'s project: '+(todayCoin?todayCoin.name:'this coin')+'. I\'ll walk you through the problem it solves, how the technology works, tokenomics, real risks, and the honest bull vs bear case. Step by step.',sub:'Tap to start the full lesson.',msg:'Start my 5-step lesson on '+(todayCoin?todayCoin.name:'today\'s coin')+'. Walk me through it step by step.'},
+      {type:'Core Question',text:'Every crypto project exists because of a problem. If you can\'t state the problem '+(todayCoin?todayCoin.name:'this coin')+' solves in one sentence, you don\'t understand it well enough to hold it.',sub:'Tap to start with the fundamentals.',msg:'What problem does '+(todayCoin?todayCoin.name:'today\'s project')+' actually solve? Start there — explain the problem first, then how it addresses it.'},
+      {type:'Investment Case',text:(todayCoin?todayCoin.name:'This coin')+' at '+(todayCoin?(todayCoin.current_price>=1?'$'+todayCoin.current_price.toLocaleString():'$'+todayCoin.current_price.toFixed(4)):'current price')+'. What would have to be true for this to be a good investment right now? And what would break that case?',sub:'Tap to build the honest investment case.',msg:'Give me the honest bull and bear case for '+(todayCoin?todayCoin.name:'today\'s coin')+' at current prices. What needs to be true for the bull case? What breaks it?'}
+    ],
+    portfolio:[
+      {type:'Portfolio Audit',text:'Your holdings. Your cost basis. Current market conditions. Let\'s build an honest picture of where you actually stand — not where you hope to be.',sub:'Tap for your honest portfolio assessment.',msg:'Give me a completely honest assessment of my portfolio right now. Don\'t soften it — I want to know exactly where I stand.'},
+      {type:'Risk Concentration',text:(fv!=null?'Fear & Greed at '+fv+'. ':'')+'Concentration risk is the silent killer of crypto portfolios. How exposed are you to a single narrative, sector, or correlated asset group?',sub:'Tap to map your real risk exposure.',msg:'Analyze my portfolio for concentration risk. Which of my positions are correlated? Where am I most exposed if one narrative breaks down? Fear & Greed is at '+(fv||'current levels')+'.'},
+      {type:'Rebalance Trigger',text:'Most people only think about rebalancing after losses. The best time is before. Given current conditions, what does your portfolio actually need?',sub:'Tap to build a rebalance framework.',msg:'Help me think through whether I should rebalance my portfolio given current market conditions. What factors should I be weighing?'}
+    ]
+  };
+
+  var cards=sets[mode]||sets.checkin;
+  return cards.map(function(c){
+    var msg=c.msg.replace(/'/g,"\\'");
+    return'<button class="starter" onclick="sendStarter(\''+msg+'\')">'+
+      '<div class="starter-type">'+c.type+'</div>'+
+      '<div class="starter-text">'+c.text+'</div>'+
+      '<div class="starter-sub">'+c.sub+'</div>'+
+    '</button>';
+  }).join('');
+}
+
+function startChat(mode){
+  if(requireKey())return;
+  curMode=mode;messages=[];sessionActive=false;
+  var cfg=MODES[mode]||MODES.checkin;
+  var label=cfg.label;
+  if(mode==='todayproject'&&todayCoin)label='Today\'s Project · '+todayCoin.name;
+  document.getElementById('chatBadge').textContent=label;
+  document.getElementById('wCtx').textContent=cfg.ctx();
+  document.getElementById('wIntro').style.display='block';
+  document.getElementById('startersWrap').style.display='block';
+  document.getElementById('starters').innerHTML=buildStarters(mode);
+  document.getElementById('chatBox').style.display='none';
+  document.getElementById('chatBox').innerHTML='';
+  document.getElementById('endBtn').style.display='none';
+  document.getElementById('thinking').classList.remove('show');
+  document.getElementById('errMsg').classList.remove('show');
+  document.getElementById('vtog').textContent='🔊 ON';
+  document.getElementById('vtog').classList.remove('off');
+  autoVoice=true;
+  prevScreen=curScreen;
+  goScreen('chat');
+}
+
+function sendStarter(text){
+  document.getElementById('wIntro').style.display='none';
+  document.getElementById('startersWrap').style.display='none';
+  document.getElementById('chatBox').style.display='flex';
+  document.getElementById('endBtn').style.display='block';
+  sessionActive=true;
+  messages.push({role:'user',content:text});
+  addMsg('user',text);
+  askWisdom();
+}
+
+function sendMsg(){
+  var inp=document.getElementById('msgInp');
+  var text=inp.value.trim();
+  if(!text||!claudeKey)return;
+  inp.value='';
+  stopSpeak();
+  document.getElementById('wIntro').style.display='none';
+  document.getElementById('startersWrap').style.display='none';
+  document.getElementById('chatBox').style.display='flex';
+  document.getElementById('endBtn').style.display='block';
+  sessionActive=true;
+  messages.push({role:'user',content:text});
+  addMsg('user',text);
+  askWisdom();
+}
+
+async function askWisdom(){
+  document.getElementById('thinking').classList.add('show');
+  document.getElementById('errMsg').classList.remove('show');
+  var timeout=setTimeout(function(){
+    document.getElementById('thinking').classList.remove('show');
+    document.getElementById('errMsg').classList.add('show');
+  },22000);
+  try{
+    var sys=buildSys();
+    var reply=await callClaudeWithSys(sys,messages);
+    clearTimeout(timeout);
+    document.getElementById('thinking').classList.remove('show');
+    messages.push({role:'assistant',content:reply});
+    addMsg('agent',reply);
+    if(autoVoice)speak(reply);
+  }catch(e){
+    clearTimeout(timeout);
+    document.getElementById('thinking').classList.remove('show');
+    document.getElementById('errMsg').classList.add('show');
+  }
+}
+
+function buildSys(){
+  var vault=getVault();
+  var recent=(vault.sessions||[]).slice(0,3);
+  var mem='';
+  if(recent.length){mem='YOUR MEMORY:\n';recent.forEach(function(s,i){mem+='Session '+(i+1)+': '+s.mode+', Score '+s.score+', Pattern: '+s.pattern+'\n';});mem+='\n';}
+  var intel='LIVE DATA:\n';
+  if(liveIntel.fng)intel+='Fear & Greed: '+liveIntel.fng.value+' ('+liveIntel.fng.label+'). '+liveIntel.fng.context+'\n';
+  if(liveIntel.global)intel+='Mkt cap: '+liveIntel.global.mcap+' ('+liveIntel.global.mcapChg+'% 24h). BTC Dom: '+liveIntel.global.btcDom+'%.\n';
+  if(liveIntel.tvl)intel+='DeFi TVL: '+liveIntel.tvl+'\n';
+  if(liveIntel.halving)intel+=liveIntel.halving+'\n';
+  if(liveIntel.trending)intel+='Trending: '+liveIntel.trending.join(', ')+'\n';
+  if(top50.length){var pr=top50.slice(0,6).map(function(c){return c.symbol.toUpperCase()+' $'+c.current_price.toLocaleString()+' ('+(c.price_change_percentage_24h>=0?'+':'')+c.price_change_percentage_24h.toFixed(1)+'%)';});intel+='Prices: '+pr.join(' | ')+'\n';}
+  var modeCtx={
+    bia:'BEFORE I ACT: Slow them down. Ask for their exact trade, thesis, invalidation condition. Are they acting on conviction or reacting to price? Always end with a question.',
+    checkin:'CHECK-IN: Open with a specific insight from live data with actual numbers. Then engage with what\'s on their mind.',
+    scenario:'SCENARIO: Help trace causes, second-order effects, what the event reveals. Teach through the specific event.',
+    concept:'CONCEPT: Teach from first principles. Real examples, real numbers. End with a question.',
+    protocol:'PROTOCOL: What it does, how the tech works, tokenomics, key risks, competitive position, bull vs bear.',
+    hodl:'HODL OR FOLD: Interrogate whether the original thesis still holds. Never tell them what to do — help them figure it out.',
+    review:'DECISION REVIEW: Stress-test reasoning. Identify cognitive biases. Verify they have an invalidation condition.',
+    macro:'MACRO: Connect Fed policy, dollar, yields, risk sentiment to what is happening in crypto right now. Be specific.',
+    todayproject:'TODAY\'S PROJECT: Teach '+(todayCoin?todayCoin.name:'this coin')+' step by step. Problem, Technology, Tokenomics, Risks, Bull vs Bear. Pause after each and ask if ready.',
+    portfolio:'PORTFOLIO: Specific, honest insight about their exact holdings and positioning. Reference live conditions.'
+  };
+  var lens={short:'Under 100 words.',medium:'Under 220 words.',long:'Up to 380 words.',technical:'Up to 480 words, technically precise.'};
+  var portCtx='';
+  if(holdings.length){
+    var allPricesLoaded=top50.length>0;
+    var portLines=holdings.map(function(h){
+      var c=findCoin(h.symbol);
+      var price=c?c.current_price:null;
+      var val=price?price*h.qty:null;
+      var costPerUnit=h.cost>0&&h.qty>0?(h.cost/h.qty):null;
+      var pnlDollar=(val!=null&&h.cost>0)?(val-h.cost):null;
+      var pnlPct=(pnlDollar!=null&&h.cost>0)?((pnlDollar/h.cost)*100):null;
+      var line=h.symbol+': '+h.qty+' units';
+      if(costPerUnit)line+=' | avg cost per unit: $'+costPerUnit.toFixed(4);
+      line+=' | total cost basis: $'+h.cost.toFixed(2);
+      if(price)line+=' | LIVE price now: $'+(price>=1?price.toFixed(2):price.toFixed(6));
+      if(val)line+=' | current value: $'+val.toFixed(2);
+      if(pnlDollar!=null)line+=' | P&L: '+(pnlDollar>=0?'+':'')+pnlDollar.toFixed(2)+' ('+(pnlPct>=0?'+':'')+pnlPct.toFixed(1)+'%)';
+      if(!price)line+=' | [price not yet loaded — do not guess this price]';
+      return line;
+    }).join('\n');
+    var totalCost=holdings.reduce(function(a,h){return a+h.cost;},0);
+    var totalVal=holdings.reduce(function(a,h){var c=findCoin(h.symbol);var p=c?c.current_price:null;return a+(p?p*h.qty:0);},0);
+    var totalPnl=totalVal>0?totalVal-totalCost:null;
+    var totalPnlPct=totalPnl!=null&&totalCost>0?(totalPnl/totalCost*100):null;
+    portCtx='\nUSER PORTFOLIO (use ONLY these exact numbers — never invent or estimate prices):\n'+portLines+'\n';
+    portCtx+='PORTFOLIO TOTALS: cost basis $'+totalCost.toFixed(2)+(totalVal>0?' | current value $'+totalVal.toFixed(2):' | value loading')+(totalPnl!=null?' | total P&L: '+(totalPnl>=0?'+':'')+totalPnl.toFixed(2)+' ('+(totalPnlPct>=0?'+':'')+totalPnlPct.toFixed(1)+'%)':'')+'\n';
+    if(!allPricesLoaded)portCtx+='NOTE: Live prices still loading. Only reference prices marked as LIVE. Do not guess missing prices.\n';
+  }
+  return'Your name is Wisdom. You are a trusted crypto mentor and analyst at Crypto Wisdom — like a brilliant friend who happens to know everything about markets, crypto cycles, and behavioural finance.\n\nYour tone: warm, intelligent, and direct. You speak with genuine conviction when the data supports it. You are not afraid to say "this looks like a buy" or "I would be accumulating here" when your analysis supports it — but you always show your reasoning, not just your conclusion. You never lecture. You never talk down. You treat the person as an intelligent adult who is capable of making their own decisions with the right information.\n\nCRITICAL DATA RULE: You must ONLY use the exact prices, values, and P&L figures provided in the USER PORTFOLIO section above. Never estimate, guess, or use prices from your training data. If a price says "not yet loaded" — say so honestly rather than inventing a number. When you quote a price or P&L, it must match exactly what is in the data provided.\n\nYou reference specific prices and live data naturally in conversation. You connect macro conditions to the person\'s actual situation. You notice what most people are missing. You are honest about uncertainty when it exists — but you do not hide behind disclaimers when you have a clear view.\n\nYou never say "great question." You never start a response with "I." You always end with either a question that moves the thinking forward, or a specific signal for them to watch.\n\n'+mem+portCtx+intel+(modeCtx[curMode]||modeCtx.checkin)+'\n\n'+(lens[answerLen]||lens.medium);
+}
+
+function addMsg(type,text){
+  var box=document.getElementById('chatBox');if(!box)return;
+  var clean=type==='agent'?text.replace(/\*\*/g,'').replace(/\*/g,'').replace(/^#+\s/gm,'').trim():text;
+  var d=document.createElement('div');d.className='msg '+type;
+  var av=document.createElement('div');av.className='av';av.textContent=type==='agent'?'W':'ME';
+  var b=document.createElement('div');b.className='bubble';b.textContent=clean;
+  d.appendChild(av);d.appendChild(b);
+  box.appendChild(d);box.scrollTop=box.scrollHeight;
+}
+
+var _backArmed=false;
+function backFromChat(){
+  if(sessionActive&&messages.length>0){
+    if(!_backArmed){
+      _backArmed=true;
+      toast('Tap ← again to leave without saving');
+      var btn=document.querySelector('.chat-nav .back-btn');
+      if(btn){btn.style.color='var(--amber)';btn.textContent='← Tap again';}
+      setTimeout(function(){
+        _backArmed=false;
+        var b=document.querySelector('.chat-nav .back-btn');
+        if(b){b.style.color='';b.textContent='← Back';}
+      },2500);
+      return;
+    }
+    _backArmed=false;
+  }
+  stopSpeak();if(mic)try{mic.stop();}catch(e){}
+  messages=[];sessionActive=false;
+  goScreen(prevScreen||'session');
+}
+
+async function endSession(){
+  if(!messages.length){backFromChat();return;}
+  stopSpeak();
+  document.getElementById('thinking').classList.add('show');
+  document.querySelector('.think-txt').textContent='Scoring your session...';
+  var tx=messages.map(function(m){return(m.role==='user'?'User: ':'Wisdom: ')+m.content;}).join('\n\n');
+  var ep='Evaluate this coaching session. Return ONLY valid JSON (no markdown):\n{"score":1-100,"stage":"Seeker/Observer/Analyst/Strategist/Sovereign","why":"1 sentence","didWell":"1-2 sentences","pattern":"1-2 sentences","concepts":["array"],"sitWith":"one powerful question"}\n\nTranscript:\n'+tx;
+  try{
+    var raw=await callClaude([{role:'user',content:ep}],600);
+    document.getElementById('thinking').classList.remove('show');
+    var data=JSON.parse(raw.replace(/```json|```/g,'').trim());
+    saveSession(data);showSummary(data);
+  }catch(e){
+    document.getElementById('thinking').classList.remove('show');
+    showSummary({score:null,stage:'Observer',why:'Session could not be scored.',didWell:'You completed a session.',pattern:'Try again with a stable connection for a full score.',concepts:[],sitWith:'What was the most useful insight from this conversation?'});
+  }
+}
+
+function showSummary(data){
+  document.getElementById('scoreN').textContent=data.score!=null?data.score:'—';
+  document.getElementById('scoreStage').textContent=data.stage||'Observer';
+  document.getElementById('scoreWhy').textContent=data.why||'';
+  document.getElementById('didWell').textContent=data.didWell||'';
+  document.getElementById('pattern').textContent=data.pattern||'';
+  document.getElementById('sitWith').textContent=data.sitWith||'';
+  document.getElementById('sumDate').textContent=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  var pills=document.getElementById('concepts');
+  pills.innerHTML=(data.concepts||[]).map(function(c){return'<span class="cpill">'+c+'</span>';}).join('');
+  goScreen('summary');
+}
+
+function newSession(){
+  messages=[];sessionActive=false;
+  var wi=document.getElementById('wIntro');if(wi)wi.style.display='block';
+  if(top50.length)renderToday();
+  goScreen('session');
+}
+
+/* ===== VOICE ===== */
+function toggleVoice(){
+  autoVoice=!autoVoice;_voiceCancelled=!autoVoice;
+  var b=document.getElementById('vtog');
+  b.textContent=autoVoice?'🔊 ON':'🔇 OFF';
+  b.classList.toggle('off',!autoVoice);
+  if(!autoVoice){window._voiceCancelled=true;window.speechSynthesis.cancel();isSpeaking=false;}
+  else{window._voiceCancelled=false;}
+}
+function speak(text){
+  if(!text||!autoVoice)return;
+  window._voiceCancelled=false;
+  window.speechSynthesis.cancel();isSpeaking=false;
+  var t=text.replace(/\n+/g,' ').trim().substring(0,1200);
+  setTimeout(function(){
+    if(!autoVoice||window._voiceCancelled)return;
+    var u=new SpeechSynthesisUtterance(t);
+    u.rate=voiceSpeed;u.pitch=1.0;
+    if(selVoice){u.voice=selVoice;}
+    else{var vs=window.speechSynthesis.getVoices();var best=vs.find(function(v){return v.name.toLowerCase().includes('google')&&v.lang.startsWith('en');})||vs.find(function(v){return v.lang.startsWith('en');});if(best)u.voice=best;}
+    u.onstart=function(){isSpeaking=true;};
+    u.onend=function(){isSpeaking=false;if(autoVoice&&sessionActive&&!window._voiceCancelled)setTimeout(startListen,400);};
+    u.onerror=function(){isSpeaking=false;};
+    isSpeaking=true;curUtterance=u;window.speechSynthesis.speak(u);
+  },80);
+}
+function stopSpeak(){window._voiceCancelled=true;window.speechSynthesis.cancel();isSpeaking=false;curUtterance=null;}
+function handleMic(){if(isSpeaking){stopSpeak();return;}if(isListening){if(mic)try{mic.stop();}catch(e){}return;}startListen();}
+function startListen(){
+  if(isListening||isSpeaking)return;
+  if(!('webkitSpeechRecognition' in window)&&!('SpeechRecognition' in window)){document.getElementById('voiceHint').textContent='Voice not supported in this browser';return;}
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  mic=new SR();mic.lang='en-US';mic.continuous=false;mic.interimResults=false;
+  mic.onstart=function(){isListening=true;document.getElementById('micBtn').classList.add('on');document.getElementById('voiceHint').textContent='Listening... tap to stop';};
+  mic.onresult=function(e){var t=e.results[0][0].transcript;document.getElementById('msgInp').value=t;isListening=false;document.getElementById('micBtn').classList.remove('on');document.getElementById('voiceHint').textContent='Got it — sending...';setTimeout(sendMsg,200);};
+  mic.onspeechend=function(){mic.stop();};
+  mic.onerror=function(){isListening=false;document.getElementById('micBtn').classList.remove('on');document.getElementById('voiceHint').textContent='Could not hear — try again';};
+  mic.onend=function(){isListening=false;document.getElementById('micBtn').classList.remove('on');};
+  try{mic.start();}catch(er){}
+}
+window.speechSynthesis.onvoiceschanged=function(){
+  allVoices=window.speechSynthesis.getVoices();
+  renderVoiceSel('');
+  try{var sv=localStorage.getItem('cw_voice');if(sv){var f=allVoices.find(function(v){return v.name===sv;});if(f)selVoice=f;}}catch(e){}
+};
+function renderVoiceSel(filter){
+  var sel=document.getElementById('voiceSelect');if(!sel)return;
+  var filtered=allVoices.filter(function(v){if(filter==='Google')return v.name.toLowerCase().includes('google');if(filter==='en')return v.lang.toLowerCase().startsWith('en');return true;});
+  filtered.sort(function(a,b){return(a.name.toLowerCase().includes('google')?0:1)-(b.name.toLowerCase().includes('google')?0:1)||a.name.localeCompare(b.name);});
+  sel.innerHTML=filtered.map(function(v){var g=v.name.toLowerCase().includes('google');return'<option value="'+v.name+'">'+(g?'🟢 ':'')+v.name+' ('+v.lang+')</option>';}).join('');
+}
+function filterVoices(f,btn){renderVoiceSel(f);document.querySelectorAll('#langFilter button').forEach(function(b){b.style.borderColor='var(--border2)';b.style.background='transparent';b.style.color='var(--text3)';});btn.style.borderColor='var(--teal-border)';btn.style.background='var(--teal-bg)';btn.style.color='var(--teal)';}
+function saveVoicePref(){var sel=document.getElementById('voiceSelect');if(!sel)return;selVoice=allVoices.find(function(v){return v.name===sel.value;})||null;try{localStorage.setItem('cw_voice',sel.value);}catch(e){}}
+function previewVoice(){saveVoicePref();speak('Fear and Greed is at extreme fear. Historically this is where smart money positions. The question is not whether to be afraid — it is whether your thesis still holds.');}
+function setSpeed(s,btn){voiceSpeed=s;document.querySelectorAll('.speed-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');try{localStorage.setItem('cw_speed',s);}catch(e){}}
+
+/* ===== GUIDE ===== */
+function renderGuide(){
+  var s=GUIDE.filter(function(g){return g.lv==='start';});
+  var d=GUIDE.filter(function(g){return g.lv==='deep';});
+  var a=GUIDE.filter(function(g){return g.lv==='advanced';});
+  window._gs=s;window._gd=d;window._ga=a;
+  document.getElementById('gStart').innerHTML=s.map(function(g,i){return gcHTML(g,i,'s');}).join('');
+  document.getElementById('gDeep').innerHTML=d.map(function(g,i){return gcHTML(g,i,'d');}).join('');
+  document.getElementById('gAdv').innerHTML=a.map(function(g,i){return gcHTML(g,i,'a');}).join('');
+}
+function gcHTML(g,i,k){return'<div class="guide-card" onclick="openLesson(window._g'+k+'['+i+'])"><div class="gc-top"><div class="gc-icon">'+g.icon+'</div><div><div class="gc-title">'+g.title+'</div><div class="gc-cat">'+g.cat+'</div></div></div><div class="gc-hook">'+g.hook+'</div></div>';}
+function focusGuideSearch(){document.getElementById('guideSearchInp').focus();document.getElementById('guideSearchBtn').style.display='inline-block';}
+function doGuideSearch(q){if(!q)return;if(requireKey())return;openLesson({title:q,hook:'Your question, answered in depth.',cat:'Custom',topic:q,lv:'deep'});}
+function guideSearch(){focusGuideSearch();}
+function openTrendLesson(sym){openLesson({title:sym+' — Full Breakdown',hook:'Why is '+sym+' trending and what does it mean?',cat:'Trending',topic:'Deep dive on '+sym+': what it does, price action, and whether the narrative has substance.',lv:'deep'});}
+
+function openLesson(g){
+  if(requireKey())return;
+  curLesson=g;lessonLoaded={};
+  prevScreen=curScreen;
+  goScreen('lesson');
+  document.getElementById('lessonCat').textContent=g.cat||'Concept';
+  document.getElementById('lessonCatTxt').textContent=g.cat||'Web3 Guide';
+  document.getElementById('lessonTitle').textContent=g.title;
+  document.getElementById('lessonHook').textContent=g.hook||'Tap each tab to explore this concept from every angle.';
+  resetTabs('#screen-lesson .utab','simple','lp-','lb-');
+  loadLesson('simple');
+  var nm={start:'Next: try "Going Deeper" concepts',deep:'Next: try an "Advanced" topic',advanced:'Master level. Explore anything.'};
+  document.getElementById('lessonNext').textContent=nm[g.lv]||'Explore more in Web3 Guide';
+}
+function lessonTap(tab,btn){
+  document.querySelectorAll('#screen-lesson .utab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  ['simple','real','now','wrong'].forEach(function(t){var p=document.getElementById('lp-'+t);if(p)p.classList.toggle('active',t===tab);});
+  loadLesson(tab);
+}
+async function loadLesson(tab){
+  if(lessonLoaded[tab]||!curLesson)return;
+  var body=document.getElementById('lb-'+tab);if(!body)return;
+  body.innerHTML='<div class="dos-loading"><span class="spin"></span>Loading...</div>';
+  var fng=liveIntel.fng?liveIntel.fng.value+' ('+liveIntel.fng.label+')':'loading';
+  var dom=liveIntel.global?liveIntel.global.btcDom+'%':'loading';
+  var prompts={
+    simple:'Explain "'+topic+'" simply. One clear analogy. Smart but new-to-crypto audience. Under 140 words. No jargon. No markdown.',
+    real:'Explain how "'+topic+'" actually works. Real mechanics, incentives, technical truth. Specific example with numbers. Under 190 words. No markdown.',
+    now:'Connect "'+topic+'" to what is happening RIGHT NOW. Fear & Greed: '+fng+'. BTC Dom: '+dom+'. Make it feel urgent and relevant today. Under 190 words. No markdown.',
+    wrong:'What do most people fundamentally misunderstand about "'+topic+'"? One specific, surprising misconception. Why they are wrong. Make it feel like a reveal. Under 190 words. No markdown.'
+  };
+  var labels={simple:'The Simple Version',real:'How It Actually Works',now:'Why It Matters Right Now',wrong:'What Most People Get Wrong'};
+  var colors={simple:'var(--teal)',real:'var(--amber)',now:'var(--green)',wrong:'var(--red)'};
+  try{
+    var reply=await callClaude([{role:'user',content:prompts[tab]}],400);
+    lessonLoaded[tab]=true;
+    var clean=reply.replace(/\*\*/g,'').replace(/\*/g,'').trim();
+    body.innerHTML='<div class="dsec"><div class="dsec-lbl" style="color:'+colors[tab]+'"><span style="background:'+colors[tab]+';display:inline-block;width:3px;height:3px;border-radius:50%;margin-right:3px"></span>'+labels[tab]+'</div><div class="dsec-body">'+clean.replace(/\n\n/g,'</div></div><div class="dsec"><div class="dsec-body">').replace(/\n/g,'<br/>')+'</div></div>';
+  }catch(e){body.innerHTML='<div class="dsec"><div class="dsec-body" style="color:var(--red)">Error: '+e.message+'</div></div>';}
+}
+function askLesson(){
+  if(!curLesson)return;
+  if(requireKey())return;
+  curMode='concept';messages=[];sessionActive=true;
+  var opener='I just studied "'+curLesson.title+'". I want to go deeper.';
+  messages.push({role:'user',content:opener});
+  document.getElementById('chatBadge').textContent='Web3 Guide · '+curLesson.title;
+  document.getElementById('wIntro').style.display='none';
+  document.getElementById('startersWrap').style.display='none';
+  document.getElementById('chatBox').style.display='flex';
+  document.getElementById('chatBox').innerHTML='';
+  document.getElementById('endBtn').style.display='block';
+  document.getElementById('thinking').classList.remove('show');
+  document.getElementById('errMsg').classList.remove('show');
+  prevScreen='lesson';
+  goScreen('chat');
+  addMsg('user',opener);
+  askWisdom();
+}
+
+/* ===== VAULT ===== */
+function getVault(){try{var s=localStorage.getItem(VK);return s?JSON.parse(s):{sessions:[],wisdomScore:null,allConcepts:[]};}catch(e){return{sessions:[],wisdomScore:null,allConcepts:[]};}}
+function saveSession(data){
+  var vault=getVault();
+  vault.sessions.unshift({date:new Date().toISOString(),mode:curMode,score:data.score||50,stage:data.stage||'Observer',didWell:data.didWell||'',pattern:data.pattern||'',concepts:data.concepts||[]});
+  var scores=vault.sessions.slice(0,5).map(function(s){return s.score;});
+  vault.wisdomScore=Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length);
+  var all=new Set(vault.allConcepts||[]);(data.concepts||[]).forEach(function(c){all.add(c);});vault.allConcepts=[...all];
+  try{localStorage.setItem(VK,JSON.stringify(vault));}catch(e){}
+  if(curMode==='todayproject'&&todayCoin){var l=[];try{var lx=localStorage.getItem('cw_learned');if(lx)l=JSON.parse(lx);}catch(e){}if(!l.includes(todayCoin.id)){l.push(todayCoin.id);try{localStorage.setItem('cw_learned',JSON.stringify(l));}catch(e){}}}
+}
+function getStage(s){if(s==null)return'Complete a session';if(s<30)return'Seeker';if(s<50)return'Observer';if(s<70)return'Analyst';if(s<90)return'Strategist';return'Sovereign';}
+function renderVault(){
+  var v=getVault();var sess=v.sessions||[];var score=v.wisdomScore;var con=(v.allConcepts||[]).length;
+  document.getElementById('vSess').textContent=sess.length;
+  document.getElementById('vScore').textContent=score!=null?score:'—';
+  document.getElementById('vConcepts').textContent=con;
+  var stage=getStage(score);
+  document.getElementById('stageVal').textContent=stage;
+  document.getElementById('stageFill').style.width=(score!=null?Math.min(100,score):0)+'%';
+  ['ob','an','st','so'].forEach(function(s,i){var el=document.getElementById('ss-'+s);if(el)el.classList.toggle('done',score!=null&&score>=[30,50,70,90][i]);});
+  document.getElementById('smSess').textContent=sess.length;
+  document.getElementById('smScore').textContent=score!=null?score:'—';
+  document.getElementById('smCon').textContent=con;
+  document.getElementById('smScoreV').textContent=score!=null?score+'/100':'—';
+  document.getElementById('smScoreFill').style.width=(score!=null?score:0)+'%';
+  document.getElementById('smStage').textContent=score!=null?stage+' — keep going':'Complete your first session to get your score';
+  var list=document.getElementById('sessList');
+  if(!sess.length){list.innerHTML='<div class="empty-state">No sessions yet.<br/>Complete your first session to build your profile.</div>';renderTheses();return;}
+  list.innerHTML=sess.slice(0,10).map(function(s){var d=new Date(s.date);return'<div class="sess-item"><div class="si-top"><span class="si-date">'+d.toLocaleDateString('en-US',{month:'short',day:'numeric'})+'</span><span class="si-mode">'+s.mode+'</span></div><div class="si-score">Score: '+s.score+' · '+s.stage+'</div><div class="si-note">'+s.didWell+'</div></div>';}).join('');
+  renderTheses();
+}
+function dlJSON(){var v=getVault();var blob=new Blob([JSON.stringify({vault:v,theses:theses,holdings:holdings},null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='crypto-wisdom-data.json';a.click();}
+function dlReport(){var v=getVault();var lines=['CRYPTO WISDOM — MY EDGE REPORT','Generated: '+new Date().toLocaleDateString(),'Score: '+(v.wisdomScore||'—'),'Sessions: '+(v.sessions||[]).length,''];(v.sessions||[]).forEach(function(s,i){lines.push('Session '+(i+1)+': '+s.mode+' / Score: '+s.score+' / '+new Date(s.date).toLocaleDateString());lines.push('Did well: '+s.didWell);lines.push('Pattern: '+s.pattern);lines.push('');});var blob=new Blob([lines.join('\n')],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='crypto-wisdom-report.txt';a.click();}
+var _clearAllArmed=false;
+function clearAll(){
+  if(!_clearAllArmed){_clearAllArmed=true;toast('Tap again to confirm — this cannot be undone',true);setTimeout(function(){_clearAllArmed=false;},3000);return;}
+  _clearAllArmed=false;try{localStorage.removeItem(VK);}catch(e){}renderVault();toast('Vault cleared');
+}
+
+/* ===== THESIS ===== */
+function addThesis(){var a=document.getElementById('tAsset').value.trim();var s=document.getElementById('tStatement').value.trim();if(!a||!s)return;theses.unshift({id:Date.now(),asset:a,statement:s,signal:document.getElementById('tSignal').value.trim(),invalidation:document.getElementById('tInvalidation').value.trim(),timeframe:parseInt(document.getElementById('tTimeframe').value),status:'active',date:new Date().toISOString()});try{localStorage.setItem(TK,JSON.stringify(theses));}catch(e){}['tAsset','tStatement','tSignal','tInvalidation'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});renderTheses();}
+function cycleStatus(id){var t=theses.find(function(x){return x.id===id;});if(!t)return;var s=['active','watching','confirmed','invalidated'];t.status=s[(s.indexOf(t.status)+1)%s.length];try{localStorage.setItem(TK,JSON.stringify(theses));}catch(e){}renderTheses();}
+function renderTheses(){var list=document.getElementById('thesisList');if(!list)return;if(!theses.length){list.innerHTML='<div class="empty-state">No theses yet.</div>';return;}list.innerHTML=theses.map(function(t){var d=Math.round((Date.now()-new Date(t.date).getTime())/86400000);return'<div class="thesis-card"><div class="thesis-top"><span class="thesis-asset">'+t.asset+'</span><span class="thesis-status '+t.status+'" onclick="cycleStatus('+t.id+')">'+t.status.toUpperCase()+'</span></div><div class="thesis-statement">'+t.statement+'</div><div class="thesis-meta"><span class="thesis-mi">Signal: <span>'+(t.signal||'—')+'</span></span><span class="thesis-mi">Invalidation: <span>'+(t.invalidation||'—')+'</span></span><span class="thesis-mi">'+d+'d ago · '+t.timeframe+'d</span></div></div>';}).join('');}
+
+/* ===== PORTFOLIO ===== */
+function findCoin(symbol){
+  if(!symbol||!top50.length)return null;
+  var s=symbol.toUpperCase().trim();
+  // Exact symbol match first
+  var match=top50.find(function(c){return c.symbol.toUpperCase()===s;});
+  if(match)return match;
+  // Common alias overrides
+  var aliases={'WBTC':'BTC','WETH':'ETH','CBBTC':'BTC','STETH':'ETH'};
+  if(aliases[s])return top50.find(function(c){return c.symbol.toUpperCase()===aliases[s];})||null;
+  return null;
+}
+
+function saveH(){try{localStorage.setItem(HK,JSON.stringify(holdings));}catch(e){}}
+function addHolding(){var sym=(document.getElementById('phSym').value||'').trim().toUpperCase();var qty=parseFloat(document.getElementById('phQty').value);var cost=parseFloat(document.getElementById('phCost').value);if(!sym||!qty||isNaN(qty))return;holdings.push({symbol:sym,qty:qty,cost:isNaN(cost)?0:cost,addedAt:Date.now()});saveH();['phSym','phQty','phCost'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});document.getElementById('portForm').style.display='none';document.getElementById('portAddBtn').textContent='+ Add holding';resetInsight();renderPortfolio();}
+function addHolding2(){var sym=(document.getElementById('phSym2').value||'').trim().toUpperCase();var qty=parseFloat(document.getElementById('phQty2').value);var cost=parseFloat(document.getElementById('phCost2').value);if(!sym||!qty||isNaN(qty))return;holdings.push({symbol:sym,qty:qty,cost:isNaN(cost)?0:cost,addedAt:Date.now()});saveH();['phSym2','phQty2','phCost2'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});resetInsight();renderPortfolio();}
+function togglePortForm(){var f=document.getElementById('portForm');var b=document.getElementById('portAddBtn');if(!f||!b)return;var open=f.style.display!=='none';f.style.display=open?'none':'block';b.textContent=open?'+ Add holding':'✕ Close';}
+function resetInsight(){var b=document.getElementById('piBody');if(b){b.textContent='Loading insight...';b.dataset.loaded='';}hInsights={};}
+function renderPortfolio(){
+  var has=holdings.length>0;
+  document.getElementById('portDisplay').style.display=has?'block':'none';
+  document.getElementById('portEmpty').style.display=has?'none':'block';
+  if(has)renderHoldings();
+}
+function renderHoldings(){
+  var tv=0,tc=0;
+  var html=holdings.map(function(h,i){
+    var c=findCoin(h.symbol);
+    var p=c?c.current_price:null;
+    var v=p?p*h.qty:null;
+    var pnl=(v!=null&&h.cost>0)?v-h.cost:null;
+    var pnlPct=(pnl!=null&&h.cost>0)?(pnl/h.cost*100):null;
+    if(v)tv+=v;if(h.cost)tc+=h.cost;
+    var vs=v?'$'+v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
+    var ps=pnl!=null?(pnl>=0?'+$':'-$')+Math.abs(pnl).toFixed(2)+(pnlPct?' ('+pnlPct.toFixed(1)+'%)':''):'—';
+    var pc=pnl!=null?(pnl>=0?'pos':'neg'):'';
+    var chg=c?(c.price_change_percentage_24h||0).toFixed(1):null;
+    var chgCol=chg!=null?(parseFloat(chg)>=0?'var(--green)':'var(--red)'):'var(--text3)';
+    var costPerUnit=h.cost>0&&h.qty>0?(h.cost/h.qty).toFixed(2):null;
+    var currentPer=p?p.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}):null;
+    var isOpen=expandedH===i;
+    var insight=hInsights[h.symbol]||'';
+    return'<div class="holding '+(isOpen?'open':'')+'" onclick="toggleH('+i+')">'+
+      '<div class="h-main">'+
+        '<div class="h-ico"><div class="h-ico-txt">'+h.symbol+'</div></div>'+
+        '<div class="h-info"><div class="h-name">'+(c?c.name:h.symbol)+'</div><div class="h-qty">'+h.qty+(p?' · $'+(p>=1?p.toLocaleString():p.toFixed(4)):'')+'</div></div>'+
+        '<div class="h-right"><div class="h-val">'+vs+'</div><div class="h-pnl '+pc+'">'+ps+'</div></div>'+
+        '<div class="h-chevron">'+(isOpen?'▲':'▼')+'</div>'+
+      '</div>'+
+      '<div class="h-detail">'+
+        '<div class="h-stats">'+
+          '<div class="h-stat"><div class="h-stat-lbl">24h Change</div><div class="h-stat-val" style="color:'+chgCol+'">'+(chg!=null?(parseFloat(chg)>=0?'▲':'▼')+Math.abs(chg)+'%':'—')+'</div></div>'+
+          '<div class="h-stat"><div class="h-stat-lbl">Avg Cost/Unit</div><div class="h-stat-val">'+(costPerUnit?'$'+costPerUnit:'—')+'</div></div>'+
+          '<div class="h-stat"><div class="h-stat-lbl">Current/Unit</div><div class="h-stat-val" style="color:'+(p?(pnl>=0?'var(--green)':'var(--red)'):'var(--text3)')+'">'+(currentPer?'$'+currentPer:'—')+'</div></div>'+
+        '</div>'+
+        '<div class="h-stats" style="margin-top:5px">'+
+          '<div class="h-stat"><div class="h-stat-lbl">Total Cost</div><div class="h-stat-val">$'+(h.cost>0?h.cost.toFixed(2):'—')+'</div></div>'+
+          '<div class="h-stat"><div class="h-stat-lbl">Current Value</div><div class="h-stat-val">'+vs+'</div></div>'+
+          '<div class="h-stat"><div class="h-stat-lbl">Mkt Cap Rank</div><div class="h-stat-val">'+(c?'#'+c.market_cap_rank:'—')+'</div></div>'+
+        '</div>'+
+        '<div class="h-insight" id="hi-'+h.symbol+'">'+(insight||'<span style="color:var(--text4);font-style:italic;font-size:10px">Loading Wisdom insight...</span>')+'</div>'+
+        '<div id="edit-'+i+'" style="display:'+(editingH===i?'block':'none')+';margin-bottom:8px;background:var(--bg2);border-radius:8px;padding:10px;border:1px solid var(--teal-border)">'+
+          '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:var(--teal);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Edit Holding</div>'+
+          '<div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">'+
+            '<div style="flex:1;min-width:80px"><div style="font-family:\'DM Mono\',monospace;font-size:7px;color:var(--text4);margin-bottom:3px;text-transform:uppercase;letter-spacing:.08em">Quantity</div><input id="eq-'+i+'" type="number" step="any" value="'+h.qty+'" onclick="event.stopPropagation()" style="width:100%;font-family:\'DM Mono\',monospace;font-size:11px;padding:5px 8px;border-radius:6px;border:1px solid var(--teal-border);background:var(--bg);color:var(--text);outline:none"/></div>'+
+            '<div style="flex:1;min-width:80px"><div style="font-family:\'DM Mono\',monospace;font-size:7px;color:var(--text4);margin-bottom:3px;text-transform:uppercase;letter-spacing:.08em">Total Cost ($)</div><input id="ec-'+i+'" type="number" step="any" value="'+h.cost+'" onclick="event.stopPropagation()" style="width:100%;font-family:\'DM Mono\',monospace;font-size:11px;padding:5px 8px;border-radius:6px;border:1px solid var(--teal-border);background:var(--bg);color:var(--text);outline:none"/></div>'+
+            '<button onclick="event.stopPropagation();saveEdit('+i+')" style="font-family:\'DM Mono\',monospace;font-size:10px;padding:8px 14px;border-radius:6px;border:none;background:var(--teal);color:var(--bg);cursor:pointer;align-self:flex-end">Save</button>'+
+          '</div>'+
+        '</div>'+
+        '<div class="h-actions">'+
+          '<button class="h-action-btn ask" onclick="event.stopPropagation();talkHolding(\''+h.symbol+'\',\''+(c?c.name:h.symbol)+'\')">Ask Wisdom →</button>'+
+          '<button class="h-action-btn" onclick="event.stopPropagation();toggleEdit('+i+')" style="border:1px solid '+(editingH===i?'var(--amber-border)':'var(--border2)')+';background:'+(editingH===i?'var(--amber-bg)':'transparent')+';color:'+(editingH===i?'var(--amber)':'var(--text3)')+'">'+( editingH===i?'Cancel':'Edit')+'</button>'+
+          '<button class="h-action-btn remove" onclick="event.stopPropagation();removeH('+i+')">Remove</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+  document.getElementById('holdingsList').innerHTML=html;
+  var tp=tc>0?tv-tc:null;var tpPct=(tp!=null&&tc>0)?(tp/tc*100):null;var tpc=tp!=null?(tp>=0?'pos':'neg'):'';
+  var totalReturn=tpPct!=null?(' · '+(tpPct>=0?'+':'')+tpPct.toFixed(1)+'% total return'):'';
+  document.getElementById('portHdr').innerHTML='<div class="port-total-lbl">Total Portfolio Value</div><div class="port-total-val">'+(tv>0?'$'+tv.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}):'$—')+'</div>'+(tp!=null?'<div class="port-pnl '+tpc+'">'+(tp>=0?'▲':'▼')+' $'+Math.abs(tp).toFixed(2)+(tpPct?' ('+tpPct.toFixed(1)+'%)':'')+totalReturn+'</div>':'')+'<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:var(--text4);margin-top:3px">Last updated: '+new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})+'</div>';
+  loadPortInsight();
+  if(expandedH!==null&&holdings[expandedH])loadHInsight(holdings[expandedH]);
+}
+function toggleH(i){expandedH=expandedH===i?null:i;if(expandedH===null)editingH=null;renderHoldings();}
+function toggleEdit(i){editingH=editingH===i?null:i;renderHoldings();}
+function saveEdit(i){
+  var qEl=document.getElementById('eq-'+i);
+  var cEl=document.getElementById('ec-'+i);
+  if(!qEl||!cEl)return;
+  var qty=parseFloat(qEl.value);
+  var cost=parseFloat(cEl.value);
+  if(isNaN(qty)||qty<=0)return;
+  holdings[i].qty=qty;
+  holdings[i].cost=isNaN(cost)?0:cost;
+  saveH();
+  hInsights[holdings[i].symbol]='';
+  editingH=null;
+  resetInsight();
+  renderHoldings();
+}
+async function loadHInsight(h){
+  if(hInsights[h.symbol]||!claudeKey)return;
+  var el=document.getElementById('hi-'+h.symbol);if(!el)return;
+  var c=findCoin(h.symbol);
+  var p=c?c.current_price:null;var v=p?p*h.qty:null;
+  var pnl=(v!=null&&h.cost>0)?((v-h.cost)/h.cost*100).toFixed(1)+'%':null;
+  var prompt='2-3 sentence specific insight about holding '+h.qty+' '+h.symbol+(c?' ('+c.name+')':'')+(p?' at $'+p.toLocaleString():'')+(pnl?', P&L: '+pnl:'')+'. Context: F&G '+(liveIntel.fng?liveIntel.fng.value+' ('+liveIntel.fng.label+')':'loading')+', BTC Dom '+(liveIntel.global?liveIntel.global.btcDom+'%':'loading')+'. Be specific and direct.';
+  try{var r=await callClaude([{role:'user',content:prompt}],180);hInsights[h.symbol]=r.replace(/\*\*/g,'').replace(/\*/g,'').trim();var el2=document.getElementById('hi-'+h.symbol);if(el2)el2.textContent=hInsights[h.symbol];}catch(e){}
+}
+function removeH(i){holdings.splice(i,1);saveH();expandedH=null;resetInsight();renderPortfolio();}
+function refreshPrices(){if(holdings.length)renderHoldings();}
+function reloadInsight(){resetInsight();loadPortInsight();}
+async function loadPortInsight(){
+  if(!claudeKey||!holdings.length)return;
+  var body=document.getElementById('piBody');if(!body||body.dataset.loaded==='1')return;
+  body.textContent='Loading...';body.style.fontStyle='italic';body.style.color='var(--text3)';
+  var s=holdings.map(function(h){var c=findCoin(h.symbol);var p=c?c.current_price:null;var v=p?'$'+(p*h.qty).toFixed(2):'?';var pnl=(p&&h.cost>0)?((p*h.qty-h.cost)/h.cost*100).toFixed(1)+'%':'?';return h.symbol+': '+h.qty+' units, value '+v+', P&L '+pnl;}).join('; ');
+  var prompt='Portfolio: '+s+'. F&G: '+(liveIntel.fng?liveIntel.fng.value+' ('+liveIntel.fng.label+')':'loading')+', BTC Dom: '+(liveIntel.global?liveIntel.global.btcDom+'%':'loading')+'.\n\nYou are Wisdom. Give a sharp, specific 3-4 sentence insight about this exact portfolio right now. What does the allocation imply about the investor\'s thesis? What is the concentration risk? What should they be watching given current conditions? Be direct. No generic disclaimers.';
+  try{var r=await callClaude([{role:'user',content:prompt}],320);body.textContent=r.replace(/\*\*/g,'').replace(/\*/g,'');body.style.fontStyle='normal';body.style.color='var(--text2)';body.dataset.loaded='1';}catch(e){body.textContent='Add your API key to get portfolio insights.';body.style.color='var(--text3)';}
+}
+function startPortChat(){
+  if(requireKey())return;
+  curMode='portfolio';messages=[];sessionActive=true;
+  var s=holdings.map(function(h){return h.symbol+' x'+h.qty+' (cost $'+h.cost+')';}).join(', ');
+  var opener='I want to discuss my portfolio: '+s+'. Give me your honest assessment.';
+  messages.push({role:'user',content:opener});
+  document.getElementById('chatBadge').textContent='Portfolio Analysis';
+  document.getElementById('wIntro').style.display='none';
+  document.getElementById('startersWrap').style.display='none';
+  document.getElementById('chatBox').style.display='flex';
+  document.getElementById('chatBox').innerHTML='';
+  document.getElementById('endBtn').style.display='block';
+  document.getElementById('thinking').classList.remove('show');
+  document.getElementById('errMsg').classList.remove('show');
+  prevScreen='portfolio';
+  goScreen('chat');
+  addMsg('user',opener);
+  askWisdom();
+}
+function talkHolding(sym,name){
+  if(requireKey())return;
+  curMode='portfolio';messages=[];sessionActive=true;
+  var h=holdings.find(function(x){return x.symbol===sym;});
+  var c=findCoin(sym);
+  var p=c?'$'+c.current_price.toLocaleString():'unknown price';
+  var opener='Let\'s talk specifically about my '+sym+' ('+name+') position. I hold '+(h?h.qty:'some')+' units, cost $'+(h?h.cost:'unknown')+', currently at '+p+'.';
+  messages.push({role:'user',content:opener});
+  document.getElementById('chatBadge').textContent=sym+' · Position Analysis';
+  document.getElementById('wIntro').style.display='none';
+  document.getElementById('startersWrap').style.display='none';
+  document.getElementById('chatBox').style.display='flex';
+  document.getElementById('chatBox').innerHTML='';
+  document.getElementById('endBtn').style.display='block';
+  document.getElementById('thinking').classList.remove('show');
+  document.getElementById('errMsg').classList.remove('show');
+  prevScreen='portfolio';
+  goScreen('chat');
+  addMsg('user',opener);
+  askWisdom();
+}
+var _clearPortArmed=false;
+function clearPortfolio(){
+  if(!_clearPortArmed){_clearPortArmed=true;toast('Tap again to clear all holdings',true);setTimeout(function(){_clearPortArmed=false;},3000);return;}
+  _clearPortArmed=false;holdings=[];saveH();expandedH=null;editingH=null;hInsights={};resetInsight();renderPortfolio();toast('Holdings cleared');
+}
+
+/* ===== HELPERS ===== */
+function resetTabs(sel,defaultTab,panePrefix,bodyPrefix){
+  document.querySelectorAll(sel).forEach(function(b,i){b.classList.toggle('active',i===0);});
+}
+function switchTabs(btn,sel){document.querySelectorAll(sel).forEach(function(b){b.classList.remove('active');});btn.classList.add('active');}
+function setLen(len,btn){answerLen=len;try{localStorage.setItem(LK,len);}catch(e){}document.querySelectorAll('.depth-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');}
+
+/* ===== CLAUDE API ===== */
+async function callClaude(msgs,maxTok){
+  var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':claudeKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTok||800,messages:msgs})});
+  if(!r.ok){var err=await r.json().catch(function(){return{};});throw new Error(err.error?err.error.message:'API error '+r.status);}
+  var data=await r.json();return data.content.map(function(c){return c.type==='text'?c.text:'';}).join('');
+}
+async function callClaudeWithSys(sys,msgs){
+  var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':claudeKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:msgs})});
+  if(!r.ok){var err=await r.json().catch(function(){return{};});throw new Error(err.error?err.error.message:'API error '+r.status);}
+  var data=await r.json();return data.content.map(function(c){return c.type==='text'?c.text:'';}).join('');
+}
+</script>
+</body>
+</html>
