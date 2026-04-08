@@ -1055,10 +1055,10 @@ async function fetchTrending(){
 async function fetchTVL(){
   try{
     var c=new AbortController();setTimeout(function(){c.abort();},8000);
-    var r=await fetch('https://api.llama.fi/v2/charts',{signal:c.signal});
+    var r=await fetch('https://api.llama.fi/v2/globalcharts',{signal:c.signal});
     if(!r.ok)throw new Error('');
     var d=await r.json();
-    var last=d[d.length-1];
+    var last=Array.isArray(d)&&d.length?d[d.length-1]:null;
     var total=last&&last.totalLiquidityUSD?last.totalLiquidityUSD:null;
     if(!total)throw new Error('');
     var s=total>=1e12?'$'+(total/1e12).toFixed(2)+'T':'$'+(total/1e9).toFixed(1)+'B';
