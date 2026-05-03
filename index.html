@@ -1146,7 +1146,7 @@ async function refreshBrief(){
   if(top50.length){var pr=top50.slice(0,6).map(function(c){return c.symbol.toUpperCase()+' $'+c.current_price.toLocaleString()+' ('+(c.price_change_percentage_24h>=0?'+':'')+c.price_change_percentage_24h.toFixed(1)+'%)';});intel+='Prices: '+pr.join(' | ')+'\n';}
   var prompt='Your name is Wisdom. You are the lead analyst at Crypto Wisdom.\n\nLIVE DATA:\n'+intel+'\nWrite a '+tc+' intelligence briefing for '+ds+'.\n\nFirst line: A sharp KEY INSIGHT (10-15 words max, specific to today\'s data — no generic statements)\nThen 3 tight paragraphs:\n1. The dominant theme — cite specific numbers\n2. What most people are missing right now\n3. One specific signal or condition to watch\n\nNo markdown. No asterisks. Direct and smart.';
   try{
-    var reply=await callClaude([{role:'user',content:prompt}],700);
+    var reply=await callClaude([{role:'user',content:prompt}],700,'brief:'+_todayUTC()+':'+tc,12*3600);
     briefText=reply;
     var lines=reply.replace(/\*\*/g,'').replace(/\*/g,'').split('\n').filter(function(l){return l.trim();});
     var pq=lines[0].trim();
@@ -1261,7 +1261,7 @@ async function loadDos(tab){
     quiz:'3 multiple choice questions testing '+c.name+' knowledge. Return ONLY valid JSON:\n[{"q":"question","options":["A. x","B. x","C. x","D. x"],"correct":0,"explanation":"why"}]\nProgressively harder. Return ONLY the JSON array.'
   };
   try{
-    var reply=await callClaude([{role:'user',content:prompts[tab]}],500);
+    var reply=await callClaude([{role:'user',content:prompts[tab]}],500,'project:'+c.symbol+':'+tab+':'+_todayUTC(),24*3600);
     dosLoaded[tab]=true;
     if(tab==='quiz')renderQuiz(body,reply);
     else if(tab==='intel')renderIntel(body,reply);
@@ -1716,7 +1716,7 @@ async function loadLesson(tab){
   var labels={simple:'The Simple Version',real:'How It Actually Works',now:'Why It Matters Right Now',wrong:'What Most People Get Wrong'};
   var colors={simple:'var(--teal)',real:'var(--amber)',now:'var(--green)',wrong:'var(--red)'};
   try{
-    var reply=await callClaude([{role:'user',content:prompts[tab]}],400);
+    var reply=await callClaude([{role:'user',content:prompts[tab]}],400,'lesson:'+(topic||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,80)+':'+tab+':'+_todayUTC(),24*3600);
     lessonLoaded[tab]=true;
     var clean=reply.replace(/\*\*/g,'').replace(/\*/g,'').trim();
     body.innerHTML='<div class="dsec"><div class="dsec-lbl" style="color:'+colors[tab]+'"><span style="background:'+colors[tab]+';display:inline-block;width:3px;height:3px;border-radius:50%;margin-right:3px"></span>'+labels[tab]+'</div><div class="dsec-body">'+clean.replace(/\n\n/g,'</div></div><div class="dsec"><div class="dsec-body">').replace(/\n/g,'<br/>')+'</div></div>';
@@ -1994,13 +1994,18 @@ async function _callProxy(payload){
   var data=await r.json();return data.content.map(function(c){return c.type==='text'?c.text:'';}).join('');
 }
 
-async function callClaude(msgs,maxTok){
+function _todayUTC(){return new Date().toISOString().slice(0,10);}
+async function callClaude(msgs,maxTok,cacheKey,cacheTtl){
   var payload={model:'claude-sonnet-4-20250514',max_tokens:maxTok||800,messages:msgs};
-  return _isBYOK()?_callDirect(payload):_callProxy(payload);
+  if(_isBYOK())return _callDirect(payload);
+  if(cacheKey){payload.cache_key=cacheKey;if(cacheTtl)payload.cache_ttl_seconds=cacheTtl;}
+  return _callProxy(payload);
 }
-async function callClaudeWithSys(sys,msgs){
+async function callClaudeWithSys(sys,msgs,cacheKey,cacheTtl){
   var payload={model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:msgs};
-  return _isBYOK()?_callDirect(payload):_callProxy(payload);
+  if(_isBYOK())return _callDirect(payload);
+  if(cacheKey){payload.cache_key=cacheKey;if(cacheTtl)payload.cache_ttl_seconds=cacheTtl;}
+  return _callProxy(payload);
 }
 </script>
 </body>
