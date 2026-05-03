@@ -1885,6 +1885,7 @@ async function loadLesson(tab){
   body.innerHTML='<div class="dos-loading"><span class="spin"></span>Loading...</div>';
   var fng=liveIntel.fng?liveIntel.fng.value+' ('+liveIntel.fng.label+')':'loading';
   var dom=liveIntel.global?liveIntel.global.btcDom+'%':'loading';
+  var topic=(curLesson&&curLesson.topic)||(curLesson&&curLesson.title)||'this concept';
   var prompts={
     simple:'Explain "'+topic+'" simply. One clear analogy. Smart but new-to-crypto audience. Under 140 words. No jargon. No markdown.',
     real:'Explain how "'+topic+'" actually works. Real mechanics, incentives, technical truth. Specific example with numbers. Under 190 words. No markdown.',
@@ -1894,7 +1895,7 @@ async function loadLesson(tab){
   var labels={simple:'The Simple Version',real:'How It Actually Works',now:'Why It Matters Right Now',wrong:'What Most People Get Wrong'};
   var colors={simple:'var(--teal)',real:'var(--amber)',now:'var(--green)',wrong:'var(--red)'};
   try{
-    var reply=await callClaude([{role:'user',content:prompts[tab]}],400,'lesson:'+(topic||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,80)+':'+tab+':'+_todayUTC(),24*3600);
+    var reply=await callClaude([{role:'user',content:prompts[tab]}],400,'lesson:'+topic.toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,80)+':'+tab+':'+_todayUTC(),24*3600);
     lessonLoaded[tab]=true;
     var clean=reply.replace(/\*\*/g,'').replace(/\*/g,'').trim();
     body.innerHTML='<div class="dsec"><div class="dsec-lbl" style="color:'+colors[tab]+'"><span style="background:'+colors[tab]+';display:inline-block;width:3px;height:3px;border-radius:50%;margin-right:3px"></span>'+labels[tab]+'</div><div class="dsec-body">'+clean.replace(/\n\n/g,'</div></div><div class="dsec"><div class="dsec-body">').replace(/\n/g,'<br/>')+'</div></div>';
