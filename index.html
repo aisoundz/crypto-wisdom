@@ -710,10 +710,11 @@ body{background:var(--bg)}
 .tagline{font-family:var(--font-sans);font-size:15px;font-weight:400;color:var(--text2);margin-top:8px;letter-spacing:-.01em}
 .hdr-ctx{font-family:var(--font-sans);font-size:11px;font-weight:500;letter-spacing:.04em;color:var(--text3);text-transform:none;margin-bottom:12px}
 
-/* MAIN TABS — slim, transparent (the bottom nav becomes the primary nav) */
-.main-tabs{padding:0 24px;background:#000;border-bottom:1px solid var(--border);gap:0}
-.mtab{font-family:var(--font-sans);font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;padding:16px 12px;color:var(--text3);transition:color .2s}
-.mtab.active{color:var(--text);border-bottom-color:var(--text)}
+/* MAIN TABS — teal accent on active so it pops on the black background */
+.main-tabs{padding:0 24px;background:#000;border-bottom:1px solid var(--border);gap:0;position:relative}
+.mtab{font-family:var(--font-sans);font-size:13px;font-weight:500;letter-spacing:0;text-transform:none;padding:16px 12px;color:var(--text2);transition:color .2s,border-color .2s;border-bottom:2px solid transparent;margin-bottom:-1px}
+.mtab:hover{color:var(--text)}
+.mtab.active{color:var(--teal);border-bottom-color:var(--teal);font-weight:600}
 
 /* BETA STRIP — slimmer, more refined */
 .beta-strip{padding:10px 24px;background:linear-gradient(90deg,rgba(20,224,189,.10),transparent 60%);border-bottom:1px solid var(--border)}
