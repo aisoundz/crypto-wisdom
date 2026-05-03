@@ -1180,9 +1180,10 @@ function renderToday(){
   var learned=[];try{var l=localStorage.getItem('cw_learned');if(l)learned=JSON.parse(l);}catch(e){}
   var pool=top50.filter(function(c){return!learned.includes(c.id);});
   if(!pool.length){learned=[];pool=top50;}
-  var offset=0;try{offset=parseInt(localStorage.getItem('cw_coin_offset')||'0');}catch(e){}
-  var d=new Date();var base=(d.getUTCFullYear()*10000+(d.getUTCMonth()+1)*100+d.getUTCDate());
-  var seed=(base+offset)%pool.length;
+  // Randomized coin selection — different coin every page load.
+  // Content is still cached per-coin (project:SYMBOL:tab:date), so visiting
+  // the same coin twice serves cached content; visiting a new one generates fresh.
+  var seed=Math.floor(Math.random()*pool.length);
   todayCoin=pool[seed];
   var c=todayCoin;
   var p=c.current_price>=1000?'$'+c.current_price.toLocaleString():c.current_price>=1?'$'+c.current_price.toFixed(2):'$'+c.current_price.toFixed(4);
@@ -1274,6 +1275,7 @@ async function loadDos(tab){
 }
 
 function renderIntel(el,txt){
+  txt=(txt||'').replace(/\*\*/g,'').replace(/\*/g,'');
   var lines=txt.split('\n').filter(function(l){return l.trim();});
   var cards=lines.map(function(line){
     var col=line.indexOf(':');
@@ -1291,6 +1293,7 @@ function renderIntel(el,txt){
 }
 
 function renderCase(el,txt){
+  txt=(txt||'').replace(/\*\*/g,'').replace(/\*/g,'');
   var lines=txt.split('\n').filter(function(l){return l.trim();});
   var bull=[],bear=[],inB=false,inBr=false;
   lines.forEach(function(l){
