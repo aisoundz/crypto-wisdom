@@ -80,14 +80,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
 .fng-val{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;color:var(--text3);transition:color .3s}
 .fng-name{font-family:'DM Mono',monospace;font-size:8px;color:var(--text4)}
 .bia-btn{font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);padding:3px 9px;border-radius:99px;border:1px solid var(--teal-border);background:var(--teal-bg);cursor:pointer;letter-spacing:.04em}
-/* FOUNDING CYPHERPUNK STRIP */
-.founding-strip{background:linear-gradient(90deg,rgba(0,212,170,.12),rgba(0,212,170,.04) 65%,transparent);border-bottom:1px solid var(--teal-border);padding:7px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.04em}
-.founding-strip .fs-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px rgba(0,212,170,.18);flex-shrink:0;animation:pulse 2s infinite}
-.founding-strip .fs-label{color:var(--teal);font-weight:600;letter-spacing:.10em;text-transform:uppercase}
-.founding-strip .fs-sep{color:var(--text4)}
-.founding-strip .fs-text{color:var(--text2);letter-spacing:.02em}
-.founding-strip .fs-soon{color:var(--text3)}
-@media (max-width:480px){.founding-strip .fs-text{font-size:8px}.founding-strip .fs-sep{display:none}}
+/* BETA STRIP — minimal, honest */
+.beta-strip{background:linear-gradient(90deg,rgba(0,212,170,.10),rgba(0,212,170,.03) 65%,transparent);border-bottom:1px solid var(--teal-border);padding:7px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.04em}
+.beta-strip .bs-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px rgba(0,212,170,.16);flex-shrink:0;animation:pulse 2s infinite}
+.beta-strip .bs-label{color:var(--teal);font-weight:600;letter-spacing:.10em;text-transform:uppercase}
+.beta-strip .bs-sep{color:var(--text4)}
+.beta-strip .bs-text{color:var(--text2);letter-spacing:.02em}
+.beta-strip .bs-link{color:var(--teal);background:none;border:none;padding:0;font:inherit;cursor:pointer;border-bottom:1px dashed rgba(0,212,170,.5);letter-spacing:.02em}
+.beta-strip .bs-link:hover{border-bottom-color:var(--teal)}
+@media (max-width:480px){.beta-strip .bs-text{font-size:8px}.beta-strip .bs-sep{display:none}}
 /* KEY BANNER */
 .key-banner{background:var(--bg2);border-bottom:1px solid var(--border);padding:6px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .key-banner input{flex:1;min-width:140px;font-family:'DM Mono',monospace;font-size:11px;padding:5px 9px;border-radius:6px;border:1px solid var(--teal-border);background:var(--bg3);color:var(--teal);outline:none;letter-spacing:.03em}
@@ -524,13 +525,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
   <div class="fng-l"><div class="fng-dot" id="fngDot"></div><span class="fng-lbl">Fear & Greed</span><span class="fng-val" id="fngVal">—</span><span class="fng-name" id="fngName">Loading...</span></div>
   <button class="bia-btn" onclick="startChat('bia')">Before I Act ›</button>
 </div>
-<div class="founding-strip" role="note" aria-label="Founding Cypherpunk public beta">
-  <span class="fs-dot"></span>
-  <span class="fs-label">Founding Cypherpunk · Public Beta</span>
-  <span class="fs-sep">·</span>
-  <span class="fs-text">Bring your own key. Sovereign by default. <span class="fs-soon">Zero-setup mode coming soon.</span></span>
+<div class="beta-strip" id="betaStrip" role="note" aria-label="Public beta">
+  <span class="bs-dot"></span>
+  <span class="bs-label">Public Beta</span>
+  <span class="bs-sep">·</span>
+  <span class="bs-text" id="betaText">5 free Wisdom messages daily — <button class="bs-link" onclick="toggleKeyBanner()">add your key for unlimited</button></span>
 </div>
-<div class="key-banner" id="keyBanner">
+<div class="key-banner" id="keyBanner" style="display:none">
   <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)">Your Key</span>
   <input type="text" id="keyInput" placeholder="sk-ant-api03-..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter'){saveKey();this.blur()}" style="font-size:12px"/>
   <button onclick="saveKey()">Save</button>
@@ -561,11 +562,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
   </div>
   <div class="card-teal" style="margin-top:10px"><div class="brief-pq">
     <div class="brief-pq-lbl">Key Insight Today</div>
-    <div id="briefPQ" style="font-size:13px;font-weight:300;color:var(--text3);font-style:italic;min-height:20px">Add your API key above to unlock your daily intelligence</div>
+    <div id="briefPQ" style="font-size:13px;font-weight:300;color:var(--text3);font-style:italic;min-height:20px">Loading your daily intelligence…</div>
   </div></div>
   <div class="card">
     <div class="brief-card-top"><div class="brief-badge">Daily Intelligence Report</div><div class="brief-date" id="briefDate">—</div></div>
-    <div class="brief-body" id="briefBody" style="color:var(--text3);font-style:italic">Add your API key to unlock your daily intelligence report.</div>
+    <div class="brief-body" id="briefBody" style="color:var(--text3);font-style:italic">Preparing your briefing…</div>
     <div class="brief-actions">
       <button class="btn primary" onclick="toggleRead()"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg><span id="readTxt">Read aloud</span></button>
       <button class="btn" onclick="refreshBrief()"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Refresh</button>
@@ -864,7 +865,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
 var CK='cw_key',VK='cw_vault5',HK='cw_hold5',TK='cw_thesis',LK='cw_len';
 
 /* ===== STATE ===== */
-var claudeKey='',answerLen='medium',autoVoice=true,voiceSpeed=1.0;
+var WISDOM_PROXY_URL='https://cryptowisdom-proxy.aisoundz9.workers.dev';
+var PROXY_SENTINEL='PROXY_MODE'; // sentinel; flips to real key when user BYOKs
+var claudeKey=PROXY_SENTINEL,answerLen='medium',autoVoice=true,voiceSpeed=1.0;
 var top50=[],holdings=[],theses=[],liveIntel={};
 var todayCoin=null,curLesson=null,curMode='',prevScreen='briefing';
 var messages=[],sessionActive=false;
@@ -923,13 +926,25 @@ function toast(msg,isError){
 }
 
 function requireKey(msg){
-  if(!claudeKey){
-    toast(msg||'Add your API key first — tap the key field at the top.',true);
-    var b=document.getElementById('keyBanner');
-    if(b){b.style.display='flex';b.style.borderColor='var(--red)';setTimeout(function(){b.style.borderColor='';},2000);}
-    return true;
-  }
+  // No longer gates user actions — proxy handles auth.
+  // Kept as a no-op so existing call sites still compile.
   return false;
+}
+
+function toggleKeyBanner(){
+  var b=document.getElementById('keyBanner');
+  if(!b)return;
+  var hidden=(b.style.display==='none'||!b.style.display);
+  b.style.display=hidden?'flex':'none';
+  if(hidden){var inp=document.getElementById('keyInput');if(inp)setTimeout(function(){inp.focus();},80);}
+}
+
+function showQuotaExhausted(){
+  var t=document.getElementById('betaText');
+  if(t){t.innerHTML='You’ve used your 5 free messages today — <button class="bs-link" onclick="toggleKeyBanner()">add your key for unlimited</button>';}
+  var b=document.getElementById('keyBanner');
+  if(b){b.style.display='flex';b.style.borderColor='var(--amber)';setTimeout(function(){b.style.borderColor='';},3000);}
+  toast('Free quota used today. Add your Anthropic key for unlimited.',true);
 }
 
 function saveKey(){
@@ -1113,8 +1128,8 @@ async function refreshBrief(){
   var pqEl=document.getElementById('briefPQ');
   var bodyEl=document.getElementById('briefBody');
   if(!claudeKey){
-    if(pqEl){pqEl.textContent='Add your API key above';pqEl.style.cssText='font-size:13px;font-weight:300;color:var(--text3);font-style:italic';}
-    if(bodyEl){bodyEl.textContent='Add your API key to unlock your daily intelligence report.';bodyEl.style.color='var(--text3)';bodyEl.style.fontStyle='italic';}
+    if(pqEl){pqEl.textContent='Couldn’t load your briefing — try again';pqEl.style.cssText='font-size:13px;font-weight:300;color:var(--text3);font-style:italic';}
+    if(bodyEl){bodyEl.textContent='Briefing unavailable. Refresh to retry.';bodyEl.style.color='var(--text3)';bodyEl.style.fontStyle='italic';}
     return;
   }
   if(pqEl){pqEl.textContent='Generating...';pqEl.style.cssText='font-size:13px;font-weight:300;color:var(--text3);font-style:italic';}
@@ -1204,7 +1219,7 @@ function openDossier(){
     document.getElementById('dosPrice').textContent=p;
     var ce=document.getElementById('dosChg');ce.textContent=' '+(up?'▲ ':'▼ ')+Math.abs(ch)+'%';ce.style.color=up?'var(--green)':'var(--red)';
     document.getElementById('dosRank').textContent='#'+c.market_cap_rank+' by mkt cap';
-    ['db-intel','db-story','db-works','db-thecase','db-quiz'].forEach(function(id){var el=document.getElementById(id);if(el)el.innerHTML='<div class="dos-loading">Add your API key to unlock this content</div>';});
+    ['db-intel','db-story','db-works','db-thecase','db-quiz'].forEach(function(id){var el=document.getElementById(id);if(el)el.innerHTML='<div class="dos-loading">Loading…</div>';});
     return;
   }
   dosLoaded={};
@@ -1891,7 +1906,7 @@ async function loadPortInsight(){
   body.textContent='Loading...';body.style.fontStyle='italic';body.style.color='var(--text3)';
   var s=holdings.map(function(h){var c=findCoin(h.symbol);var p=c?c.current_price:null;var v=p?'$'+(p*h.qty).toFixed(2):'?';var pnl=(p&&h.cost>0)?((p*h.qty-h.cost)/h.cost*100).toFixed(1)+'%':'?';return h.symbol+': '+h.qty+' units, value '+v+', P&L '+pnl;}).join('; ');
   var prompt='Portfolio: '+s+'. F&G: '+(liveIntel.fng?liveIntel.fng.value+' ('+liveIntel.fng.label+')':'loading')+', BTC Dom: '+(liveIntel.global?liveIntel.global.btcDom+'%':'loading')+'.\n\nYou are Wisdom. Give a sharp, specific 3-4 sentence insight about this exact portfolio right now. What does the allocation imply about the investor\'s thesis? What is the concentration risk? What should they be watching given current conditions? Be direct. No generic disclaimers.';
-  try{var r=await callClaude([{role:'user',content:prompt}],320);body.textContent=r.replace(/\*\*/g,'').replace(/\*/g,'');body.style.fontStyle='normal';body.style.color='var(--text2)';body.dataset.loaded='1';}catch(e){body.textContent='Add your API key to get portfolio insights.';body.style.color='var(--text3)';}
+  try{var r=await callClaude([{role:'user',content:prompt}],320);body.textContent=r.replace(/\*\*/g,'').replace(/\*/g,'');body.style.fontStyle='normal';body.style.color='var(--text2)';body.dataset.loaded='1';}catch(e){body.textContent='Couldn’t load portfolio insights right now.';body.style.color='var(--text3)';}
 }
 function startPortChat(){
   if(requireKey())return;
@@ -1946,16 +1961,46 @@ function resetTabs(sel,defaultTab,panePrefix,bodyPrefix){
 function switchTabs(btn,sel){document.querySelectorAll(sel).forEach(function(b){b.classList.remove('active');});btn.classList.add('active');}
 function setLen(len,btn){answerLen=len;try{localStorage.setItem(LK,len);}catch(e){}document.querySelectorAll('.depth-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');}
 
-/* ===== CLAUDE API ===== */
-async function callClaude(msgs,maxTok){
-  var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':claudeKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTok||800,messages:msgs})});
+/* ===== CLAUDE API =====
+   Two modes:
+   1. BYOK — user has pasted their own sk-ant-... key. We call Anthropic directly.
+   2. Proxy — default. We POST to our Cloudflare Worker which holds the key
+              server-side and rate-limits to 5 msgs/IP/day.
+*/
+function _isBYOK(){return claudeKey&&claudeKey!==PROXY_SENTINEL&&claudeKey.indexOf('sk-')===0;}
+
+async function _callDirect(payload){
+  var r=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','x-api-key':claudeKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+    body:JSON.stringify(payload)
+  });
   if(!r.ok){var err=await r.json().catch(function(){return{};});throw new Error(err.error?err.error.message:'API error '+r.status);}
   var data=await r.json();return data.content.map(function(c){return c.type==='text'?c.text:'';}).join('');
 }
-async function callClaudeWithSys(sys,msgs){
-  var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':claudeKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:msgs})});
-  if(!r.ok){var err=await r.json().catch(function(){return{};});throw new Error(err.error?err.error.message:'API error '+r.status);}
+
+async function _callProxy(payload){
+  var r=await fetch(WISDOM_PROXY_URL+'/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload)
+  });
+  if(r.status===429){
+    var qe=await r.json().catch(function(){return{};});
+    showQuotaExhausted();
+    throw new Error((qe.error&&qe.error.message)||'Free quota exhausted');
+  }
+  if(!r.ok){var err=await r.json().catch(function(){return{};});throw new Error((err.error&&err.error.message)||'Proxy error '+r.status);}
   var data=await r.json();return data.content.map(function(c){return c.type==='text'?c.text:'';}).join('');
+}
+
+async function callClaude(msgs,maxTok){
+  var payload={model:'claude-sonnet-4-20250514',max_tokens:maxTok||800,messages:msgs};
+  return _isBYOK()?_callDirect(payload):_callProxy(payload);
+}
+async function callClaudeWithSys(sys,msgs){
+  var payload={model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:msgs};
+  return _isBYOK()?_callDirect(payload):_callProxy(payload);
 }
 </script>
 </body>
