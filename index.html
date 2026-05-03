@@ -3,7 +3,33 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Crypto Wisdom</title>
+<meta name="theme-color" content="#0A0C0F"/>
+<title>Crypto Wisdom — Think before you trade. Think better after.</title>
+<meta name="description" content="The behavioral coaching platform for crypto investors. Wisdom is your decision coach — not another signals app. Sovereign by default: bring your own key, your data never leaves your device."/>
+<link rel="canonical" href="https://cryptowisdom.io/"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Crypto Wisdom"/>
+<meta property="og:title" content="Crypto Wisdom — Think before you trade. Think better after."/>
+<meta property="og:description" content="The behavioral coaching platform for crypto investors. Wisdom is your decision coach — not another signals app. Sovereign by default."/>
+<meta property="og:url" content="https://cryptowisdom.io/"/>
+<meta property="og:image" content="https://cryptowisdom.io/og.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Crypto Wisdom — Think before you trade. Think better after."/>
+<meta name="twitter:description" content="Behavioral coaching for crypto investors. Decision coach, not another signals app. Sovereign by default."/>
+<meta name="twitter:image" content="https://cryptowisdom.io/og.png"/>
+
+<!-- Icons -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -54,6 +80,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
 .fng-val{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;color:var(--text3);transition:color .3s}
 .fng-name{font-family:'DM Mono',monospace;font-size:8px;color:var(--text4)}
 .bia-btn{font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);padding:3px 9px;border-radius:99px;border:1px solid var(--teal-border);background:var(--teal-bg);cursor:pointer;letter-spacing:.04em}
+/* FOUNDING CYPHERPUNK STRIP */
+.founding-strip{background:linear-gradient(90deg,rgba(0,212,170,.12),rgba(0,212,170,.04) 65%,transparent);border-bottom:1px solid var(--teal-border);padding:7px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.04em}
+.founding-strip .fs-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px rgba(0,212,170,.18);flex-shrink:0;animation:pulse 2s infinite}
+.founding-strip .fs-label{color:var(--teal);font-weight:600;letter-spacing:.10em;text-transform:uppercase}
+.founding-strip .fs-sep{color:var(--text4)}
+.founding-strip .fs-text{color:var(--text2);letter-spacing:.02em}
+.founding-strip .fs-soon{color:var(--text3)}
+@media (max-width:480px){.founding-strip .fs-text{font-size:8px}.founding-strip .fs-sep{display:none}}
 /* KEY BANNER */
 .key-banner{background:var(--bg2);border-bottom:1px solid var(--border);padding:6px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .key-banner input{flex:1;min-width:140px;font-family:'DM Mono',monospace;font-size:11px;padding:5px 9px;border-radius:6px;border:1px solid var(--teal-border);background:var(--bg3);color:var(--teal);outline:none;letter-spacing:.03em}
@@ -490,8 +524,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
   <div class="fng-l"><div class="fng-dot" id="fngDot"></div><span class="fng-lbl">Fear & Greed</span><span class="fng-val" id="fngVal">—</span><span class="fng-name" id="fngName">Loading...</span></div>
   <button class="bia-btn" onclick="startChat('bia')">Before I Act ›</button>
 </div>
+<div class="founding-strip" role="note" aria-label="Founding Cypherpunk public beta">
+  <span class="fs-dot"></span>
+  <span class="fs-label">Founding Cypherpunk · Public Beta</span>
+  <span class="fs-sep">·</span>
+  <span class="fs-text">Bring your own key. Sovereign by default. <span class="fs-soon">Zero-setup mode coming soon.</span></span>
+</div>
 <div class="key-banner" id="keyBanner">
-  <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)">API Key</span>
+  <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)">Your Key</span>
   <input type="text" id="keyInput" placeholder="sk-ant-api03-..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter'){saveKey();this.blur()}" style="font-size:12px"/>
   <button onclick="saveKey()">Save</button>
   <span class="key-ok" id="keyOk">No key</span>
