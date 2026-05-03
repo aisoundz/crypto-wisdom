@@ -30,23 +30,36 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
 
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0A0C0F;--bg2:#111318;--bg3:#181C22;--bg4:#1E232B;
-  --surface:#1E232B;--surface2:#252B35;
-  --text:#F0EEE8;--text2:#B8BCC8;--text3:#7A8090;--text4:#4A5060;
-  --teal:#00D4AA;--teal2:#00B892;
-  --teal-bg:rgba(0,212,170,0.08);--teal-border:rgba(0,212,170,0.22);
+  /* Warmer, premium-dark palette — softer than pure black */
+  --bg:#0B1015;--bg2:#121821;--bg3:#1A2129;--bg4:#222B36;
+  --surface:#1A2129;--surface2:#222B36;
+  --text:#F4F1EA;--text2:#BCC1CD;--text3:#7E8493;--text4:#4D5260;
+  /* Brighter, more vivid brand teal */
+  --teal:#14E0BD;--teal2:#00C99A;
+  --teal-bg:rgba(20,224,189,0.10);--teal-border:rgba(20,224,189,0.22);
   --amber:#F5A623;--amber-bg:rgba(245,166,35,0.08);--amber-border:rgba(245,166,35,0.25);
-  --red:#E54B4B;--red-bg:rgba(229,75,75,0.08);
-  --green:#2ECC8A;--green-bg:rgba(46,204,138,0.08);
-  --border:rgba(240,238,232,0.07);--border2:rgba(240,238,232,0.13);
-  --radius:10px;
+  --red:#FF5A5A;--red-bg:rgba(255,90,90,0.08);
+  --green:#22D17F;--green-bg:rgba(34,209,127,0.08);
+  --border:rgba(244,241,234,0.06);--border2:rgba(244,241,234,0.10);
+  /* Larger radii for modern feel */
+  --radius:14px;--radius-sm:10px;--radius-lg:20px;
+  /* Subtle elevation */
+  --shadow-sm:0 2px 8px rgba(0,0,0,.30);
+  --shadow-md:0 4px 18px rgba(0,0,0,.40);
+  --shadow-glow:0 0 28px rgba(20,224,189,.10);
+  /* Type scale */
+  --font-sans:'Inter','-apple-system','BlinkMacSystemFont','Segoe UI',sans-serif;
+  --font-display:'Bebas Neue','Inter',sans-serif;
+  --font-mono:'DM Mono','SF Mono','Menlo',monospace;
 }
 html,body{height:100%;overflow-x:hidden}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:'cv01','cv02','cv11','ss01';letter-spacing:-0.005em;line-height:1.5}
 /* SCREENS */
 .screen{display:none}
 .screen.active{display:block}
@@ -512,6 +525,129 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-we
 /* TOAST */
 .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--surface2);border:1px solid var(--teal-border);border-radius:8px;padding:9px 18px;font-family:'DM Mono',monospace;font-size:11px;color:var(--teal);z-index:999;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1}
+
+/* ================================================================
+   PREMIUM-DARK OVERRIDES — modern fintech aesthetic
+   (Inter for prose, DM Mono only for data values, Bebas Neue for hero)
+   ================================================================ */
+
+/* Selection color */
+::selection{background:var(--teal-bg);color:var(--text)}
+
+/* TOP CHROME — softer, less terminal-y */
+.topbar{background:rgba(11,16,21,.85);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid var(--border);padding:10px 18px}
+.topbar-txt{font-family:var(--font-mono);letter-spacing:.06em;font-size:10px;font-weight:500;color:var(--teal)}
+.topbar-sub,.topbar-clock{font-family:var(--font-mono);font-size:10px;color:var(--text4)}
+
+/* TICKER — polished spacing */
+.ticker-wrap{padding:8px 0}
+.tick{padding:0 18px}
+.tick-sym{font-family:var(--font-mono);font-weight:500;font-size:10px}
+.tick-price{font-family:var(--font-mono);font-size:10px;color:var(--text2)}
+
+/* FNG bar — softer */
+.fng-bar{padding:8px 18px;background:linear-gradient(90deg,rgba(20,224,189,.06),transparent 70%);border-bottom:1px solid var(--border)}
+.bia-btn{font-family:var(--font-sans);font-size:11px;font-weight:600;padding:6px 14px;border-radius:99px;letter-spacing:0;transition:transform .15s,background .15s}
+.bia-btn:hover{background:rgba(20,224,189,.16);transform:translateY(-1px)}
+
+/* BETA STRIP — slimmer, less shouty */
+.beta-strip{padding:9px 18px;background:linear-gradient(90deg,rgba(20,224,189,.08),rgba(20,224,189,.02) 70%,transparent);font-size:10px}
+.beta-strip .bs-label{font-family:var(--font-sans);font-weight:600;font-size:10px;letter-spacing:.08em}
+.beta-strip .bs-text,.beta-strip .bs-link{font-family:var(--font-sans);font-size:11px;font-weight:400;letter-spacing:0}
+.beta-strip .bs-link{font-weight:500}
+
+/* HEADER — bigger, more intentional */
+.hdr{padding:24px 18px 20px;background:linear-gradient(180deg,rgba(20,224,189,.05) 0%,transparent 100%);border-bottom:1px solid var(--border)}
+.hdr-ctx{font-family:var(--font-sans);font-weight:500;font-size:10px;letter-spacing:.12em;color:var(--text3);text-transform:uppercase;margin-bottom:10px}
+.logo{font-family:var(--font-display);font-size:48px;letter-spacing:.02em;line-height:.95}
+.tagline{font-family:var(--font-sans);font-size:14px;font-weight:400;color:var(--text2);margin-top:6px;line-height:1.4}
+.badges{margin-top:12px;gap:6px}
+.badge{font-family:var(--font-sans);font-size:9.5px;font-weight:600;padding:4px 10px;border-radius:99px;letter-spacing:.04em}
+.menu-btn{width:40px;height:40px;border-radius:12px;border:1px solid var(--border2);transition:background .15s,border-color .15s}
+.menu-btn:hover{background:var(--bg3);border-color:var(--teal-border)}
+
+/* MAIN TABS — modern underline */
+.main-tabs{padding:0 18px;background:var(--bg);border-bottom:1px solid var(--border);gap:4px}
+.mtab{font-family:var(--font-sans);font-size:13px;font-weight:500;letter-spacing:0;text-transform:none;padding:14px 6px;color:var(--text3);transition:color .2s,border-color .2s}
+.mtab:hover{color:var(--text2)}
+.mtab.active{color:var(--teal);font-weight:600;border-bottom-color:var(--teal)}
+
+/* WRAPPER — generous breathing room */
+.sw{padding:20px 18px 100px}
+
+/* EYEBROW labels — keep small, but warmer */
+.ey{font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:.10em;color:var(--text3);margin-bottom:14px}
+
+/* CARDS — soft elevation, larger radius, more padding */
+.card,.card-teal{border-radius:var(--radius);box-shadow:var(--shadow-sm);margin-bottom:14px;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:var(--shadow-md)}
+.card-teal{background:linear-gradient(135deg,rgba(20,224,189,.06),rgba(20,224,189,.02));border:1px solid var(--teal-border);box-shadow:var(--shadow-sm),var(--shadow-glow)}
+
+/* BRIEFING — bigger, more confident */
+.brief-pq{padding:20px 20px 18px}
+.brief-pq-lbl{font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:.10em;color:var(--teal);margin-bottom:10px}
+.brief-pq-text{font-family:var(--font-display);font-size:24px;letter-spacing:.02em;color:var(--text);line-height:1.15;min-height:28px}
+.brief-card-top{padding:12px 20px;border-bottom:1px solid var(--border)}
+.brief-badge{font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--teal)}
+.brief-date{font-family:var(--font-mono);font-size:10px;color:var(--text4)}
+.brief-body{padding:18px 20px;font-family:var(--font-sans);font-size:14px;line-height:1.65;color:var(--text2);font-weight:400}
+
+/* INTEL grid — refined */
+.intel-grid{display:grid;grid-template-columns:1fr;gap:10px;padding:14px}
+.intel-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px}
+.intel-lbl{font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:.10em;color:var(--teal);text-transform:uppercase;margin-bottom:6px}
+.intel-val{font-family:var(--font-sans);font-size:14px;font-weight:400;color:var(--text);line-height:1.55}
+
+/* BULL/BEAR — softer cards */
+.bull,.bear{padding:16px;border-radius:var(--radius-sm)}
+.bull-lbl,.bear-lbl{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+
+/* QUIZ — friendlier buttons */
+.quiz-q{margin-bottom:18px}
+.quiz-q-txt{font-family:var(--font-sans);font-size:14px;font-weight:500;line-height:1.45;margin-bottom:10px;color:var(--text)}
+.quiz-opt{font-family:var(--font-sans);font-size:13px;padding:10px 14px;border-radius:var(--radius-sm);width:100%;text-align:left;background:var(--bg3);border:1px solid var(--border2);color:var(--text2);margin-bottom:6px;transition:background .15s,border-color .15s,color .15s}
+.quiz-opt:hover:not(:disabled){background:var(--bg4);border-color:var(--teal-border);color:var(--text)}
+
+/* DOSSIER lessons */
+.dsec{padding:14px 16px;background:var(--bg3);border-radius:var(--radius-sm);margin-bottom:8px}
+.dsec-lbl{font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:.08em;margin-bottom:8px;text-transform:uppercase}
+.dsec-body{font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--text2);font-weight:400}
+
+/* KEY BANNER — softer when shown */
+.key-banner{padding:10px 18px;background:var(--bg2)}
+.key-banner input{font-family:var(--font-mono);font-size:12px;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--border2)}
+.key-banner button{font-family:var(--font-sans);font-size:12px;font-weight:600;padding:8px 14px;border-radius:var(--radius-sm)}
+.key-ok{font-family:var(--font-sans);font-size:10px;font-weight:600;padding:4px 10px;border-radius:99px}
+
+/* MONO ONLY for true data — prices, percents, addresses */
+.tick-up,.tick-dn,.fng-val{font-family:var(--font-mono);font-weight:500}
+
+/* SKELETON loaders — replaces "Loading..." spinners */
+@keyframes skeleton-shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.skel{display:inline-block;background:linear-gradient(90deg,var(--bg3) 0%,var(--bg4) 50%,var(--bg3) 100%);background-size:200% 100%;animation:skeleton-shimmer 1.4s ease-in-out infinite;border-radius:6px;height:.85em;width:80%;vertical-align:middle}
+.skel.s-line{display:block;height:14px;margin:8px 0;width:100%}
+.skel.s-line:nth-child(2){width:90%}
+.skel.s-line:nth-child(3){width:75%}
+.dos-loading{display:flex;align-items:center;gap:10px;color:var(--text3);font-family:var(--font-sans);font-size:13px;padding:14px 0}
+.dos-loading::before{content:'';width:14px;height:14px;border-radius:50%;border:2px solid var(--border2);border-top-color:var(--teal);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Smooth focus rings */
+button:focus-visible,input:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+/* Make sure prose readability is good on the chat surface and inputs */
+input,textarea,button{font-family:var(--font-sans)}
+input[type='text'],textarea{font-size:14px}
+
+/* SET CARDS (settings) — polish */
+.set-card{padding:16px;border-radius:var(--radius-sm);margin-bottom:10px}
+.set-title{font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text)}
+.set-desc{font-family:var(--font-sans);font-size:12px;color:var(--text3);margin:6px 0 12px;line-height:1.5}
+.set-save{font-family:var(--font-sans);font-size:12px;font-weight:600;padding:8px 14px;border-radius:var(--radius-sm)}
+
+/* ERROR message — softer */
+.err-msg{font-family:var(--font-sans);font-size:13px;line-height:1.5}
+
 </style>
 </head>
 <body>
