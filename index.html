@@ -958,7 +958,7 @@ input[type="text"]:focus,textarea:focus,.book-inp:focus,.book-ta:focus{border-co
       <input type="email" id="ccEmail" placeholder="you@email.com" autocomplete="email" required aria-label="Email address">
       <button type="submit" id="ccBtn">Get it by email</button>
     </form>
-    <label class="cc-attest"><input type="checkbox" id="ccAttest"> I am not a resident of the UK, EU/EEA, Australia or Canada. Free, one email a day, one-click unsubscribe.</label>
+    <div class="cc-attest">Free, one email a day, one-click unsubscribe. Research and general commentary, not investment advice.</div>
     <div class="cc-msg" id="ccMsg"></div>
     <div class="cc-foot"><span class="cc-badge" id="ccBadge">VALIDATION WINDOW · UNPROVEN</span><span id="ccJoin"></span></div>
   </div>
@@ -1363,19 +1363,18 @@ async function loadCryptoCut(){
 var CRYPTO_SUBSCRIBE_URL='https://signal.financewisdom.io/api/crypto-subscribe';
 async function ccSubscribe(ev){
   ev.preventDefault();
-  var em=document.getElementById('ccEmail'),at=document.getElementById('ccAttest'),btn=document.getElementById('ccBtn'),msg=document.getElementById('ccMsg');
+  var em=document.getElementById('ccEmail'),btn=document.getElementById('ccBtn'),msg=document.getElementById('ccMsg');
   var email=(em.value||'').trim();
   msg.style.color='var(--red)';
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.textContent='Enter a valid email address.';return false;}
-  if(!at.checked){msg.textContent='Please confirm you are outside the UK, EU/EEA, Australia and Canada.';return false;}
   btn.disabled=true;btn.textContent='Adding…';msg.textContent='';
   var src=(new URLSearchParams(location.search).get('src')||'cryptowisdom');
   try{
-    var r=await fetch(CRYPTO_SUBSCRIBE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,attest:true,src:src})});
+    var r=await fetch(CRYPTO_SUBSCRIBE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,src:src})});
     var d=await r.json().catch(function(){return{};});
     if(!r.ok||!d.ok)throw new Error(d.error||'Signup failed, try again.');
     msg.style.color='var(--teal)';msg.textContent='You\u2019re in. Check your inbox for a welcome note; the first edition arrives after the next daily close.';
-    em.value='';at.checked=false;btn.textContent='Subscribed';
+    em.value='';btn.textContent='Subscribed';
     try{localStorage.setItem('cw_cc_sub','1');}catch(e){}
   }catch(err){
     msg.textContent=err.message||'Signup failed, try again.';btn.disabled=false;btn.textContent='Get it by email';
