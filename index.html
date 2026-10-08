@@ -889,7 +889,7 @@ input[type="text"]:focus,textarea:focus,.book-inp:focus,.book-ta:focus{border-co
     <div class="brief-body" id="briefBody" style="color:var(--text3);font-style:italic">Preparing your briefing…</div>
     <div class="brief-actions">
       <button class="btn primary" onclick="toggleRead()"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg><span id="readTxt">Read aloud</span></button>
-      <button class="btn" onclick="refreshBrief()"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Refresh</button>
+      <button class="btn" onclick="refreshBrief(true)"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Refresh</button>
       <button class="btn" onclick="goScreen('session')">Start a session →</button>
     </div>
   </div>
@@ -1446,7 +1446,24 @@ async function fetchTVL(){
 }
 
 /* ===== BRIEFING ===== */
-async function refreshBrief(){
+/* Brief cache: one generation per UTC day + time of day, so reloads are instant */
+var BRIEF_CK='cw_brief';
+function _briefCacheGet(k){try{var c=JSON.parse(localStorage.getItem(BRIEF_CK)||'null');return c&&c.k===k?c.v:null;}catch(e){return null;}}
+function _briefCacheSet(k,v){try{localStorage.setItem(BRIEF_CK,JSON.stringify({k:k,v:v}));}catch(e){}}
+function _renderBrief(reply,pqEl,bodyEl){
+  briefText=reply;
+  var lines=reply.replace(/\*\*/g,'').replace(/\*/g,'').split('\n').filter(function(l){return l.trim();});
+  var pq=(lines[0]||'').trim().replace(/^(key insight( today)?)\s*[:\-\u2013\u2014]\s*/i,'');
+  var body=lines.slice(1).join('\n\n').trim();
+  if(pqEl){
+    pqEl.textContent=pq||'Today\'s Intelligence';
+    pqEl.style.cssText='font-family:\'Bebas Neue\',sans-serif;font-size:20px;letter-spacing:.03em;color:var(--text);line-height:1.2;min-height:24px';
+  }
+  if(bodyEl){bodyEl.textContent=body;bodyEl.style.color='var(--text2)';bodyEl.style.fontStyle='normal';}
+  window._briefDone=true;
+}
+async function refreshBrief(force){
+  force=force===true;
   window._briefDone=false;
   var pqEl=document.getElementById('briefPQ');
   var bodyEl=document.getElementById('briefBody');
@@ -1460,6 +1477,9 @@ async function refreshBrief(){
   var h=new Date().getHours(),tc=h<12?'morning':h<17?'afternoon':h<21?'evening':'late night';
   var ds=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
   document.getElementById('briefDate').textContent=ds;
+  var bKey=_todayUTC()+':'+tc;
+  if(!force){var cached=_briefCacheGet(bKey);if(cached){_renderBrief(cached,pqEl,bodyEl);return;}}
+  if(pqEl)pqEl.textContent='Generating today\u2019s briefing (about 20 seconds)...';
   var intel='';
   if(liveIntel.fng)intel+='Fear & Greed: '+liveIntel.fng.value+' ('+liveIntel.fng.label+'). '+liveIntel.fng.context+'\n';
   if(liveIntel.global)intel+='Market cap: '+liveIntel.global.mcap+' ('+liveIntel.global.mcapChg+'% 24h). BTC dom: '+liveIntel.global.btcDom+'%. Vol: '+liveIntel.global.vol+'.\n';
@@ -1470,16 +1490,8 @@ async function refreshBrief(){
   var prompt='Your name is Wisdom. You are the lead analyst at Crypto Wisdom.\n\nLIVE DATA:\n'+intel+'\nWrite a '+tc+' intelligence briefing for '+ds+'.\n\nFirst line: A sharp KEY INSIGHT (10-15 words max, specific to today\'s data — no generic statements)\nThen 3 tight paragraphs:\n1. The dominant theme — cite specific numbers\n2. What most people are missing right now\n3. One specific signal or condition to watch\n\nNo markdown. No asterisks. Direct and smart.';
   try{
     var reply=await callClaude([{role:'user',content:prompt}],700,'brief:'+_todayUTC()+':'+tc,12*3600);
-    briefText=reply;
-    var lines=reply.replace(/\*\*/g,'').replace(/\*/g,'').split('\n').filter(function(l){return l.trim();});
-    var pq=lines[0].trim();
-    var body=lines.slice(1).join('\n\n').trim();
-    if(pqEl){
-      pqEl.textContent=pq||'Today\'s Intelligence';
-      pqEl.style.cssText='font-family:\'Bebas Neue\',sans-serif;font-size:20px;letter-spacing:.03em;color:var(--text);line-height:1.2;min-height:24px';
-    }
-    if(bodyEl){bodyEl.textContent=body;bodyEl.style.color='var(--text2)';bodyEl.style.fontStyle='normal';}
-    window._briefDone=true;
+    _briefCacheSet(bKey,reply);
+    _renderBrief(reply,pqEl,bodyEl);
   }catch(e){
     if(pqEl)pqEl.textContent=_errLabel(e);
     if(bodyEl){bodyEl.textContent='Error: '+e.message;bodyEl.style.color='var(--red)';}
