@@ -401,7 +401,7 @@ def telegram_text(e):
     out += [f"📈 {record_line(e)}", "",
             f"🟡 Validation window, day {e['day']} of {e['window_days']}. Unproven. One identical note for every reader. "
             f"Not personal advice. Size is a share of your account at a fixed {CFG['risk_per_card_pct']}% risk.",
-            f"{SITE}/?crypto-cut"]
+            f"{SITE}/cut/"]
     return "\n".join(out)
 
 
@@ -450,7 +450,7 @@ def email_html(e):
 <tr><td style="padding:16px 32px 28px;border-top:1px solid #eee;font:12px Arial;color:{dim};line-height:1.6">
 Validation window, day {e['day']} of {e['window_days']}. Unproven. Every reader receives this identical note. It is general commentary, not personal advice, and crypto assets can lose most or all of their value.
 Size is shown as a share of your account at a fixed {CFG['risk_per_card_pct']}% risk.<br>
-<a href="{SITE}/?crypto-cut" style="color:#0a8f74">{CFG['site']}</a> · {addr}<br>
+<a href="{SITE}/cut/" style="color:#0a8f74">{CFG['site']}</a> · {addr}<br>
 <a href="{{{{{{RESEND_UNSUBSCRIBE_URL}}}}}}" style="color:{dim}">Unsubscribe</a></td></tr>
 </table></td></tr></table></body></html>"""
 
