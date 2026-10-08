@@ -317,7 +317,7 @@ def main():
                    "entry": r["plan"]["entry"], "stop": r["plan"]["stop"], "target": r["plan"]["target"],
                    "stop_pct": r["plan"]["stop_pct"], "rr": r["plan"]["rr"], "size_pct": r["size_pct"],
                    "time_stop_days": CFG["time_stop_days"],
-                   "link": f"{SITE}/?signal={edition_date}-{r['symbol']}"} for r in published],
+                   "link": f"{SITE}/app/?signal={edition_date}-{r['symbol']}"} for r in published],
         "cut": [{"symbol": r["symbol"], "reason": r["reason"],
                  "detectors": [DETECTOR_NAMES[d] for d in r["detectors"]]} for r in cut_list],
         "market": {"btc_close": usable["BTC"][-1]["close"], "btc_7d": round(btc7, 2)},
@@ -401,7 +401,7 @@ def telegram_text(e):
     out += [f"📈 {record_line(e)}", "",
             f"🟡 Validation window, day {e['day']} of {e['window_days']}. Unproven. One identical note for every reader. "
             f"Not personal advice. Size is a share of your account at a fixed {CFG['risk_per_card_pct']}% risk.",
-            f"{SITE}/cut/"]
+            f"{SITE}/"]
     return "\n".join(out)
 
 
@@ -450,7 +450,7 @@ def email_html(e):
 <tr><td style="padding:16px 32px 28px;border-top:1px solid #eee;font:12px Arial;color:{dim};line-height:1.6">
 Validation window, day {e['day']} of {e['window_days']}. Unproven. Every reader receives this identical note. It is general commentary, not personal advice, and crypto assets can lose most or all of their value.
 Size is shown as a share of your account at a fixed {CFG['risk_per_card_pct']}% risk.<br>
-<a href="{SITE}/cut/" style="color:#0a8f74">{CFG['site']}</a> · {addr}<br>
+<a href="{SITE}/" style="color:#0a8f74">{CFG['site']}</a> · {addr}<br>
 <a href="{{{{{{RESEND_UNSUBSCRIBE_URL}}}}}}" style="color:{dim}">Unsubscribe</a></td></tr>
 </table></td></tr></table></body></html>"""
 
