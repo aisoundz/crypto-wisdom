@@ -1186,6 +1186,7 @@ var CK='cw_key',VK='cw_vault5',HK='cw_hold5',TK='cw_thesis',LK='cw_len';
 
 /* ===== STATE ===== */
 var WISDOM_PROXY_URL='https://cryptowisdom-proxy.aisoundz9.workers.dev';
+var CW_MODEL='claude-sonnet-4-5'; // single place to change the Claude model
 var PROXY_SENTINEL='PROXY_MODE'; // sentinel; flips to real key when user BYOKs
 var claudeKey=PROXY_SENTINEL,answerLen='medium',autoVoice=true,voiceSpeed=1.0;
 var top50=[],holdings=[],theses=[],liveIntel={};
@@ -1480,7 +1481,7 @@ async function refreshBrief(){
     if(bodyEl){bodyEl.textContent=body;bodyEl.style.color='var(--text2)';bodyEl.style.fontStyle='normal';}
     window._briefDone=true;
   }catch(e){
-    if(pqEl)pqEl.textContent='Check your API key';
+    if(pqEl)pqEl.textContent=_errLabel(e);
     if(bodyEl){bodyEl.textContent='Error: '+e.message;bodyEl.style.color='var(--red)';}
   }
 }
@@ -2301,8 +2302,19 @@ async function _callDirect(payload){
     headers:{'Content-Type':'application/json','x-api-key':claudeKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
     body:JSON.stringify(payload)
   });
-  if(!r.ok){var err=await r.json().catch(function(){return{};});throw new Error(err.error?err.error.message:'API error '+r.status);}
+  if(!r.ok){var err=await r.json().catch(function(){return{};});throw _apiErr(r.status,err.error?err.error.message:'API error '+r.status);}
   var data=await r.json();return data.content.map(function(c){return c.type==='text'?c.text:'';}).join('');
+}
+
+/* Error carrying the HTTP status, so the UI can say what actually failed */
+function _apiErr(status,msg){var e=new Error(msg);e.status=status;return e;}
+function _errLabel(e){
+  var s=e&&e.status;
+  if(s===401||s===403)return 'API key rejected';
+  if(s===404)return 'Model unavailable';
+  if(s===429)return 'Rate limit reached';
+  if(s>=500)return 'Wisdom is temporarily unavailable';
+  return 'Connection issue';
 }
 
 async function _callProxy(payload){
@@ -2314,21 +2326,21 @@ async function _callProxy(payload){
   if(r.status===429){
     var qe=await r.json().catch(function(){return{};});
     showQuotaExhausted();
-    throw new Error((qe.error&&qe.error.message)||'Free quota exhausted');
+    throw _apiErr(429,(qe.error&&qe.error.message)||'Free quota exhausted');
   }
-  if(!r.ok){var err=await r.json().catch(function(){return{};});throw new Error((err.error&&err.error.message)||'Proxy error '+r.status);}
+  if(!r.ok){var err=await r.json().catch(function(){return{};});throw _apiErr(r.status,(err.error&&err.error.message)||'Proxy error '+r.status);}
   var data=await r.json();return data.content.map(function(c){return c.type==='text'?c.text:'';}).join('');
 }
 
 function _todayUTC(){return new Date().toISOString().slice(0,10);}
 async function callClaude(msgs,maxTok,cacheKey,cacheTtl){
-  var payload={model:'claude-sonnet-4-20250514',max_tokens:maxTok||800,messages:msgs};
+  var payload={model:CW_MODEL,max_tokens:maxTok||800,messages:msgs};
   if(_isBYOK())return _callDirect(payload);
   if(cacheKey){payload.cache_key=cacheKey;if(cacheTtl)payload.cache_ttl_seconds=cacheTtl;}
   return _callProxy(payload);
 }
 async function callClaudeWithSys(sys,msgs,cacheKey,cacheTtl){
-  var payload={model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:msgs};
+  var payload={model:CW_MODEL,max_tokens:1000,system:sys,messages:msgs};
   if(_isBYOK())return _callDirect(payload);
   if(cacheKey){payload.cache_key=cacheKey;if(cacheTtl)payload.cache_ttl_seconds=cacheTtl;}
   return _callProxy(payload);
