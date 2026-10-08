@@ -1,0 +1,100 @@
+{
+ "edition": "The Crypto Cut",
+ "edition_date": "2026-10-08",
+ "close_date": "2026-10-07",
+ "day": 1,
+ "window_days": 90,
+ "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
+ "counts": {
+  "scanned": 50,
+  "fired": 4,
+  "cleared": 0,
+  "cut": 4,
+  "unavailable": 0
+ },
+ "checks": [
+  {
+   "key": "confluence",
+   "label": "Two detectors agree",
+   "fell": 4
+  },
+  {
+   "key": "liquidity",
+   "label": "Enough volume to trade",
+   "fell": 0
+  },
+  {
+   "key": "stop",
+   "label": "The stop can survive noise",
+   "fell": 0
+  },
+  {
+   "key": "target",
+   "label": "The target is a level we found",
+   "fell": 0
+  },
+  {
+   "key": "reward",
+   "label": "The reward covers the risk",
+   "fell": 0
+  },
+  {
+   "key": "cooldown",
+   "label": "Not on cooldown",
+   "fell": 0
+  }
+ ],
+ "cards": [],
+ "cut": [
+  {
+   "symbol": "AAVE",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "RENDER",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "TIA",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "IMX",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  }
+ ],
+ "market": {
+  "btc_close": 83275.06,
+  "btc_7d": -0.34
+ },
+ "record": {
+  "published": {
+   "resolved": 0,
+   "avg_r": null,
+   "ambiguous": 0,
+   "open": 0
+  },
+  "cut": {
+   "resolved": 0,
+   "avg_r": null,
+   "ambiguous": 0,
+   "open": 3
+  },
+  "min_n_to_report": 30
+ },
+ "unavailable": {},
+ "generated_at": "2026-10-08T22:49:35+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-08.png"
+}

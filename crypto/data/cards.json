@@ -1,0 +1,47 @@
+[
+ {
+  "edition_date": "2026-10-08",
+  "close_date": "2026-10-07",
+  "symbol": "TIA",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.4713,
+  "stop": 0.4209,
+  "target": 0.5377,
+  "rr": 1.32,
+  "size_pct": 4.7,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-08",
+  "close_date": "2026-10-07",
+  "symbol": "RENDER",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 2.0265,
+  "stop": 1.86,
+  "target": 2.1997,
+  "rr": 1.04,
+  "size_pct": 6.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-08",
+  "close_date": "2026-10-07",
+  "symbol": "IMX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.17555,
+  "stop": 0.1626,
+  "target": 0.20498,
+  "rr": 2.27,
+  "size_pct": 6.8,
+  "status": "open"
+ }
+]
