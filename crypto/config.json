@@ -1,0 +1,37 @@
+{
+  "edition_name": "The Crypto Cut",
+  "brand": "Crypto Wisdom",
+  "site": "cryptowisdom.io",
+  "window_days": 90,
+  "universe_frozen": "2026-10-08",
+  "universe": [
+    "BTC", "ETH", "SOL", "XRP", "DOGE", "ADA", "AVAX", "LINK", "DOT", "LTC",
+    "BCH", "XLM", "HBAR", "SUI", "SHIB", "UNI", "NEAR", "APT", "ICP", "ETC",
+    "FIL", "ARB", "OP", "AAVE", "INJ", "TIA", "SEI", "RENDER", "ATOM", "ALGO",
+    "GRT", "CRV", "LDO", "SNX", "COMP", "XTZ", "IMX", "PEPE", "BONK", "ONDO",
+    "POL", "HYPE", "BNB", "TON", "WIF", "FET", "ENA", "STX", "QNT", "ZEC"
+  ],
+  "detectors": {
+    "volume_expansion": {"vol_multiple": 2.0, "median_days": 30},
+    "range_breakout": {"lookback_days": 20},
+    "relative_strength": {"days": 7, "margin_pct": 5.0}
+  },
+  "confluence_required": 2,
+  "gates": {
+    "min_daily_dollar_volume": 2000000,
+    "atr_days": 14,
+    "stop_lookback_days": 10,
+    "stop_min_atr": 1.0,
+    "stop_max_pct": 15.0,
+    "min_reward_risk": 2.0,
+    "target_lookback_days": 120,
+    "cooldown_days": 7
+  },
+  "risk_per_card_pct": 0.5,
+  "time_stop_days": 10,
+  "max_published_cards": 5,
+  "publish_gates": {
+    "min_scanned": 40,
+    "max_candle_age_hours": 36
+  }
+}

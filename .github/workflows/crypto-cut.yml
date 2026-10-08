@@ -1,0 +1,125 @@
+name: Crypto Cut daily
+
+# One edition per UTC day, built from the previous daily close.
+# Three slots: the first one publishes; the later two are retries that only
+# send what has not gone out yet (crypto/data/sent.json is the guard), so a
+# late or duplicate firing can never send an edition twice.
+on:
+  schedule:
+    - cron: "7 12 * * *"
+    - cron: "7 13 * * *"
+    - cron: "37 15 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Build everything but send nothing"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: crypto-cut
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      CRYPTO_TELEGRAM_CHANNEL_ID: ${{ secrets.CRYPTO_TELEGRAM_CHANNEL_ID }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      CRYPTO_RESEND_SEGMENT_ID: b4f5595a-b89f-4970-92b9-d0b516b21ae7
+      CRYPTO_FROM: "The Crypto Cut <cut@mail.financewisdom.io>"
+      CRYPTO_REPLY_TO: signal@financewisdom.io
+      SIGNAL_POSTAL_ADDRESS: ${{ vars.SIGNAL_POSTAL_ADDRESS }}
+      DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Decide what today needs
+        id: plan
+        run: |
+          TODAY=$(date -u +%F)
+          echo "today=$TODAY" >> "$GITHUB_OUTPUT"
+          python3 - <<'EOF' >> "$GITHUB_OUTPUT"
+          import json, os, datetime as dt
+          today = dt.datetime.now(dt.timezone.utc).date().isoformat()
+          built = os.path.exists(f"crypto/editions/{today}.json")
+          sent = {}
+          try: sent = json.load(open("crypto/data/sent.json")).get(today, {})
+          except FileNotFoundError: pass
+          need_tg = bool(os.environ.get("CRYPTO_TELEGRAM_CHANNEL_ID")) and not sent.get("telegram")
+          need_em = bool(os.environ.get("RESEND_API_KEY")) and not sent.get("email")
+          print(f"built={'true' if built else 'false'}")
+          print(f"send={'true' if (need_tg or need_em) else 'false'}")
+          print(f"email={'true' if need_em else 'false'}")
+          EOF
+          cat "$GITHUB_OUTPUT"
+
+      - name: Scan and build the edition
+        if: steps.plan.outputs.built == 'false'
+        run: python3 crypto/scan.py
+
+      - name: Render the card
+        if: steps.plan.outputs.built == 'false'
+        run: |
+          pip install --quiet playwright==1.47.0
+          python3 -m playwright install --with-deps chromium > /dev/null
+          python3 crypto/render_card.py
+
+      - name: Publish the edition to the site
+        if: steps.plan.outputs.built == 'false'
+        run: |
+          git config user.name "crypto-cut-bot"
+          git config user.email "crypto-cut-bot@users.noreply.github.com"
+          git add crypto/editions crypto/data
+          git commit -m "Crypto Cut ${{ steps.plan.outputs.today }}"
+          git push origin HEAD:main
+
+      - name: Rebuild send files for a retry
+        if: steps.plan.outputs.built == 'true' && steps.plan.outputs.send == 'true'
+        run: |
+          # The edition is already published; regenerate only the message text from it.
+          python3 - <<'EOF'
+          import json, os, sys
+          sys.path.insert(0, "crypto")
+          import scan
+          e = json.load(open("crypto/editions/latest.json"))
+          os.makedirs("crypto/out", exist_ok=True)
+          open("crypto/out/telegram.txt", "w").write(scan.telegram_text(e))
+          open("crypto/out/caption.txt", "w").write(scan.caption_text(e))
+          open("crypto/out/email.html", "w").write(scan.email_html(e))
+          open("crypto/out/email.txt", "w").write(scan.email_text(e))
+          EOF
+
+      - name: Wait for the site to serve today's card
+        if: steps.plan.outputs.send == 'true' && steps.plan.outputs.email == 'true'
+        run: |
+          URL="https://cryptowisdom.io/crypto/editions/${{ steps.plan.outputs.today }}.png"
+          for i in $(seq 1 30); do
+            if curl -sfI "$URL" > /dev/null; then echo "live: $URL"; exit 0; fi
+            sleep 10
+          done
+          echo "card not live after 5 minutes; email will still send with the link"
+
+      - name: Send
+        if: steps.plan.outputs.send == 'true'
+        run: python3 crypto/send.py
+
+      - name: Record what was sent
+        if: always() && steps.plan.outputs.send == 'true'
+        run: |
+          git config user.name "crypto-cut-bot"
+          git config user.email "crypto-cut-bot@users.noreply.github.com"
+          git add crypto/data/sent.json
+          if git diff --cached --quiet; then echo "nothing new sent"; exit 0; fi
+          git commit -m "Crypto Cut ${{ steps.plan.outputs.today }} sent"
+          git pull --rebase origin main
+          git push origin HEAD:main

@@ -832,6 +832,41 @@ input[type="text"]:focus,textarea:focus,.book-inp:focus,.book-ta:focus{border-co
 .badge.t{background:var(--teal-bg);border:1px solid var(--teal-border);color:var(--teal)}
 .badge.a{background:var(--gold-bg);border:1px solid var(--gold-border);color:var(--gold)}
 
+.cc{padding:16px;margin-top:10px}
+.cc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.cc-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.cc-meta{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--text3);text-align:right;line-height:1.7}
+.cc-meta b{color:var(--teal);font-weight:400}
+.cc-h{font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:.95;letter-spacing:.01em;margin:14px 0 8px;color:var(--text)}
+.cc-h span{color:var(--text2)}
+.cc-sub{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:12px}
+.cc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.cc-stat{border:1px solid var(--border2);border-radius:var(--radius-sm);padding:10px 12px}
+.cc-stat .n{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;color:var(--text)}
+.cc-stat .l{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.16em;color:var(--text3);margin-top:4px}
+.cc-stat.go .n{color:var(--teal)}
+.cc-box{border:1px solid var(--border2);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:12px;font-size:12px;color:var(--text2);line-height:1.5}
+.cc-box b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:20px;color:var(--text);margin-bottom:4px}
+.cc-card{border:1px solid var(--teal-border);background:var(--teal-bg);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px}
+.cc-card.hl{box-shadow:0 0 0 2px var(--teal)}
+.cc-sym{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text)}
+.cc-det{font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);margin-left:8px;letter-spacing:.06em}
+.cc-lv{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 12px;font-family:'DM Mono',monospace;font-size:12px;color:var(--text);margin:8px 0 10px}
+.cc-lv i{display:block;font-style:normal;font-size:8px;letter-spacing:.16em;color:var(--text3)}
+.cc-lv .stp{color:var(--red)}
+.cc-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.18em;color:var(--text3);margin:12px 0 8px;text-transform:uppercase}
+.cc-chips{display:flex;flex-wrap:wrap;gap:6px}
+.cc-chip{border:1px solid var(--border2);border-radius:10px;padding:6px 9px;font-size:10px;color:var(--text3)}
+.cc-chip b{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:15px;color:var(--text);margin-right:5px}
+.cc-checks{font-size:12px;line-height:1.75;color:var(--text3)}
+.cc-checks .x{color:var(--red)}
+.cc-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.cc-badge{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--teal);border:1px solid var(--teal-border);border-radius:6px;padding:5px 8px}
+.cc-more{font-size:11px;color:var(--teal);cursor:pointer;background:none;border:none;padding:0;font-family:inherit}
+.cc-detail{display:none;margin-top:10px}
+.cc-detail.open{display:block}
+.cc-detail ol{padding-left:18px;font-size:12px;color:var(--text2);line-height:1.6}
+.cc-join{display:inline-block;font-size:11px;font-weight:600;color:#001510;background:var(--teal);border-radius:99px;padding:7px 14px;text-decoration:none}
 </style>
 </head>
 <body>
@@ -884,6 +919,36 @@ input[type="text"]:focus,textarea:focus,.book-inp:focus,.book-ta:focus{border-co
     <div class="brief-pq-lbl">Key Insight Today</div>
     <div id="briefPQ" style="font-size:13px;font-weight:300;color:var(--text3);font-style:italic;min-height:20px">Loading your daily intelligence…</div>
   </div></div>
+  <div class="card cc" id="cryptoCut">
+    <div class="cc-top"><div><div class="cc-tag">The Crypto Cut</div><div style="font-size:11px;color:var(--text3);margin-top:3px">Daily signal from the close · free</div></div>
+    <div class="cc-meta" id="ccMeta">—</div></div>
+    <div class="cc-h" id="ccHead">Loading today's cut…</div>
+    <div class="cc-sub" id="ccSub"></div>
+    <div class="cc-stats"><div class="cc-stat"><div class="n" id="ccScanned">—</div><div class="l">SCANNED</div></div>
+      <div class="cc-stat"><div class="n" id="ccFired">—</div><div class="l">FIRED</div></div>
+      <div class="cc-stat go"><div class="n" id="ccCleared">—</div><div class="l">CLEARED</div></div></div>
+    <div id="ccBody"></div>
+    <div id="ccCutWrap"></div>
+    <button class="cc-more" onclick="document.getElementById('ccDetail').classList.toggle('open')">The checks, the record and the kill criteria ›</button>
+    <div class="cc-detail" id="ccDetail">
+      <div class="cc-lbl">The checks, this edition</div><div class="cc-checks" id="ccChecks"></div>
+      <div class="cc-lbl">How a coin makes the cut</div>
+      <ol><li>Two of three detectors agree: volume expansion, a 20-day range breakout, or strength against BTC over 7 days.</li>
+      <li>At least $2M traded on the day.</li>
+      <li>The stop sits at the 10-day low and is at least one day's average range away, and no more than 15% away.</li>
+      <li>The target is a real level above: the highest high of the last 120 days.</li>
+      <li>The reward is at least 2x the risk.</li>
+      <li>Not already published in the last 7 days.</li></ol>
+      <div class="cc-lbl">The record</div><div class="cc-checks" id="ccRecord">Nothing resolved yet.</div>
+      <div class="cc-lbl">Kill criteria, set before the first reader</div>
+      <ol><li>After 30 or more resolved cards, published cards average zero or less in R.</li>
+      <li>Over the 90-day window, published cards do no better than The Cut.</li>
+      <li>Any edition goes out with data that failed a gate.</li>
+      <li>Two wrong or duplicate editions inside the window.</li></ol>
+      <div style="font-size:11px;color:var(--text3);line-height:1.6;margin-top:10px">Every reader gets the same edition. It is general commentary, not personal advice. Size is a share of your account at a fixed 0.5% risk per card. Crypto can lose most or all of its value.</div>
+    </div>
+    <div class="cc-foot"><span class="cc-badge" id="ccBadge">VALIDATION WINDOW · UNPROVEN</span><span id="ccJoin"></span></div>
+  </div>
   <div class="card">
     <div class="brief-card-top"><div class="brief-badge">Daily Intelligence Report</div><div class="brief-date" id="briefDate">—</div></div>
     <div class="brief-body" id="briefBody" style="color:var(--text3);font-style:italic">Preparing your briefing…</div>
@@ -1225,8 +1290,70 @@ function init(){
   renderGuide();
   goScreen('briefing');
   fetchData();
+  loadCryptoCut();
 }
 window.addEventListener('DOMContentLoaded',init);
+
+/* ===== THE CRYPTO CUT =====
+   Reads the daily edition the crypto-cut workflow publishes to /crypto/editions/.
+   A ?signal=YYYY-MM-DD-SYM link from Telegram or email highlights that card. */
+var CRYPTO_CUT_TELEGRAM='';  // public t.me link for the crypto channel, once created
+var ccEdition=null;
+function _ccPrice(p){return p>=1000?'$'+Math.round(p).toLocaleString():p>=1?'$'+p.toFixed(2):p>=0.01?'$'+p.toFixed(4):'$'+p.toPrecision(3);}
+function _ccEsc(t){var d=document.createElement('div');d.textContent=t==null?'':String(t);return d.innerHTML;}
+async function loadCryptoCut(){
+  var head=document.getElementById('ccHead');if(!head)return;
+  var join=document.getElementById('ccJoin');
+  if(join)join.innerHTML=CRYPTO_CUT_TELEGRAM?'<a class="cc-join" href="'+CRYPTO_CUT_TELEGRAM+'" target="_blank" rel="noopener">Get it on Telegram</a>':'<span style="font-size:11px;color:var(--text3)">Telegram channel opening soon</span>';
+  try{
+    var r=await fetch('crypto/editions/latest.json?t='+Date.now());
+    if(!r.ok)throw new Error(r.status);
+    var e=await r.json();ccEdition=e;
+  }catch(err){
+    head.innerHTML='First edition<br><span>publishes at the next close.</span>';
+    document.getElementById('ccSub').textContent='50 liquid coins, scanned once a day at the UTC close. Most days, nothing makes the cut.';
+    return;
+  }
+  var c=e.counts,d=new Date(e.edition_date+'T12:00:00Z');
+  document.getElementById('ccMeta').innerHTML=d.toLocaleDateString('en-US',{weekday:'short',day:'numeric',month:'short',timeZone:'UTC'}).toUpperCase()+'<br><b>DAY '+e.day+' / '+e.window_days+'</b>';
+  head.innerHTML=c.cleared===0?'Nothing made<br><span>the cut today.</span>':(c.cleared===1?'One coin':c.cleared+' coins')+' made<br><span>the cut.</span>';
+  document.getElementById('ccSub').textContent=c.scanned+' liquid coins, scanned at the '+e.close_date+' UTC close. '+(c.cleared===0?'Nothing cleared every check.':c.fired+' fired, '+c.cleared+' cleared every check.');
+  document.getElementById('ccScanned').textContent=c.scanned;
+  document.getElementById('ccFired').textContent=c.fired;
+  document.getElementById('ccCleared').textContent=c.cleared;
+  var want=(new URLSearchParams(location.search).get('signal')||'');
+  var body='';
+  if(!e.cards.length){
+    body='<div class="cc-box"><b>And that is the point.</b>Most days look like this. We do not publish to fill space. Hearing clearly that nothing is worth your attention is the most valuable thing we send.</div>';
+  }else{
+    e.cards.forEach(function(k,i){
+      var hl=want===e.edition_date+'-'+k.symbol;
+      body+='<div class="cc-card'+(hl?' hl':'')+'" id="cc-'+_ccEsc(k.symbol)+'"><span class="cc-sym">'+_ccEsc(k.symbol)+'</span><span class="cc-det">'+_ccEsc(k.detectors.join(' · '))+'</span>'+
+        '<div class="cc-lv"><div><i>ENTRY</i>'+_ccPrice(k.entry)+'</div><div class="stp"><i>STOP</i>'+_ccPrice(k.stop)+' ('+k.stop_pct.toFixed(1)+'%)</div>'+
+        '<div><i>TARGET</i>'+_ccPrice(k.target)+'</div><div><i>REWARD · SIZE</i>'+k.rr.toFixed(1)+'x · '+k.size_pct.toFixed(1)+'%</div></div>'+
+        '<button class="btn" onclick="askAboutSignal('+i+')">Think it through with Wisdom ›</button></div>';
+    });
+  }
+  document.getElementById('ccBody').innerHTML=body;
+  document.getElementById('ccCutWrap').innerHTML=e.cut.length?'<div class="cc-lbl">✂ The Cut: what we passed on</div><div class="cc-chips">'+
+    e.cut.slice(0,12).map(function(x){return'<span class="cc-chip"><b>'+_ccEsc(x.symbol)+'</b>'+_ccEsc(x.reason)+'</span>';}).join('')+
+    (e.cut.length>12?'<span class="cc-chip">+'+(e.cut.length-12)+' more</span>':'')+'</div>':'';
+  document.getElementById('ccChecks').innerHTML=e.checks.map(function(ch){return ch.fell?'<div class="x">× '+_ccEsc(ch.label)+': '+ch.fell+' fell</div>':'<div>· '+_ccEsc(ch.label)+'</div>';}).join('');
+  var p=e.record.published,n=e.record.min_n_to_report;
+  document.getElementById('ccRecord').textContent=p.resolved<n?'Not enough resolved cards to report a record yet ('+p.resolved+' of '+n+'). '+p.open+' published card'+(p.open===1?' is':'s are')+' still open.':
+    'Published cards average '+(p.avg_r>=0?'+':'')+p.avg_r.toFixed(2)+'R over '+p.resolved+' resolved, against '+(e.record.cut.avg_r==null?'n/a':(e.record.cut.avg_r>=0?'+':'')+e.record.cut.avg_r.toFixed(2)+'R')+' for The Cut.';
+  if(want||location.search.indexOf('crypto-cut')>=0){
+    var tgt=document.getElementById('cc-'+want.split('-').pop())||document.getElementById('cryptoCut');
+    setTimeout(function(){goScreen('briefing');tgt.scrollIntoView({behavior:'smooth',block:'center'});},400);
+  }
+}
+function askAboutSignal(i){
+  var e=ccEdition,k=e&&e.cards[i];if(!k)return;
+  startChat('bia');
+  if(curScreen!=='chat')return;
+  sendStarter('The Crypto Cut flagged '+k.symbol+' on '+e.edition_date+' ('+k.detectors.join(', ')+'). Entry '+_ccPrice(k.entry)+', stop '+_ccPrice(k.stop)+' ('+k.stop_pct.toFixed(1)+'% away), target '+_ccPrice(k.target)+', reward '+k.rr.toFixed(1)+'x risk, suggested size '+k.size_pct.toFixed(1)+'% of account at 0.5% risk. This signal is unproven. Do not tell me to buy it. Stress-test my decision: does it fit my portfolio, what would make it wrong, and what should I check before I act?');
+}
+
 
 function setHalving(){
   var last=new Date('2024-04-19'),next=new Date('2028-04-20'),now=new Date();
