@@ -220,6 +220,10 @@ def main():
         print("no editions in the week; nothing to recap")
         return 0
     key = w["week_end"]
+    if a.build_only or send.env("DRY_RUN") == "1":
+        print(f"preview {w['week_start']}..{key}: {w['editions']} editions, fired {w['fired']}, cleared {w['cleared']} (nothing saved or sent)")
+        print(telegram_text(w))
+        return 0
     scan.save_json(os.path.join(WEEKLY, f"{key}.json"), w)
     idx = scan.load_json(os.path.join(WEEKLY, "index.json"), [])
     idx = [x for x in idx if x["week_end"] != key]
@@ -228,13 +232,9 @@ def main():
     idx.sort(key=lambda x: x["week_end"], reverse=True)
     scan.save_json(os.path.join(WEEKLY, "index.json"), idx)
     print(f"weekly {w['week_start']}..{key}: {w['editions']} editions, fired {w['fired']}, cleared {w['cleared']}")
-    if a.build_only:
-        print(telegram_text(w))
-        return 0
-
     sent = scan.load_json(SENT, {})
     done = sent.setdefault(key, {})
-    dry = send.env("DRY_RUN") == "1"
+    dry = False
     failures = []
     tg_token, tg_chan = send.env("TELEGRAM_BOT_TOKEN"), send.env("CRYPTO_TELEGRAM_CHANNEL_ID")
     rs_key, rs_seg = send.env("RESEND_API_KEY"), send.env("CRYPTO_RESEND_SEGMENT_ID")
