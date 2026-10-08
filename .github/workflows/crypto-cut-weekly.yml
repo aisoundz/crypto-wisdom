@@ -1,0 +1,65 @@
+name: Crypto Cut weekly
+
+# Sunday recap of the last seven daily editions. Runs after the Sunday daily
+# edition (12:07 UTC) has published. The second slot is a retry: weekly.py
+# only sends channels not yet recorded in crypto/data/weekly_sent.json.
+on:
+  schedule:
+    - cron: "7 16 * * 0"
+    - cron: "37 18 * * 0"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Recap the week ending on this date (YYYY-MM-DD). Blank = today."
+        required: false
+        default: ""
+      dry_run:
+        description: "Build everything but send nothing"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: crypto-cut
+  cancel-in-progress: false
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      CRYPTO_TELEGRAM_CHANNEL_ID: ${{ secrets.CRYPTO_TELEGRAM_CHANNEL_ID }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      CRYPTO_RESEND_SEGMENT_ID: b4f5595a-b89f-4970-92b9-d0b516b21ae7
+      CRYPTO_FROM: "The Crypto Cut <cut@mail.financewisdom.io>"
+      CRYPTO_REPLY_TO: signal@financewisdom.io
+      SIGNAL_POSTAL_ADDRESS: ${{ vars.SIGNAL_POSTAL_ADDRESS }}
+      DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build and send the weekly recap
+        run: |
+          if [ -n "${{ inputs.date }}" ]; then
+            python3 crypto/weekly.py --date "${{ inputs.date }}"
+          else
+            python3 crypto/weekly.py
+          fi
+
+      - name: Record the recap
+        if: always()
+        run: |
+          git config user.name "crypto-cut-bot"
+          git config user.email "crypto-cut-bot@users.noreply.github.com"
+          git add crypto/weekly crypto/data/weekly_sent.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "nothing to record"; exit 0; fi
+          git commit -m "Crypto Cut weekly $(date -u +%F)"
+          git pull --rebase origin main
+          git push origin HEAD:main
