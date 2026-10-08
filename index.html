@@ -1297,7 +1297,7 @@ window.addEventListener('DOMContentLoaded',init);
 /* ===== THE CRYPTO CUT =====
    Reads the daily edition the crypto-cut workflow publishes to /crypto/editions/.
    A ?signal=YYYY-MM-DD-SYM link from Telegram or email highlights that card. */
-var CRYPTO_CUT_TELEGRAM='';  // public t.me link for the crypto channel, once created
+var CRYPTO_CUT_TELEGRAM='https://t.me/cryptowisdomdaily';  // public t.me link for the crypto channel, once created
 var ccEdition=null;
 function _ccPrice(p){return p>=1000?'$'+Math.round(p).toLocaleString():p>=1?'$'+p.toFixed(2):p>=0.01?'$'+p.toFixed(4):'$'+p.toPrecision(3);}
 function _ccEsc(t){var d=document.createElement('div');d.textContent=t==null?'':String(t);return d.innerHTML;}
