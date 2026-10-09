@@ -27,7 +27,9 @@
   "target": 2.1997,
   "rr": 1.04,
   "size_pct": 6.1,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-10-08"
  },
  {
   "edition_date": "2026-10-08",
@@ -42,6 +44,53 @@
   "target": 0.20498,
   "rr": 2.27,
   "size_pct": 6.8,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-09",
+  "close_date": "2026-10-08",
+  "symbol": "FIL",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.0704,
+  "stop": 0.9781,
+  "target": 1.228,
+  "rr": 1.71,
+  "size_pct": 5.8,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-09",
+  "close_date": "2026-10-08",
+  "symbol": "ATOM",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 1.7592,
+  "stop": 1.6108,
+  "target": 2.0416,
+  "rr": 1.9,
+  "size_pct": 5.9,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-09",
+  "close_date": "2026-10-08",
+  "symbol": "IMX",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 0.18294,
+  "stop": 0.1626,
+  "target": 0.20498,
+  "rr": 1.08,
+  "size_pct": 4.5,
   "status": "open"
  }
 ]
