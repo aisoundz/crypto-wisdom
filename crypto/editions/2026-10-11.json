@@ -1,0 +1,144 @@
+{
+ "edition": "The Crypto Cut",
+ "edition_date": "2026-10-11",
+ "close_date": "2026-10-10",
+ "day": 4,
+ "window_days": 90,
+ "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
+ "counts": {
+  "scanned": 50,
+  "fired": 10,
+  "cleared": 0,
+  "cut": 10,
+  "unavailable": 0
+ },
+ "checks": [
+  {
+   "key": "confluence",
+   "label": "Two detectors agree",
+   "fell": 9
+  },
+  {
+   "key": "liquidity",
+   "label": "Enough volume to trade",
+   "fell": 0
+  },
+  {
+   "key": "stop",
+   "label": "The stop can survive noise",
+   "fell": 1
+  },
+  {
+   "key": "target",
+   "label": "The target is a level we found",
+   "fell": 0
+  },
+  {
+   "key": "reward",
+   "label": "The reward covers the risk",
+   "fell": 0
+  },
+  {
+   "key": "cooldown",
+   "label": "Not on cooldown",
+   "fell": 0
+  }
+ ],
+ "cards": [],
+ "cut": [
+  {
+   "symbol": "TIA",
+   "reason": "Stop too far away",
+   "detectors": [
+    "Volume expansion",
+    "Range breakout",
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "NEAR",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "FIL",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "DOT",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ATOM",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "STX",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "OP",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
+   ]
+  },
+  {
+   "symbol": "APT",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "TON",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
+   ]
+  },
+  {
+   "symbol": "IMX",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  }
+ ],
+ "market": {
+  "btc_close": 82910.8,
+  "btc_7d": -2.16
+ },
+ "record": {
+  "published": {
+   "resolved": 0,
+   "avg_r": null,
+   "ambiguous": 0,
+   "open": 0
+  },
+  "cut": {
+   "resolved": 6,
+   "avg_r": 1.14,
+   "ambiguous": 0,
+   "open": 7
+  },
+  "min_n_to_report": 30
+ },
+ "unavailable": {},
+ "generated_at": "2026-10-11T12:11:24+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-11.png"
+}
