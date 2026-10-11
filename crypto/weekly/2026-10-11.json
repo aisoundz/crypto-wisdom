@@ -1,0 +1,135 @@
+{
+ "week_start": "2026-10-05",
+ "week_end": "2026-10-11",
+ "editions": 4,
+ "quiet_days": 4,
+ "scanned_avg": 50,
+ "fired": 30,
+ "cleared": 0,
+ "cut": 30,
+ "days": [
+  {
+   "date": "2026-10-08",
+   "day": 1,
+   "fired": 4,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-09",
+   "day": 2,
+   "fired": 5,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-10",
+   "day": 3,
+   "fired": 11,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-11",
+   "day": 4,
+   "fired": 10,
+   "cleared": 0,
+   "symbols": []
+  }
+ ],
+ "published": [],
+ "resolved_published": [],
+ "resolved_cut": {
+  "count": 6,
+  "avg_r": 1.14
+ },
+ "checks": [
+  {
+   "key": "confluence",
+   "label": "Two detectors agree",
+   "fell": 23
+  },
+  {
+   "key": "liquidity",
+   "label": "Enough volume to trade",
+   "fell": 2
+  },
+  {
+   "key": "stop",
+   "label": "The stop can survive noise",
+   "fell": 4
+  },
+  {
+   "key": "target",
+   "label": "The target is a level we found",
+   "fell": 0
+  },
+  {
+   "key": "reward",
+   "label": "The reward covers the risk",
+   "fell": 1
+  },
+  {
+   "key": "cooldown",
+   "label": "Not on cooldown",
+   "fell": 0
+  }
+ ],
+ "top_reasons": [
+  [
+   "Single detector",
+   23
+  ],
+  [
+   "Stop too far away",
+   4
+  ],
+  [
+   "Thin volume",
+   2
+  ],
+  [
+   "Reward under 2x risk",
+   1
+  ]
+ ],
+ "most_active": [
+  [
+   "TIA",
+   4
+  ],
+  [
+   "IMX",
+   4
+  ],
+  [
+   "ATOM",
+   3
+  ],
+  [
+   "FIL",
+   3
+  ],
+  [
+   "STX",
+   3
+  ]
+ ],
+ "record": {
+  "published": {
+   "resolved": 0,
+   "avg_r": null,
+   "ambiguous": 0,
+   "open": 0
+  },
+  "cut": {
+   "resolved": 6,
+   "avg_r": 1.14,
+   "ambiguous": 0,
+   "open": 7
+  },
+  "min_n_to_report": 30
+ },
+ "window_day": 4,
+ "window_days": 90
+}
