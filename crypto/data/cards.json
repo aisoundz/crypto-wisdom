@@ -63,7 +63,9 @@
   "target": 1.228,
   "rr": 1.71,
   "size_pct": 5.8,
-  "status": "open"
+  "status": "target",
+  "r": 1.71,
+  "resolved": "2026-10-11"
  },
  {
   "edition_date": "2026-10-09",
@@ -114,7 +116,9 @@
   "target": 5.5935,
   "rr": 1.23,
   "size_pct": 4.2,
-  "status": "open"
+  "status": "target",
+  "r": 1.23,
+  "resolved": "2026-10-11"
  },
  {
   "edition_date": "2026-10-10",
@@ -129,7 +133,9 @@
   "target": 1.228,
   "rr": 1.36,
   "size_pct": 5.1,
-  "status": "open"
+  "status": "target",
+  "r": 1.36,
+  "resolved": "2026-10-11"
  },
  {
   "edition_date": "2026-10-10",
@@ -206,6 +212,21 @@
   "target": 1.842,
   "rr": 2.91,
   "size_pct": 5.7,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-12",
+  "close_date": "2026-10-11",
+  "symbol": "ONDO",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.5214,
+  "stop": 0.43894,
+  "target": 0.60777,
+  "rr": 1.05,
+  "size_pct": 3.2,
   "status": "open"
  }
 ]

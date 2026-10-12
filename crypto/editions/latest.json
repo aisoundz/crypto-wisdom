@@ -1,15 +1,15 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-10-11",
- "close_date": "2026-10-10",
- "day": 4,
+ "edition_date": "2026-10-12",
+ "close_date": "2026-10-11",
+ "day": 5,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 10,
+  "fired": 12,
   "cleared": 0,
-  "cut": 10,
+  "cut": 12,
   "unavailable": 0
  },
  "checks": [
@@ -26,7 +26,7 @@
   {
    "key": "stop",
    "label": "The stop can survive noise",
-   "fell": 1
+   "fell": 3
   },
   {
    "key": "target",
@@ -47,7 +47,7 @@
  "cards": [],
  "cut": [
   {
-   "symbol": "TIA",
+   "symbol": "APT",
    "reason": "Stop too far away",
    "detectors": [
     "Volume expansion",
@@ -57,13 +57,43 @@
   },
   {
    "symbol": "NEAR",
+   "reason": "Stop too far away",
+   "detectors": [
+    "Range breakout",
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "FIL",
+   "reason": "Stop too far away",
+   "detectors": [
+    "Range breakout",
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ONDO",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
    ]
   },
   {
-   "symbol": "FIL",
+   "symbol": "TIA",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ICP",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "INJ",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -84,31 +114,17 @@
    ]
   },
   {
+   "symbol": "OP",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
    "symbol": "STX",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "OP",
-   "reason": "Single detector",
-   "detectors": [
-    "Volume expansion"
-   ]
-  },
-  {
-   "symbol": "APT",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "TON",
-   "reason": "Single detector",
-   "detectors": [
-    "Volume expansion"
    ]
   },
   {
@@ -120,8 +136,8 @@
   }
  ],
  "market": {
-  "btc_close": 82910.8,
-  "btc_7d": -2.16
+  "btc_close": 83678.29,
+  "btc_7d": -3.27
  },
  "record": {
   "published": {
@@ -131,14 +147,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 6,
-   "avg_r": 1.14,
+   "resolved": 9,
+   "avg_r": 1.24,
    "ambiguous": 0,
-   "open": 7
+   "open": 5
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-10-11T12:11:24+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-11.png"
+ "generated_at": "2026-10-12T12:11:29+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-12.png"
 }

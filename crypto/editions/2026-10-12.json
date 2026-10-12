@@ -1,0 +1,160 @@
+{
+ "edition": "The Crypto Cut",
+ "edition_date": "2026-10-12",
+ "close_date": "2026-10-11",
+ "day": 5,
+ "window_days": 90,
+ "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
+ "counts": {
+  "scanned": 50,
+  "fired": 12,
+  "cleared": 0,
+  "cut": 12,
+  "unavailable": 0
+ },
+ "checks": [
+  {
+   "key": "confluence",
+   "label": "Two detectors agree",
+   "fell": 9
+  },
+  {
+   "key": "liquidity",
+   "label": "Enough volume to trade",
+   "fell": 0
+  },
+  {
+   "key": "stop",
+   "label": "The stop can survive noise",
+   "fell": 3
+  },
+  {
+   "key": "target",
+   "label": "The target is a level we found",
+   "fell": 0
+  },
+  {
+   "key": "reward",
+   "label": "The reward covers the risk",
+   "fell": 0
+  },
+  {
+   "key": "cooldown",
+   "label": "Not on cooldown",
+   "fell": 0
+  }
+ ],
+ "cards": [],
+ "cut": [
+  {
+   "symbol": "APT",
+   "reason": "Stop too far away",
+   "detectors": [
+    "Volume expansion",
+    "Range breakout",
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "NEAR",
+   "reason": "Stop too far away",
+   "detectors": [
+    "Range breakout",
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "FIL",
+   "reason": "Stop too far away",
+   "detectors": [
+    "Range breakout",
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ONDO",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "TIA",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ICP",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "INJ",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "DOT",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ATOM",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "OP",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "STX",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "IMX",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  }
+ ],
+ "market": {
+  "btc_close": 83678.29,
+  "btc_7d": -3.27
+ },
+ "record": {
+  "published": {
+   "resolved": 0,
+   "avg_r": null,
+   "ambiguous": 0,
+   "open": 0
+  },
+  "cut": {
+   "resolved": 9,
+   "avg_r": 1.24,
+   "ambiguous": 0,
+   "open": 5
+  },
+  "min_n_to_report": 30
+ },
+ "unavailable": {},
+ "generated_at": "2026-10-12T12:11:29+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-12.png"
+}
