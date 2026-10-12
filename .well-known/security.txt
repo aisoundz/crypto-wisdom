@@ -1,0 +1,25 @@
+# Crypto Wisdom and The Crypto Cut
+# https://cryptowisdom.io
+#
+# If you have found a security problem with this site, please write to the
+# address below. A plain description and a way to reproduce it is more useful
+# than a formal report.
+#
+# Two things worth knowing before you report them, because scanners flag both
+# and neither is a leak:
+#
+# The app is bring-your-own-key. It calls the Anthropic Messages API directly
+# from the browser using a key the visitor pastes in themselves, which stays on
+# their own device. No key is embedded in these pages.
+#
+# The site also calls CoinGecko, DefiLlama, the Fear and Greed index, and a
+# Cloudflare Worker proxy belonging to this project. All four are read-only
+# market data. None of them carry a credential from the page.
+#
+# Please do not run automated scanners against the live site. Every page it
+# serves is a static file, already public in the repository.
+
+Contact: mailto:aisoundz9@gmail.com
+Expires: 2027-09-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://cryptowisdom.io/.well-known/security.txt
