@@ -228,5 +228,20 @@
   "rr": 1.05,
   "size_pct": 3.2,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-10-13",
+  "close_date": "2026-10-12",
+  "symbol": "TIA",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.5298,
+  "stop": 0.4349,
+  "target": 0.6324,
+  "rr": 1.08,
+  "size_pct": 2.8,
+  "status": "open"
  }
 ]
