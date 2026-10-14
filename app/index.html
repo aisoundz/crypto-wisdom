@@ -1293,7 +1293,20 @@ var CK='cw_key',VK='cw_vault5',HK='cw_hold5',TK='cw_thesis',LK='cw_len';
 
 /* ===== STATE ===== */
 var WISDOM_PROXY_URL='https://cryptowisdom-proxy.aisoundz9.workers.dev';
-var CW_MODEL='claude-sonnet-4-5'; // single place to change the Claude model
+// Single place to change the Claude model. Sent as payload.model on BOTH paths,
+// the Worker proxy and a visitor's own key, so this one line covers both.
+//
+// Moved off claude-sonnet-4-5 on 2026-10-14, a generation behind and the last
+// stale model string left in the portfolio. Everything else already runs
+// claude-sonnet-5-5: Realtor Wisdom, Finance Wisdom, the Agent Wisdom monitor
+// and crypto-wisdom2. Same class of model, so this is a like-for-like move and
+// not a cost or latency change.
+//
+// The lesson that produced the rest of those updates: Realtor Wisdom sat pinned
+// to a model that had aged out of the published lineup, and because its route
+// fell back silently, it kept answering from a weaker model with nothing saying
+// so. A stale pin here would fail the same quiet way.
+var CW_MODEL='claude-sonnet-5-5';
 var PROXY_SENTINEL='PROXY_MODE'; // sentinel; flips to real key when user BYOKs
 var claudeKey=PROXY_SENTINEL,answerLen='medium',autoVoice=true,voiceSpeed=1.0;
 var top50=[],holdings=[],theses=[],liveIntel={};
