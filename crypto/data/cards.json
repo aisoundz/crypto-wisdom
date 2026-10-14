@@ -197,7 +197,9 @@
   "target": 372.0,
   "rr": 4.49,
   "size_pct": 4.5,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-10-13"
  },
  {
   "edition_date": "2026-10-11",
@@ -242,6 +244,23 @@
   "target": 0.6324,
   "rr": 1.08,
   "size_pct": 2.8,
+  "status": "target",
+  "r": 1.08,
+  "resolved": "2026-10-13"
+ },
+ {
+  "edition_date": "2026-10-14",
+  "close_date": "2026-10-13",
+  "symbol": "ATOM",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.8389,
+  "stop": 1.6463,
+  "target": 2.0836,
+  "rr": 1.27,
+  "size_pct": 4.8,
   "status": "open"
  }
 ]
