@@ -64,7 +64,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
+:root{--nav-h:76px;
   /* True-black premium fintech palette (Robinhood / Coinbase) */
   --bg:#000000;--bg2:#0A0A0A;--bg3:#111111;--bg4:#161616;--bg5:#1C1C1C;
   --surface:#111111;--surface2:#161616;
@@ -93,7 +93,7 @@
   --font-mono:'DM Mono','SF Mono','Menlo',monospace;
 }
 html,body{height:100%;overflow-x:hidden}
-body{font-family:var(--font-sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:'cv01','cv02','cv11','ss01';letter-spacing:-0.005em;line-height:1.5}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:'cv01','cv02','cv11','ss01';letter-spacing:-0.005em;line-height:1.5;padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom))}
 /* SCREENS */
 .screen{display:none}
 .screen.active{display:block}
