@@ -1,0 +1,63 @@
+name: CI
+
+# crypto-wisdom had no CI. That was survivable while it was only static pages,
+# and stopped being survivable on 2026-10-14, when the Cloudflare Worker that
+# serves the free tier turned out to have been returning 404 to every visitor
+# since roughly 15 June 2026.
+#
+# The Worker was not in this repository at all. It lived in a folder on one
+# laptop, so there was nothing to review it, nothing to scan it, and nothing to
+# notice that its model had been retired. It is here now, and this runs the
+# contract that would have caught it on the day it broke.
+
+on:
+  push:
+    branches: [main]
+  # No branch filter on pull_request on purpose: with `branches: [main]` a PR
+  # targeting a feature branch gets no CI at all. Same lesson already recorded
+  # in signal-pipeline and realtor-wisdom.
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Worker parses
+        # A Worker that does not parse is a dead free tier, and the only place
+        # that would have shown up before is a visitor's browser.
+        run: node --check proxy/src/worker.js
+
+      - name: Worker contract
+        # Asserts the model is not one that has been withdrawn, that the app
+        # and the Worker agree on it, that a visitor cannot choose the model or
+        # exceed the token cap on the owner's key, that no credential is in the
+        # source, and that CORS has no wildcard.
+        run: node proxy/test_worker_contract.mjs
+
+      - name: Pages parse
+        # The composer was unreachable behind the fixed nav for an unknown
+        # length of time. This will not catch a layout bug, but it does catch
+        # the malformed markup that a hand-edited single-file app invites.
+        run: |
+          for f in index.html app/index.html cut/index.html; do
+            node -e "
+              const s=require('fs').readFileSync('$f','utf8');
+              const o=(s.match(/<div/g)||[]).length, c=(s.match(/<\/div>/g)||[]).length;
+              if (Math.abs(o-c) > 0) { console.error('$f: '+o+' <div> vs '+c+' </div>'); process.exit(1); }
+              console.log('$f ok ('+o+' divs balanced)');
+            "
+          done

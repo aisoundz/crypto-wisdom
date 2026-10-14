@@ -1,0 +1,105 @@
+name: Deploy the Wisdom proxy
+
+# Why this exists at all.
+#
+# On 2026-10-14 the Worker serving Crypto Wisdom's free tier was found to have
+# been 404ing every visitor for roughly four months, because its model had been
+# retired. The fix was one constant. It still took most of a morning, because
+# the only copy of the source was a folder on one laptop and the only way to
+# change the running code was hand-editing a build artifact in a browser.
+#
+# With this, a change to the proxy is a pull request that CI can check and this
+# workflow can ship.
+#
+# DELIBERATELY MANUAL. A static site redeploying itself on every push is cheap
+# to get wrong and cheap to fix. This is the paid path for every free-tier
+# visitor, and a bad deploy is a dead product that reports no errors, so the
+# trigger is a person deciding to ship. Change that only if you also add a
+# post-deploy check that actually calls the thing.
+#
+# REQUIRES ONE SECRET: CLOUDFLARE_API_TOKEN, a Cloudflare API token with the
+# "Edit Cloudflare Workers" template, in this repo's Actions secrets. It is not
+# set yet. Until it is, this workflow fails fast and says so rather than
+# half-deploying.
+#
+# The Worker's OWN secret, ANTHROPIC_API_KEY, is not here and must not be. It
+# lives on the Worker (`wrangler secret put`) and survives deploys untouched.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Build and check, but do not deploy"
+        type: boolean
+        default: true
+
+concurrency:
+  group: wisdom-proxy-deploy
+  cancel-in-progress: false      # never cancel a deploy mid-flight
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Refuse early if the token is missing
+        # Better than letting wrangler fail halfway with a less obvious message.
+        env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -z "$CF" ]; then
+            echo "CLOUDFLARE_API_TOKEN is not set in this repository's Actions secrets."
+            echo "Create a Cloudflare API token with the 'Edit Cloudflare Workers'"
+            echo "template and add it as CLOUDFLARE_API_TOKEN. Nothing was deployed."
+            exit 1
+          fi
+          echo "Token present."
+
+      - name: Worker parses
+        run: node --check proxy/src/worker.js
+
+      - name: Worker contract
+        # Fail-closed, same doctrine as the Signal senders: the thing that can
+        # ship to every visitor runs its own suite before it is allowed to.
+        run: node proxy/test_worker_contract.mjs
+
+      - name: Deploy
+        if: ${{ !inputs.dry_run }}
+        working-directory: proxy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx --yes wrangler@4 deploy
+
+      - name: Dry run only
+        if: ${{ inputs.dry_run }}
+        run: echo "dry_run was true. Checks passed; nothing was deployed."
+
+      - name: Prove the deployed Worker actually answers
+        # The whole point. A green deploy told us nothing for four months,
+        # because the Worker returns Anthropic's error as an ordinary response
+        # and Cloudflare's error count stays at zero. So ask it a question and
+        # read the model back out of the answer.
+        if: ${{ !inputs.dry_run }}
+        run: |
+          sleep 5
+          body='{"model":"ignored-by-the-worker","max_tokens":16,"messages":[{"role":"user","content":"Reply with the single word: ok"}]}'
+          resp=$(curl -sS -X POST https://cryptowisdom-proxy.aisoundz9.workers.dev/v1/messages \
+                   -H 'Content-Type: application/json' \
+                   -H 'Origin: https://cryptowisdom.io' \
+                   -d "$body")
+          echo "$resp" | head -c 400; echo
+          used=$(printf '%s' "$resp" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).model||'')}catch(e){console.log('')}})")
+          if [ -z "$used" ]; then
+            echo "The proxy did not return a model. The free tier is NOT working."
+            exit 1
+          fi
+          echo "Proxy answered using model: $used"

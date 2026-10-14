@@ -1,0 +1,20 @@
+name = "cryptowisdom-proxy"
+main = "src/worker.js"
+compatibility_date = "2025-04-01"
+
+# KV namespace for per-IP daily rate limiting.
+# The `id` value gets filled in by you after running `wrangler kv namespace create WISDOM_KV`
+# (instructions in DEPLOY.md).
+[[kv_namespaces]]
+binding = "WISDOM_KV"
+id      = "7311ac3725ee4a0891d672b2840ceb49"
+
+# Optional: route the Worker on api.cryptowisdom.io once you migrate DNS to Cloudflare.
+# For launch day we use the default workers.dev subdomain — uncomment + set after DNS migration.
+# [[routes]]
+# pattern   = "api.cryptowisdom.io/*"
+# zone_name = "cryptowisdom.io"
+
+# Observability — Cloudflare's built-in request logs (free tier)
+[observability]
+enabled = true
