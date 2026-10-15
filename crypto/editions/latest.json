@@ -1,8 +1,8 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-10-14",
- "close_date": "2026-10-13",
- "day": 7,
+ "edition_date": "2026-10-15",
+ "close_date": "2026-10-14",
+ "day": 8,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
@@ -16,7 +16,7 @@
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 2
+   "fell": 5
   },
   {
    "key": "liquidity",
@@ -26,7 +26,7 @@
   {
    "key": "stop",
    "label": "The stop can survive noise",
-   "fell": 3
+   "fell": 0
   },
   {
    "key": "target",
@@ -47,39 +47,35 @@
  "cards": [],
  "cut": [
   {
-   "symbol": "OP",
-   "reason": "Stop too far away",
+   "symbol": "FIL",
+   "reason": "Single detector",
    "detectors": [
-    "Volume expansion",
-    "Range breakout",
     "Strength vs BTC"
    ]
   },
   {
-   "symbol": "TIA",
-   "reason": "Stop too far away",
+   "symbol": "OP",
+   "reason": "Single detector",
    "detectors": [
-    "Volume expansion",
     "Strength vs BTC"
    ]
   },
   {
    "symbol": "STX",
-   "reason": "Stop too far away",
+   "reason": "Single detector",
    "detectors": [
-    "Volume expansion",
     "Strength vs BTC"
    ]
   },
   {
-   "symbol": "INJ",
+   "symbol": "TIA",
    "reason": "Single detector",
    "detectors": [
-    "Volume expansion"
+    "Strength vs BTC"
    ]
   },
   {
-   "symbol": "ATOM",
+   "symbol": "APT",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -87,8 +83,8 @@
   }
  ],
  "market": {
-  "btc_close": 83101.99,
-  "btc_7d": -2.85
+  "btc_close": 81566.29,
+  "btc_7d": -2.05
  },
  "record": {
   "published": {
@@ -101,11 +97,11 @@
    "resolved": 11,
    "avg_r": 1.02,
    "ambiguous": 0,
-   "open": 5
+   "open": 7
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-10-14T12:11:34+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-14.png"
+ "generated_at": "2026-10-15T12:11:29+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-15.png"
 }

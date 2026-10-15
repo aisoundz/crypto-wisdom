@@ -262,5 +262,35 @@
   "rr": 1.27,
   "size_pct": 4.8,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-10-15",
+  "close_date": "2026-10-14",
+  "symbol": "APT",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.8162,
+  "stop": 0.691,
+  "target": 0.9653,
+  "rr": 1.19,
+  "size_pct": 3.3,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-15",
+  "close_date": "2026-10-14",
+  "symbol": "FIL",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.0938,
+  "stop": 0.9862,
+  "target": 1.2788,
+  "rr": 1.72,
+  "size_pct": 5.1,
+  "status": "open"
  }
 ]
