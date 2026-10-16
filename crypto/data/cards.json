@@ -167,7 +167,9 @@
   "target": 0.12831,
   "rr": 4.29,
   "size_pct": 7.9,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-10-15"
  },
  {
   "edition_date": "2026-10-10",
@@ -182,7 +184,9 @@
   "target": 1.842,
   "rr": 3.43,
   "size_pct": 6.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-10-15"
  },
  {
   "edition_date": "2026-10-10",
@@ -214,7 +218,9 @@
   "target": 1.842,
   "rr": 2.91,
   "size_pct": 5.7,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-10-15"
  },
  {
   "edition_date": "2026-10-12",
@@ -229,7 +235,9 @@
   "target": 0.60777,
   "rr": 1.05,
   "size_pct": 3.2,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-10-15"
  },
  {
   "edition_date": "2026-10-13",
@@ -291,6 +299,66 @@
   "target": 1.2788,
   "rr": 1.72,
   "size_pct": 5.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-16",
+  "close_date": "2026-10-15",
+  "symbol": "ARB",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.1955,
+  "stop": 0.16139,
+  "target": 0.25524,
+  "rr": 1.75,
+  "size_pct": 2.9,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-16",
+  "close_date": "2026-10-15",
+  "symbol": "RENDER",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.9578,
+  "stop": 1.76,
+  "target": 2.2271,
+  "rr": 1.36,
+  "size_pct": 5.0,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-16",
+  "close_date": "2026-10-15",
+  "symbol": "XTZ",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.3127,
+  "stop": 0.28,
+  "target": 0.4002,
+  "rr": 2.68,
+  "size_pct": 4.8,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-16",
+  "close_date": "2026-10-15",
+  "symbol": "PEPE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 4.08e-06,
+  "stop": 3.64e-06,
+  "target": 5.36e-06,
+  "rr": 2.91,
+  "size_pct": 4.6,
   "status": "open"
  }
 ]

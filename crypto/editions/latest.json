@@ -1,22 +1,22 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-10-15",
- "close_date": "2026-10-14",
- "day": 8,
+ "edition_date": "2026-10-16",
+ "close_date": "2026-10-15",
+ "day": 9,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 5,
+  "fired": 11,
   "cleared": 0,
-  "cut": 5,
+  "cut": 11,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 5
+   "fell": 10
   },
   {
    "key": "liquidity",
@@ -26,7 +26,7 @@
   {
    "key": "stop",
    "label": "The stop can survive noise",
-   "fell": 0
+   "fell": 1
   },
   {
    "key": "target",
@@ -47,6 +47,22 @@
  "cards": [],
  "cut": [
   {
+   "symbol": "INJ",
+   "reason": "Stop too far away",
+   "detectors": [
+    "Volume expansion",
+    "Range breakout",
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "NEAR",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
    "symbol": "FIL",
    "reason": "Single detector",
    "detectors": [
@@ -54,7 +70,21 @@
    ]
   },
   {
-   "symbol": "OP",
+   "symbol": "PEPE",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ARB",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "RENDER",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -75,7 +105,21 @@
    ]
   },
   {
+   "symbol": "OP",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
    "symbol": "APT",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "XTZ",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -83,8 +127,8 @@
   }
  ],
  "market": {
-  "btc_close": 81566.29,
-  "btc_7d": -2.05
+  "btc_close": 82131.46,
+  "btc_7d": 0.54
  },
  "record": {
   "published": {
@@ -94,14 +138,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 11,
-   "avg_r": 1.02,
+   "resolved": 15,
+   "avg_r": 0.48,
    "ambiguous": 0,
    "open": 7
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-10-15T12:11:29+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-15.png"
+ "generated_at": "2026-10-16T12:13:49+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-16.png"
 }
