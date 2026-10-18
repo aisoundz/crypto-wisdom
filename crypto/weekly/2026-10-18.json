@@ -1,0 +1,152 @@
+{
+ "week_start": "2026-10-12",
+ "week_end": "2026-10-18",
+ "editions": 7,
+ "quiet_days": 7,
+ "scanned_avg": 50,
+ "fired": 45,
+ "cleared": 0,
+ "cut": 45,
+ "days": [
+  {
+   "date": "2026-10-12",
+   "day": 5,
+   "fired": 12,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-13",
+   "day": 6,
+   "fired": 3,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-14",
+   "day": 7,
+   "fired": 5,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-15",
+   "day": 8,
+   "fired": 5,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-16",
+   "day": 9,
+   "fired": 11,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-17",
+   "day": 10,
+   "fired": 7,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-18",
+   "day": 11,
+   "fired": 2,
+   "cleared": 0,
+   "symbols": []
+  }
+ ],
+ "published": [],
+ "resolved_published": [],
+ "resolved_cut": {
+  "count": 6,
+  "avg_r": -0.65
+ },
+ "checks": [
+  {
+   "key": "confluence",
+   "label": "Two detectors agree",
+   "fell": 35
+  },
+  {
+   "key": "liquidity",
+   "label": "Enough volume to trade",
+   "fell": 0
+  },
+  {
+   "key": "stop",
+   "label": "The stop can survive noise",
+   "fell": 9
+  },
+  {
+   "key": "target",
+   "label": "The target is a level we found",
+   "fell": 1
+  },
+  {
+   "key": "reward",
+   "label": "The reward covers the risk",
+   "fell": 0
+  },
+  {
+   "key": "cooldown",
+   "label": "Not on cooldown",
+   "fell": 0
+  }
+ ],
+ "top_reasons": [
+  [
+   "Single detector",
+   35
+  ],
+  [
+   "Stop too far away",
+   9
+  ],
+  [
+   "No level above to aim at",
+   1
+  ]
+ ],
+ "most_active": [
+  [
+   "TIA",
+   7
+  ],
+  [
+   "INJ",
+   5
+  ],
+  [
+   "OP",
+   5
+  ],
+  [
+   "STX",
+   5
+  ],
+  [
+   "APT",
+   4
+  ]
+ ],
+ "record": {
+  "published": {
+   "resolved": 0,
+   "avg_r": null,
+   "ambiguous": 0,
+   "open": 0
+  },
+  "cut": {
+   "resolved": 15,
+   "avg_r": 0.48,
+   "ambiguous": 0,
+   "open": 9
+  },
+  "min_n_to_report": 30
+ },
+ "window_day": 11,
+ "window_days": 90
+}
