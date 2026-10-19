@@ -1,8 +1,8 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-10-18",
- "close_date": "2026-10-17",
- "day": 11,
+ "edition_date": "2026-10-19",
+ "close_date": "2026-10-18",
+ "day": 12,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
@@ -47,14 +47,14 @@
  "cards": [],
  "cut": [
   {
-   "symbol": "TIA",
+   "symbol": "INJ",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
    ]
   },
   {
-   "symbol": "INJ",
+   "symbol": "TIA",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -62,8 +62,8 @@
   }
  ],
  "market": {
-  "btc_close": 81378.21,
-  "btc_7d": -1.85
+  "btc_close": 82006.85,
+  "btc_7d": -2.0
  },
  "record": {
   "published": {
@@ -73,14 +73,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 15,
-   "avg_r": 0.48,
+   "resolved": 17,
+   "avg_r": 0.31,
    "ambiguous": 0,
-   "open": 9
+   "open": 7
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-10-18T12:11:37+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-18.png"
+ "generated_at": "2026-10-19T12:14:59+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-19.png"
 }
