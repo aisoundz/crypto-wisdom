@@ -394,5 +394,65 @@
   "rr": 2.35,
   "size_pct": 4.4,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-10-20",
+  "close_date": "2026-10-19",
+  "symbol": "BCH",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 280.39,
+  "stop": 255.99,
+  "target": 366.13,
+  "rr": 3.51,
+  "size_pct": 5.7,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-20",
+  "close_date": "2026-10-19",
+  "symbol": "ARB",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.1974,
+  "stop": 0.16934,
+  "target": 0.25524,
+  "rr": 2.06,
+  "size_pct": 3.5,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-20",
+  "close_date": "2026-10-19",
+  "symbol": "TIA",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.6151,
+  "stop": 0.471,
+  "target": 0.7866,
+  "rr": 1.19,
+  "size_pct": 2.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-20",
+  "close_date": "2026-10-19",
+  "symbol": "PEPE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 4.15e-06,
+  "stop": 3.76e-06,
+  "target": 5.36e-06,
+  "rr": 3.1,
+  "size_pct": 5.3,
+  "status": "open"
  }
 ]

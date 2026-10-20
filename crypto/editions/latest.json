@@ -1,22 +1,22 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-10-19",
- "close_date": "2026-10-18",
- "day": 12,
+ "edition_date": "2026-10-20",
+ "close_date": "2026-10-19",
+ "day": 13,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 2,
+  "fired": 6,
   "cleared": 0,
-  "cut": 2,
+  "cut": 6,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 2
+   "fell": 6
   },
   {
    "key": "liquidity",
@@ -54,7 +54,35 @@
    ]
   },
   {
+   "symbol": "CRV",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ARB",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
    "symbol": "TIA",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "PEPE",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "BCH",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -62,8 +90,8 @@
   }
  ],
  "market": {
-  "btc_close": 82006.85,
-  "btc_7d": -2.0
+  "btc_close": 81837.69,
+  "btc_7d": 0.12
  },
  "record": {
   "published": {
@@ -76,11 +104,11 @@
    "resolved": 17,
    "avg_r": 0.31,
    "ambiguous": 0,
-   "open": 7
+   "open": 11
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-10-19T12:14:59+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-19.png"
+ "generated_at": "2026-10-20T12:19:10+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-20.png"
 }
