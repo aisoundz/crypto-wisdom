@@ -454,5 +454,37 @@
   "rr": 3.1,
   "size_pct": 5.3,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-10-21",
+  "close_date": "2026-10-20",
+  "symbol": "TIA",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 0.624,
+  "stop": 0.5043,
+  "target": 0.7866,
+  "rr": 1.36,
+  "size_pct": 2.6,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-21",
+  "close_date": "2026-10-20",
+  "symbol": "PEPE",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 4.55e-06,
+  "stop": 3.76e-06,
+  "target": 5.36e-06,
+  "rr": 1.03,
+  "size_pct": 2.9,
+  "status": "open"
  }
 ]
