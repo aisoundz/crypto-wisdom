@@ -486,5 +486,50 @@
   "rr": 1.03,
   "size_pct": 2.9,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-10-22",
+  "close_date": "2026-10-21",
+  "symbol": "TIA",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.5999,
+  "stop": 0.5043,
+  "target": 0.7866,
+  "rr": 1.95,
+  "size_pct": 3.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-22",
+  "close_date": "2026-10-21",
+  "symbol": "ENA",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.2135,
+  "stop": 0.17451,
+  "target": 0.2945,
+  "rr": 2.08,
+  "size_pct": 2.7,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-22",
+  "close_date": "2026-10-21",
+  "symbol": "ZEC",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1315.79,
+  "stop": 1047.67,
+  "target": 1693.2,
+  "rr": 1.41,
+  "size_pct": 2.5,
+  "status": "open"
  }
 ]

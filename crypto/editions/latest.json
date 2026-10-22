@@ -1,22 +1,22 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-10-21",
- "close_date": "2026-10-20",
- "day": 14,
+ "edition_date": "2026-10-22",
+ "close_date": "2026-10-21",
+ "day": 15,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 5,
+  "fired": 7,
   "cleared": 0,
-  "cut": 5,
+  "cut": 7,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 2
+   "fell": 6
   },
   {
    "key": "liquidity",
@@ -26,7 +26,7 @@
   {
    "key": "stop",
    "label": "The stop can survive noise",
-   "fell": 3
+   "fell": 1
   },
   {
    "key": "target",
@@ -47,26 +47,24 @@
  "cards": [],
  "cut": [
   {
-   "symbol": "PEPE",
+   "symbol": "CRV",
    "reason": "Stop too far away",
    "detectors": [
-    "Volume expansion",
+    "Range breakout",
     "Strength vs BTC"
    ]
   },
   {
-   "symbol": "TIA",
-   "reason": "Stop too far away",
+   "symbol": "ZEC",
+   "reason": "Single detector",
    "detectors": [
-    "Volume expansion",
     "Strength vs BTC"
    ]
   },
   {
-   "symbol": "COMP",
-   "reason": "Stop too far away",
+   "symbol": "ENA",
+   "reason": "Single detector",
    "detectors": [
-    "Volume expansion",
     "Strength vs BTC"
    ]
   },
@@ -78,7 +76,21 @@
    ]
   },
   {
-   "symbol": "CRV",
+   "symbol": "PEPE",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "TIA",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "COMP",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -86,8 +98,8 @@
   }
  ],
  "market": {
-  "btc_close": 82938.26,
-  "btc_7d": -0.2
+  "btc_close": 84024.67,
+  "btc_7d": 3.01
  },
  "record": {
   "published": {
@@ -100,11 +112,11 @@
    "resolved": 17,
    "avg_r": 0.31,
    "ambiguous": 0,
-   "open": 13
+   "open": 16
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-10-21T12:21:00+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-21.png"
+ "generated_at": "2026-10-22T12:18:13+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-22.png"
 }
