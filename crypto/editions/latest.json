@@ -1,22 +1,22 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-10-22",
- "close_date": "2026-10-21",
- "day": 15,
+ "edition_date": "2026-10-23",
+ "close_date": "2026-10-22",
+ "day": 16,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 7,
+  "fired": 2,
   "cleared": 0,
-  "cut": 7,
+  "cut": 2,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 6
+   "fell": 2
   },
   {
    "key": "liquidity",
@@ -26,7 +26,7 @@
   {
    "key": "stop",
    "label": "The stop can survive noise",
-   "fell": 1
+   "fell": 0
   },
   {
    "key": "target",
@@ -47,43 +47,7 @@
  "cards": [],
  "cut": [
   {
-   "symbol": "CRV",
-   "reason": "Stop too far away",
-   "detectors": [
-    "Range breakout",
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "ZEC",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "ENA",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "INJ",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
    "symbol": "PEPE",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "TIA",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -98,8 +62,8 @@
   }
  ],
  "market": {
-  "btc_close": 84024.67,
-  "btc_7d": 3.01
+  "btc_close": 81307.16,
+  "btc_7d": -1.0
  },
  "record": {
   "published": {
@@ -109,14 +73,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 17,
-   "avg_r": 0.31,
+   "resolved": 20,
+   "avg_r": 0.11,
    "ambiguous": 0,
-   "open": 16
+   "open": 15
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-10-22T12:18:13+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-22.png"
+ "generated_at": "2026-10-23T12:23:25+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-23.png"
 }
