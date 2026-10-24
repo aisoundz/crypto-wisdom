@@ -567,5 +567,66 @@
   "rr": 1.58,
   "size_pct": 3.5,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-10-24",
+  "close_date": "2026-10-23",
+  "symbol": "COMP",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 24.02,
+  "stop": 20.6,
+  "target": 29.15,
+  "rr": 1.5,
+  "size_pct": 3.5,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-24",
+  "close_date": "2026-10-23",
+  "symbol": "IMX",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion"
+  ],
+  "entry": 0.1448,
+  "stop": 0.14058,
+  "target": 0.20836,
+  "rr": 15.06,
+  "size_pct": 17.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-24",
+  "close_date": "2026-10-23",
+  "symbol": "PEPE",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 4.56e-06,
+  "stop": 3.77e-06,
+  "target": 5.36e-06,
+  "rr": 1.01,
+  "size_pct": 2.9,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-24",
+  "close_date": "2026-10-23",
+  "symbol": "BONK",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion"
+  ],
+  "entry": 3.13e-06,
+  "stop": 2.81e-06,
+  "target": 5.16e-06,
+  "rr": 6.34,
+  "size_pct": 4.9,
+  "status": "open"
  }
 ]
