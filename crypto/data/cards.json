@@ -286,7 +286,9 @@
   "target": 0.9653,
   "rr": 1.19,
   "size_pct": 3.3,
-  "status": "open"
+  "status": "time",
+  "r": -0.81,
+  "resolved": "2026-10-24"
  },
  {
   "edition_date": "2026-10-15",
@@ -425,7 +427,9 @@
   "target": 0.25524,
   "rr": 2.06,
   "size_pct": 3.5,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-10-24"
  },
  {
   "edition_date": "2026-10-20",
@@ -596,7 +600,9 @@
   "target": 0.20836,
   "rr": 15.06,
   "size_pct": 17.2,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-10-24"
  },
  {
   "edition_date": "2026-10-24",
@@ -627,6 +633,66 @@
   "target": 5.16e-06,
   "rr": 6.34,
   "size_pct": 4.9,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-25",
+  "close_date": "2026-10-24",
+  "symbol": "COMP",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 23.78,
+  "stop": 20.6,
+  "target": 29.15,
+  "rr": 1.69,
+  "size_pct": 3.7,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-25",
+  "close_date": "2026-10-24",
+  "symbol": "PEPE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 4.5e-06,
+  "stop": 3.77e-06,
+  "target": 5.36e-06,
+  "rr": 1.18,
+  "size_pct": 3.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-25",
+  "close_date": "2026-10-24",
+  "symbol": "BONK",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 3.16e-06,
+  "stop": 2.81e-06,
+  "target": 5.16e-06,
+  "rr": 5.71,
+  "size_pct": 4.5,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-25",
+  "close_date": "2026-10-24",
+  "symbol": "ZEC",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1206.66,
+  "stop": 1047.67,
+  "target": 1693.2,
+  "rr": 3.06,
+  "size_pct": 3.8,
   "status": "open"
  }
 ]
