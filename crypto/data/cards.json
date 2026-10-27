@@ -388,7 +388,9 @@
   "target": 0.25524,
   "rr": 2.16,
   "size_pct": 3.2,
-  "status": "open"
+  "status": "time",
+  "r": -0.75,
+  "resolved": "2026-10-26"
  },
  {
   "edition_date": "2026-10-17",
@@ -403,7 +405,9 @@
   "target": 0.4002,
   "rr": 2.35,
   "size_pct": 4.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-10-26"
  },
  {
   "edition_date": "2026-10-20",
@@ -750,6 +754,96 @@
   "target": 1693.2,
   "rr": 2.92,
   "size_pct": 3.7,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-27",
+  "close_date": "2026-10-26",
+  "symbol": "ETC",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion"
+  ],
+  "entry": 7.614,
+  "stop": 7.391,
+  "target": 10.401,
+  "rr": 12.5,
+  "size_pct": 17.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-27",
+  "close_date": "2026-10-26",
+  "symbol": "COMP",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 22.25,
+  "stop": 20.13,
+  "target": 29.15,
+  "rr": 3.25,
+  "size_pct": 5.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-27",
+  "close_date": "2026-10-26",
+  "symbol": "PEPE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 4.31e-06,
+  "stop": 3.77e-06,
+  "target": 5.36e-06,
+  "rr": 1.94,
+  "size_pct": 4.0,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-27",
+  "close_date": "2026-10-26",
+  "symbol": "ENA",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.20691,
+  "stop": 0.17451,
+  "target": 0.2945,
+  "rr": 2.7,
+  "size_pct": 3.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-27",
+  "close_date": "2026-10-26",
+  "symbol": "QNT",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 203.62,
+  "stop": 173.46,
+  "target": 372.0,
+  "rr": 5.58,
+  "size_pct": 3.4,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-27",
+  "close_date": "2026-10-26",
+  "symbol": "ZEC",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1230.94,
+  "stop": 1047.67,
+  "target": 1693.2,
+  "rr": 2.52,
+  "size_pct": 3.4,
   "status": "open"
  }
 ]
