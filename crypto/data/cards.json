@@ -845,5 +845,50 @@
   "rr": 2.52,
   "size_pct": 3.4,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-10-28",
+  "close_date": "2026-10-27",
+  "symbol": "BCH",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 295.83,
+  "stop": 263.75,
+  "target": 366.13,
+  "rr": 2.19,
+  "size_pct": 4.6,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-28",
+  "close_date": "2026-10-27",
+  "symbol": "ENA",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.20855,
+  "stop": 0.17451,
+  "target": 0.2945,
+  "rr": 2.52,
+  "size_pct": 3.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-10-28",
+  "close_date": "2026-10-27",
+  "symbol": "ZEC",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1307.45,
+  "stop": 1047.67,
+  "target": 1693.2,
+  "rr": 1.48,
+  "size_pct": 2.5,
+  "status": "open"
  }
 ]
