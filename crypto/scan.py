@@ -31,6 +31,7 @@ UTC = dt.timezone.utc
 
 CHECKS = [
     ("confluence", "Two detectors agree"),
+    ("regime", "BTC is in an uptrend"),
     ("liquidity", "Enough volume to trade"),
     ("stop", "The stop can survive noise"),
     ("target", "The target is a level we found"),
@@ -217,6 +218,11 @@ def main():
                   (today - dt.date.fromisoformat(c["edition_date"])).days < g["cooldown_days"]}
 
     btc7 = ret(usable["BTC"], det["relative_strength"]["days"])
+    # Replay 2019-2026: the same setups averaged +0.29R with BTC above its 50-day
+    # average and -0.17R below it. Pre-registration and numbers in the PR that added this.
+    btc_c = usable["BTC"]
+    btc_sma = sum(x["close"] for x in btc_c[-CFG["regime"]["btc_sma_days"]:]) / CFG["regime"]["btc_sma_days"]
+    btc_up = btc_c[-1]["close"] > btc_sma
     rows, fired, candidates = [], [], []
     for sym, c in usable.items():
         last = c[-1]
@@ -249,6 +255,7 @@ def main():
 
         checks = [
             ("confluence", len(hits) >= CFG["confluence_required"], "Single detector"),
+            ("regime", btc_up, "BTC below its 50-day average"),
             ("liquidity", last["dvol"] >= g["min_daily_dollar_volume"], "Thin volume"),
             ("stop", risk >= g["stop_min_atr"] * a14 and stop_pct is not None and stop_pct <= g["stop_max_pct"],
              "Stop inside daily noise" if risk < g["stop_min_atr"] * a14 else "Stop too far away"),
@@ -320,7 +327,8 @@ def main():
                    "link": f"{SITE}/app/?signal={edition_date}-{r['symbol']}"} for r in published],
         "cut": [{"symbol": r["symbol"], "reason": r["reason"],
                  "detectors": [DETECTOR_NAMES[d] for d in r["detectors"]]} for r in cut_list],
-        "market": {"btc_close": usable["BTC"][-1]["close"], "btc_7d": round(btc7, 2)},
+        "market": {"btc_close": usable["BTC"][-1]["close"], "btc_7d": round(btc7, 2),
+                   "btc_sma50": round(btc_sma, 2), "btc_uptrend": btc_up},
         "record": record_stats(cards),
         "unavailable": errors,
         "generated_at": now.isoformat(timespec="seconds"),
