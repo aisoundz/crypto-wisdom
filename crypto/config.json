@@ -17,6 +17,7 @@
     "relative_strength": {"days": 7, "margin_pct": 5.0}
   },
   "confluence_required": 2,
+  "regime": {"btc_sma_days": 50},
   "gates": {
     "min_daily_dollar_volume": 2000000,
     "atr_days": 14,
