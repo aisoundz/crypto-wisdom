@@ -1,22 +1,27 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-10-28",
- "close_date": "2026-10-27",
- "day": 21,
+ "edition_date": "2026-10-29",
+ "close_date": "2026-10-28",
+ "day": 22,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 3,
+  "fired": 2,
   "cleared": 0,
-  "cut": 3,
+  "cut": 2,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 3
+   "fell": 1
+  },
+  {
+   "key": "regime",
+   "label": "BTC is in an uptrend",
+   "fell": 1
   },
   {
    "key": "liquidity",
@@ -47,21 +52,15 @@
  "cards": [],
  "cut": [
   {
-   "symbol": "ZEC",
-   "reason": "Single detector",
+   "symbol": "PEPE",
+   "reason": "BTC below its 50-day average",
    "detectors": [
+    "Volume expansion",
     "Strength vs BTC"
    ]
   },
   {
-   "symbol": "ENA",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "BCH",
+   "symbol": "BNB",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -69,8 +68,10 @@
   }
  ],
  "market": {
-  "btc_close": 80799.51,
-  "btc_7d": -2.58
+  "btc_close": 81249.31,
+  "btc_7d": -3.3,
+  "btc_sma50": 81885.6,
+  "btc_uptrend": false
  },
  "record": {
   "published": {
@@ -83,11 +84,11 @@
    "resolved": 31,
    "avg_r": -0.21,
    "ambiguous": 0,
-   "open": 24
+   "open": 25
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-10-28T12:25:19+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-28.png"
+ "generated_at": "2026-10-29T18:24:59+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-29.png"
 }

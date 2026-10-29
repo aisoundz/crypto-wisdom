@@ -890,5 +890,20 @@
   "rr": 1.48,
   "size_pct": 2.5,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-10-29",
+  "close_date": "2026-10-28",
+  "symbol": "BNB",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 758.84,
+  "stop": 717.27,
+  "target": 814.41,
+  "rr": 1.34,
+  "size_pct": 9.1,
+  "status": "open"
  }
 ]
