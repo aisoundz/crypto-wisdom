@@ -1,0 +1,95 @@
+{
+ "edition": "The Crypto Cut",
+ "edition_date": "2026-10-30",
+ "close_date": "2026-10-29",
+ "day": 23,
+ "window_days": 90,
+ "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
+ "counts": {
+  "scanned": 50,
+  "fired": 2,
+  "cleared": 0,
+  "cut": 2,
+  "unavailable": 0
+ },
+ "checks": [
+  {
+   "key": "confluence",
+   "label": "Two detectors agree",
+   "fell": 1
+  },
+  {
+   "key": "regime",
+   "label": "BTC is in an uptrend",
+   "fell": 1
+  },
+  {
+   "key": "liquidity",
+   "label": "Enough volume to trade",
+   "fell": 0
+  },
+  {
+   "key": "stop",
+   "label": "The stop can survive noise",
+   "fell": 0
+  },
+  {
+   "key": "target",
+   "label": "The target is a level we found",
+   "fell": 0
+  },
+  {
+   "key": "reward",
+   "label": "The reward covers the risk",
+   "fell": 0
+  },
+  {
+   "key": "cooldown",
+   "label": "Not on cooldown",
+   "fell": 0
+  }
+ ],
+ "cards": [],
+ "cut": [
+  {
+   "symbol": "HYPE",
+   "reason": "BTC below its 50-day average",
+   "detectors": [
+    "Volume expansion",
+    "Range breakout",
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "PEPE",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  }
+ ],
+ "market": {
+  "btc_close": 77780.33,
+  "btc_7d": -4.34,
+  "btc_sma50": 81875.53,
+  "btc_uptrend": false
+ },
+ "record": {
+  "published": {
+   "resolved": 0,
+   "avg_r": null,
+   "ambiguous": 0,
+   "open": 0
+  },
+  "cut": {
+   "resolved": 48,
+   "avg_r": -0.08,
+   "ambiguous": 0,
+   "open": 9
+  },
+  "min_n_to_report": 30
+ },
+ "unavailable": {},
+ "generated_at": "2026-10-30T12:23:48+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-30.png"
+}
