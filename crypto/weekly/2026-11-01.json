@@ -1,0 +1,153 @@
+{
+ "week_start": "2026-10-26",
+ "week_end": "2026-11-01",
+ "editions": 7,
+ "quiet_days": 7,
+ "scanned_avg": 50,
+ "fired": 41,
+ "cleared": 0,
+ "cut": 41,
+ "days": [
+  {
+   "date": "2026-10-26",
+   "day": 19,
+   "fired": 3,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-27",
+   "day": 20,
+   "fired": 6,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-28",
+   "day": 21,
+   "fired": 3,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-29",
+   "day": 22,
+   "fired": 2,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-30",
+   "day": 23,
+   "fired": 2,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-10-31",
+   "day": 24,
+   "fired": 17,
+   "cleared": 0,
+   "symbols": []
+  },
+  {
+   "date": "2026-11-01",
+   "day": 25,
+   "fired": 8,
+   "cleared": 0,
+   "symbols": []
+  }
+ ],
+ "published": [],
+ "resolved_published": [],
+ "resolved_cut": {
+  "count": 23,
+  "avg_r": 0.03
+ },
+ "checks": [
+  {
+   "key": "confluence",
+   "label": "Two detectors agree",
+   "fell": 34
+  },
+  {
+   "key": "liquidity",
+   "label": "Enough volume to trade",
+   "fell": 0
+  },
+  {
+   "key": "stop",
+   "label": "The stop can survive noise",
+   "fell": 0
+  },
+  {
+   "key": "target",
+   "label": "The target is a level we found",
+   "fell": 0
+  },
+  {
+   "key": "reward",
+   "label": "The reward covers the risk",
+   "fell": 0
+  },
+  {
+   "key": "cooldown",
+   "label": "Not on cooldown",
+   "fell": 0
+  },
+  {
+   "key": "regime",
+   "label": "BTC is in an uptrend",
+   "fell": 7
+  }
+ ],
+ "top_reasons": [
+  [
+   "Single detector",
+   34
+  ],
+  [
+   "BTC below its 50-day average",
+   7
+  ]
+ ],
+ "most_active": [
+  [
+   "PEPE",
+   6
+  ],
+  [
+   "ZEC",
+   5
+  ],
+  [
+   "ENA",
+   4
+  ],
+  [
+   "QNT",
+   3
+  ],
+  [
+   "BCH",
+   3
+  ]
+ ],
+ "record": {
+  "published": {
+   "resolved": 0,
+   "avg_r": null,
+   "ambiguous": 0,
+   "open": 0
+  },
+  "cut": {
+   "resolved": 52,
+   "avg_r": -0.08,
+   "ambiguous": 0,
+   "open": 28
+  },
+  "min_n_to_report": 30
+ },
+ "window_day": 25,
+ "window_days": 90
+}
