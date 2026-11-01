@@ -1,27 +1,27 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-10-31",
- "close_date": "2026-10-30",
- "day": 24,
+ "edition_date": "2026-11-01",
+ "close_date": "2026-10-31",
+ "day": 25,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 17,
+  "fired": 8,
   "cleared": 0,
-  "cut": 17,
+  "cut": 8,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 12
+   "fell": 8
   },
   {
    "key": "regime",
    "label": "BTC is in an uptrend",
-   "fell": 5
+   "fell": 0
   },
   {
    "key": "liquidity",
@@ -53,49 +53,9 @@
  "cut": [
   {
    "symbol": "HYPE",
-   "reason": "BTC below its 50-day average",
-   "detectors": [
-    "Volume expansion",
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "PEPE",
-   "reason": "BTC below its 50-day average",
-   "detectors": [
-    "Volume expansion",
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "UNI",
-   "reason": "BTC below its 50-day average",
-   "detectors": [
-    "Volume expansion",
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "BCH",
-   "reason": "BTC below its 50-day average",
-   "detectors": [
-    "Volume expansion",
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "OP",
-   "reason": "BTC below its 50-day average",
-   "detectors": [
-    "Volume expansion",
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "XRP",
    "reason": "Single detector",
    "detectors": [
-    "Volume expansion"
+    "Strength vs BTC"
    ]
   },
   {
@@ -106,34 +66,6 @@
    ]
   },
   {
-   "symbol": "SOL",
-   "reason": "Single detector",
-   "detectors": [
-    "Volume expansion"
-   ]
-  },
-  {
-   "symbol": "LINK",
-   "reason": "Single detector",
-   "detectors": [
-    "Volume expansion"
-   ]
-  },
-  {
-   "symbol": "ENA",
-   "reason": "Single detector",
-   "detectors": [
-    "Volume expansion"
-   ]
-  },
-  {
-   "symbol": "XLM",
-   "reason": "Single detector",
-   "detectors": [
-    "Volume expansion"
-   ]
-  },
-  {
    "symbol": "QNT",
    "reason": "Single detector",
    "detectors": [
@@ -141,17 +73,31 @@
    ]
   },
   {
-   "symbol": "BNB",
+   "symbol": "UNI",
    "reason": "Single detector",
    "detectors": [
-    "Volume expansion"
+    "Strength vs BTC"
    ]
   },
   {
-   "symbol": "GRT",
+   "symbol": "PEPE",
    "reason": "Single detector",
    "detectors": [
-    "Volume expansion"
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "BCH",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "STX",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
    ]
   },
   {
@@ -160,26 +106,12 @@
    "detectors": [
     "Strength vs BTC"
    ]
-  },
-  {
-   "symbol": "SHIB",
-   "reason": "Single detector",
-   "detectors": [
-    "Volume expansion"
-   ]
-  },
-  {
-   "symbol": "WIF",
-   "reason": "Single detector",
-   "detectors": [
-    "Volume expansion"
-   ]
   }
  ],
  "market": {
-  "btc_close": 77180.42,
-  "btc_7d": -4.81,
-  "btc_sma50": 81888.41,
+  "btc_close": 77423.98,
+  "btc_7d": -4.14,
+  "btc_sma50": 81892.72,
   "btc_uptrend": false
  },
  "record": {
@@ -190,14 +122,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 51,
+   "resolved": 52,
    "avg_r": -0.08,
    "ambiguous": 0,
-   "open": 22
+   "open": 28
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-10-31T12:15:22+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-10-31.png"
+ "generated_at": "2026-11-01T13:12:42+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-01.png"
 }

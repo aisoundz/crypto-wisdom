@@ -560,7 +560,9 @@
   "target": 1693.2,
   "rr": 1.41,
   "size_pct": 2.5,
-  "status": "open"
+  "status": "time",
+  "r": -0.24,
+  "resolved": "2026-10-31"
  },
  {
   "edition_date": "2026-10-23",
@@ -1203,6 +1205,111 @@
   "target": 1693.2,
   "rr": 2.78,
   "size_pct": 4.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-01",
+  "close_date": "2026-10-31",
+  "symbol": "BCH",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 285.01,
+  "stop": 262.69,
+  "target": 366.13,
+  "rr": 3.63,
+  "size_pct": 6.4,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-01",
+  "close_date": "2026-10-31",
+  "symbol": "UNI",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 7.0638,
+  "stop": 6.2351,
+  "target": 10.9321,
+  "rr": 4.67,
+  "size_pct": 4.3,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-01",
+  "close_date": "2026-10-31",
+  "symbol": "PEPE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 4.94e-06,
+  "stop": 4.21e-06,
+  "target": 5.68e-06,
+  "rr": 1.01,
+  "size_pct": 3.4,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-01",
+  "close_date": "2026-10-31",
+  "symbol": "POL",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.09197,
+  "stop": 0.08319,
+  "target": 0.12831,
+  "rr": 4.14,
+  "size_pct": 5.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-01",
+  "close_date": "2026-10-31",
+  "symbol": "STX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.3237,
+  "stop": 0.2678,
+  "target": 0.46,
+  "rr": 2.44,
+  "size_pct": 2.9,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-01",
+  "close_date": "2026-10-31",
+  "symbol": "QNT",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 200.51,
+  "stop": 173.46,
+  "target": 372.0,
+  "rr": 6.34,
+  "size_pct": 3.7,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-01",
+  "close_date": "2026-10-31",
+  "symbol": "ZEC",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1251.07,
+  "stop": 1117.75,
+  "target": 1693.2,
+  "rr": 3.32,
+  "size_pct": 4.7,
   "status": "open"
  }
 ]
