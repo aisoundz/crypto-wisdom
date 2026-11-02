@@ -1,22 +1,22 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-01",
- "close_date": "2026-10-31",
- "day": 25,
+ "edition_date": "2026-11-02",
+ "close_date": "2026-11-01",
+ "day": 26,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 8,
+  "fired": 6,
   "cleared": 0,
-  "cut": 8,
+  "cut": 6,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 8
+   "fell": 6
   },
   {
    "key": "regime",
@@ -59,13 +59,6 @@
    ]
   },
   {
-   "symbol": "ZEC",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
    "symbol": "QNT",
    "reason": "Single detector",
    "detectors": [
@@ -80,14 +73,14 @@
    ]
   },
   {
-   "symbol": "PEPE",
+   "symbol": "BNB",
    "reason": "Single detector",
    "detectors": [
-    "Strength vs BTC"
+    "Volume expansion"
    ]
   },
   {
-   "symbol": "BCH",
+   "symbol": "PEPE",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -99,19 +92,12 @@
    "detectors": [
     "Strength vs BTC"
    ]
-  },
-  {
-   "symbol": "POL",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
   }
  ],
  "market": {
-  "btc_close": 77423.98,
-  "btc_7d": -4.14,
-  "btc_sma50": 81892.72,
+  "btc_close": 78230.55,
+  "btc_7d": -2.28,
+  "btc_sma50": 81912.07,
   "btc_uptrend": false
  },
  "record": {
@@ -125,11 +111,11 @@
    "resolved": 52,
    "avg_r": -0.08,
    "ambiguous": 0,
-   "open": 28
+   "open": 33
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-01T13:12:42+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-01.png"
+ "generated_at": "2026-11-02T13:34:41+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-02.png"
 }
