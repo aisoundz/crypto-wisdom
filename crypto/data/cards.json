@@ -976,7 +976,9 @@
   "target": 124.93,
   "rr": 7.18,
   "size_pct": 12.0,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-02"
  },
  {
   "edition_date": "2026-10-31",
@@ -1385,6 +1387,51 @@
   "target": 372.0,
   "rr": 6.03,
   "size_pct": 3.6,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-03",
+  "close_date": "2026-11-02",
+  "symbol": "PEPE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 4.77e-06,
+  "stop": 4.21e-06,
+  "target": 5.68e-06,
+  "rr": 1.63,
+  "size_pct": 4.3,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-03",
+  "close_date": "2026-11-02",
+  "symbol": "HYPE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 83.95,
+  "stop": 72.73,
+  "target": 98.01,
+  "rr": 1.25,
+  "size_pct": 3.7,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-03",
+  "close_date": "2026-11-02",
+  "symbol": "STX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.3253,
+  "stop": 0.2678,
+  "target": 0.46,
+  "rr": 2.34,
+  "size_pct": 2.8,
   "status": "open"
  }
 ]
