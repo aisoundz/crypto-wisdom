@@ -1,0 +1,135 @@
+{
+ "edition": "The Crypto Cut",
+ "edition_date": "2026-11-06",
+ "close_date": "2026-11-05",
+ "day": 30,
+ "window_days": 90,
+ "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
+ "counts": {
+  "scanned": 50,
+  "fired": 8,
+  "cleared": 0,
+  "cut": 8,
+  "unavailable": 0
+ },
+ "checks": [
+  {
+   "key": "confluence",
+   "label": "Two detectors agree",
+   "fell": 8
+  },
+  {
+   "key": "regime",
+   "label": "BTC is in an uptrend",
+   "fell": 0
+  },
+  {
+   "key": "liquidity",
+   "label": "Enough volume to trade",
+   "fell": 0
+  },
+  {
+   "key": "stop",
+   "label": "The stop can survive noise",
+   "fell": 0
+  },
+  {
+   "key": "target",
+   "label": "The target is a level we found",
+   "fell": 0
+  },
+  {
+   "key": "reward",
+   "label": "The reward covers the risk",
+   "fell": 0
+  },
+  {
+   "key": "cooldown",
+   "label": "Not on cooldown",
+   "fell": 0
+  }
+ ],
+ "cards": [],
+ "cut": [
+  {
+   "symbol": "ZEC",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "UNI",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "QNT",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "INJ",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "PEPE",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "AAVE",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "STX",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "POL",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  }
+ ],
+ "market": {
+  "btc_close": 75969.06,
+  "btc_7d": -2.33,
+  "btc_sma50": 81986.16,
+  "btc_uptrend": false
+ },
+ "record": {
+  "published": {
+   "resolved": 0,
+   "avg_r": null,
+   "ambiguous": 0,
+   "open": 0
+  },
+  "cut": {
+   "resolved": 64,
+   "avg_r": -0.18,
+   "ambiguous": 0,
+   "open": 43
+  },
+  "min_n_to_report": 30
+ },
+ "unavailable": {},
+ "generated_at": "2026-11-06T13:20:51+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-06.png"
+}
