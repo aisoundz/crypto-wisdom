@@ -935,7 +935,9 @@
   "target": 1693.2,
   "rr": 1.48,
   "size_pct": 2.5,
-  "status": "open"
+  "status": "time",
+  "r": 0.05,
+  "resolved": "2026-11-06"
  },
  {
   "edition_date": "2026-10-29",
@@ -1001,7 +1003,9 @@
   "target": 1.6996,
   "rr": 7.86,
   "size_pct": 11.1,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-06"
  },
  {
   "edition_date": "2026-10-31",
@@ -1032,7 +1036,9 @@
   "target": 366.13,
   "rr": 2.35,
   "size_pct": 4.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-06"
  },
  {
   "edition_date": "2026-10-31",
@@ -1238,7 +1244,9 @@
   "target": 366.13,
   "rr": 3.63,
   "size_pct": 6.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-06"
  },
  {
   "edition_date": "2026-11-01",
@@ -1741,6 +1749,52 @@
   "target": 1693.2,
   "rr": 2.59,
   "size_pct": 4.0,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-07",
+  "close_date": "2026-11-06",
+  "symbol": "XTZ",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 0.2753,
+  "stop": 0.2388,
+  "target": 0.4002,
+  "rr": 3.42,
+  "size_pct": 3.8,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-07",
+  "close_date": "2026-11-06",
+  "symbol": "STX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.3464,
+  "stop": 0.2678,
+  "target": 0.46,
+  "rr": 1.45,
+  "size_pct": 2.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-07",
+  "close_date": "2026-11-06",
+  "symbol": "ZEC",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1320.83,
+  "stop": 1118.0,
+  "target": 1693.2,
+  "rr": 1.84,
+  "size_pct": 3.3,
   "status": "open"
  }
 ]
