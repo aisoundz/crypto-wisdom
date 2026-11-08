@@ -1,5 +1,12 @@
 [
  {
+  "week_start": "2026-11-02",
+  "week_end": "2026-11-08",
+  "editions": 7,
+  "fired": 37,
+  "cleared": 0
+ },
+ {
   "week_start": "2026-10-26",
   "week_end": "2026-11-01",
   "editions": 7,
