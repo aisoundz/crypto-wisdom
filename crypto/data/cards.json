@@ -1796,5 +1796,35 @@
   "rr": 1.84,
   "size_pct": 3.3,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-11-08",
+  "close_date": "2026-11-07",
+  "symbol": "ARB",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.1689,
+  "stop": 0.14775,
+  "target": 0.25524,
+  "rr": 4.08,
+  "size_pct": 4.0,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-08",
+  "close_date": "2026-11-07",
+  "symbol": "STX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.3419,
+  "stop": 0.2678,
+  "target": 0.46,
+  "rr": 1.59,
+  "size_pct": 2.3,
+  "status": "open"
  }
 ]

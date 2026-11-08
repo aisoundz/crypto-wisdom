@@ -1,15 +1,15 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-07",
- "close_date": "2026-11-06",
- "day": 31,
+ "edition_date": "2026-11-08",
+ "close_date": "2026-11-07",
+ "day": 32,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 4,
+  "fired": 3,
   "cleared": 0,
-  "cut": 4,
+  "cut": 3,
   "unavailable": 0
  },
  "checks": [
@@ -21,7 +21,7 @@
   {
    "key": "regime",
    "label": "BTC is in an uptrend",
-   "fell": 1
+   "fell": 0
   },
   {
    "key": "liquidity",
@@ -52,22 +52,14 @@
  "cards": [],
  "cut": [
   {
-   "symbol": "XTZ",
-   "reason": "BTC below its 50-day average",
-   "detectors": [
-    "Volume expansion",
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "ZEC",
+   "symbol": "INJ",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
    ]
   },
   {
-   "symbol": "INJ",
+   "symbol": "ARB",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -82,9 +74,9 @@
   }
  ],
  "market": {
-  "btc_close": 75731.04,
-  "btc_7d": -1.88,
-  "btc_sma50": 81973.8,
+  "btc_close": 75753.96,
+  "btc_7d": -2.16,
+  "btc_sma50": 81871.38,
   "btc_uptrend": false
  },
  "record": {
@@ -98,11 +90,11 @@
    "resolved": 68,
    "avg_r": -0.22,
    "ambiguous": 0,
-   "open": 42
+   "open": 44
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-07T17:43:05+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-07.png"
+ "generated_at": "2026-11-08T13:13:39+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-08.png"
 }
