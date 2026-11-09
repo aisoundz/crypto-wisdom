@@ -1020,7 +1020,9 @@
   "target": 15.769,
   "rr": 3.71,
   "size_pct": 4.9,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-08"
  },
  {
   "edition_date": "2026-10-31",
@@ -1167,7 +1169,9 @@
   "target": 814.41,
   "rr": 4.77,
   "size_pct": 15.0,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-08"
  },
  {
   "edition_date": "2026-10-31",
@@ -1182,7 +1186,9 @@
   "target": 0.28,
   "rr": 4.56,
   "size_pct": 4.0,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-08"
  },
  {
   "edition_date": "2026-10-31",
@@ -1381,7 +1387,9 @@
   "target": 814.41,
   "rr": 3.13,
   "size_pct": 10.9,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-08"
  },
  {
   "edition_date": "2026-11-02",
@@ -1549,7 +1557,9 @@
   "target": 2807.1,
   "rr": 1.53,
   "size_pct": 4.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-08"
  },
  {
   "edition_date": "2026-11-05",
@@ -1581,7 +1591,9 @@
   "target": 15.769,
   "rr": 3.67,
   "size_pct": 4.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-08"
  },
  {
   "edition_date": "2026-11-05",
@@ -1825,6 +1837,51 @@
   "target": 0.46,
   "rr": 1.59,
   "size_pct": 2.3,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-09",
+  "close_date": "2026-11-08",
+  "symbol": "ARB",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.16575,
+  "stop": 0.14775,
+  "target": 0.25524,
+  "rr": 4.97,
+  "size_pct": 4.6,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-09",
+  "close_date": "2026-11-08",
+  "symbol": "INJ",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 8.029,
+  "stop": 6.796,
+  "target": 9.4,
+  "rr": 1.11,
+  "size_pct": 3.3,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-09",
+  "close_date": "2026-11-08",
+  "symbol": "PEPE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 4.95e-06,
+  "stop": 4.3e-06,
+  "target": 5.68e-06,
+  "rr": 1.12,
+  "size_pct": 3.8,
   "status": "open"
  }
 ]

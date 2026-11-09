@@ -1,8 +1,8 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-08",
- "close_date": "2026-11-07",
- "day": 32,
+ "edition_date": "2026-11-09",
+ "close_date": "2026-11-08",
+ "day": 33,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
@@ -52,6 +52,13 @@
  "cards": [],
  "cut": [
   {
+   "symbol": "PEPE",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
    "symbol": "INJ",
    "reason": "Single detector",
    "detectors": [
@@ -64,19 +71,12 @@
    "detectors": [
     "Strength vs BTC"
    ]
-  },
-  {
-   "symbol": "STX",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
   }
  ],
  "market": {
-  "btc_close": 75753.96,
-  "btc_7d": -2.16,
-  "btc_sma50": 81871.38,
+  "btc_close": 74754.08,
+  "btc_7d": -4.44,
+  "btc_sma50": 81741.78,
   "btc_uptrend": false
  },
  "record": {
@@ -87,14 +87,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 68,
-   "avg_r": -0.22,
+   "resolved": 74,
+   "avg_r": -0.28,
    "ambiguous": 0,
-   "open": 44
+   "open": 41
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-08T13:13:39+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-08.png"
+ "generated_at": "2026-11-09T13:19:39+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-09.png"
 }
