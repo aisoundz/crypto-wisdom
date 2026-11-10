@@ -1,5 +1,13 @@
 [
  {
+  "date": "2026-11-10",
+  "day": 34,
+  "scanned": 50,
+  "fired": 7,
+  "cleared": 0,
+  "symbols": []
+ },
+ {
   "date": "2026-11-09",
   "day": 33,
   "scanned": 50,

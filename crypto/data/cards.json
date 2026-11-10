@@ -1090,7 +1090,9 @@
   "target": 10.9321,
   "rr": 4.21,
   "size_pct": 4.0,
-  "status": "open"
+  "status": "time",
+  "r": -0.18,
+  "resolved": "2026-11-09"
  },
  {
   "edition_date": "2026-10-31",
@@ -1106,7 +1108,9 @@
   "target": 0.16228,
   "rr": 1.6,
   "size_pct": 2.2,
-  "status": "open"
+  "status": "time",
+  "r": -0.72,
+  "resolved": "2026-11-09"
  },
  {
   "edition_date": "2026-10-31",
@@ -1139,7 +1143,9 @@
   "target": 5.68e-06,
   "rr": 1.16,
   "size_pct": 3.6,
-  "status": "open"
+  "status": "time",
+  "r": 0.34,
+  "resolved": "2026-11-09"
  },
  {
   "edition_date": "2026-10-31",
@@ -1154,7 +1160,9 @@
   "target": 0.12831,
   "rr": 2.83,
   "size_pct": 4.0,
-  "status": "open"
+  "status": "time",
+  "r": -0.51,
+  "resolved": "2026-11-09"
  },
  {
   "edition_date": "2026-10-31",
@@ -1220,7 +1228,9 @@
   "target": 372.0,
   "rr": 9.82,
   "size_pct": 5.2,
-  "status": "open"
+  "status": "time",
+  "r": 0.15,
+  "resolved": "2026-11-09"
  },
  {
   "edition_date": "2026-10-31",
@@ -1235,7 +1245,9 @@
   "target": 1693.2,
   "rr": 2.78,
   "size_pct": 4.2,
-  "status": "open"
+  "status": "time",
+  "r": -0.71,
+  "resolved": "2026-11-09"
  },
  {
   "edition_date": "2026-11-01",
@@ -1449,7 +1461,9 @@
   "target": 98.01,
   "rr": 1.25,
   "size_pct": 3.7,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-09"
  },
  {
   "edition_date": "2026-11-03",
@@ -1510,7 +1524,9 @@
   "target": 98.01,
   "rr": 1.05,
   "size_pct": 3.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-09"
  },
  {
   "edition_date": "2026-11-04",
@@ -1882,6 +1898,112 @@
   "target": 5.68e-06,
   "rr": 1.12,
   "size_pct": 3.8,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-10",
+  "close_date": "2026-11-09",
+  "symbol": "AVAX",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 8.645,
+  "stop": 7.767,
+  "target": 12.002,
+  "rr": 3.82,
+  "size_pct": 4.9,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-10",
+  "close_date": "2026-11-09",
+  "symbol": "ARB",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.17471,
+  "stop": 0.1499,
+  "target": 0.25524,
+  "rr": 3.25,
+  "size_pct": 3.5,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-10",
+  "close_date": "2026-11-09",
+  "symbol": "AAVE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 131.5,
+  "stop": 122.24,
+  "target": 187.65,
+  "rr": 6.06,
+  "size_pct": 7.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-10",
+  "close_date": "2026-11-09",
+  "symbol": "INJ",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 8.088,
+  "stop": 6.833,
+  "target": 9.4,
+  "rr": 1.05,
+  "size_pct": 3.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-10",
+  "close_date": "2026-11-09",
+  "symbol": "RENDER",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.5857,
+  "stop": 1.4407,
+  "target": 2.2271,
+  "rr": 4.42,
+  "size_pct": 5.5,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-10",
+  "close_date": "2026-11-09",
+  "symbol": "PEPE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 5.12e-06,
+  "stop": 4.58e-06,
+  "target": 5.68e-06,
+  "rr": 1.04,
+  "size_pct": 4.7,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-10",
+  "close_date": "2026-11-09",
+  "symbol": "ONDO",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion"
+  ],
+  "entry": 0.37337,
+  "stop": 0.34242,
+  "target": 0.60777,
+  "rr": 7.57,
+  "size_pct": 6.0,
   "status": "open"
  }
 ]
