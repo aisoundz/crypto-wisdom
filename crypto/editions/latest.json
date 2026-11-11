@@ -1,8 +1,8 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-10",
- "close_date": "2026-11-09",
- "day": 34,
+ "edition_date": "2026-11-11",
+ "close_date": "2026-11-10",
+ "day": 35,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
@@ -52,7 +52,7 @@
  "cards": [],
  "cut": [
   {
-   "symbol": "AVAX",
+   "symbol": "PEPE",
    "reason": "BTC below its 50-day average",
    "detectors": [
     "Volume expansion",
@@ -60,28 +60,28 @@
    ]
   },
   {
-   "symbol": "ONDO",
+   "symbol": "INJ",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ICP",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "TON",
    "reason": "Single detector",
    "detectors": [
     "Volume expansion"
    ]
   },
   {
-   "symbol": "PEPE",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "AAVE",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "INJ",
+   "symbol": "ARB",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -95,7 +95,7 @@
    ]
   },
   {
-   "symbol": "ARB",
+   "symbol": "COMP",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -103,9 +103,9 @@
   }
  ],
  "market": {
-  "btc_close": 75259.28,
-  "btc_7d": -1.85,
-  "btc_sma50": 81623.78,
+  "btc_close": 73697.87,
+  "btc_7d": -4.71,
+  "btc_sma50": 81365.83,
   "btc_uptrend": false
  },
  "record": {
@@ -116,14 +116,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 82,
-   "avg_r": -0.3,
+   "resolved": 91,
+   "avg_r": -0.32,
    "ambiguous": 0,
-   "open": 40
+   "open": 37
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-10T13:19:12+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-10.png"
+ "generated_at": "2026-11-11T13:17:14+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-11.png"
 }
