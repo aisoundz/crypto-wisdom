@@ -1381,7 +1381,9 @@
   "target": 10.9321,
   "rr": 3.83,
   "size_pct": 3.7,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-11"
  },
  {
   "edition_date": "2026-11-02",
@@ -1396,7 +1398,9 @@
   "target": 5.68e-06,
   "rr": 1.19,
   "size_pct": 3.6,
-  "status": "open"
+  "status": "time",
+  "r": -0.54,
+  "resolved": "2026-11-11"
  },
  {
   "edition_date": "2026-11-02",
@@ -1428,7 +1432,9 @@
   "target": 0.46,
   "rr": 2.14,
   "size_pct": 2.7,
-  "status": "open"
+  "status": "time",
+  "r": -0.36,
+  "resolved": "2026-11-11"
  },
  {
   "edition_date": "2026-11-02",
@@ -1443,7 +1449,9 @@
   "target": 372.0,
   "rr": 6.03,
   "size_pct": 3.6,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-11"
  },
  {
   "edition_date": "2026-11-03",
@@ -1505,7 +1513,9 @@
   "target": 10.9321,
   "rr": 3.75,
   "size_pct": 3.7,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-11"
  },
  {
   "edition_date": "2026-11-04",
@@ -1654,7 +1664,9 @@
   "target": 10.9321,
   "rr": 2.39,
   "size_pct": 2.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-11"
  },
  {
   "edition_date": "2026-11-05",
@@ -1699,7 +1711,9 @@
   "target": 10.9321,
   "rr": 7.24,
   "size_pct": 6.0,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-11"
  },
  {
   "edition_date": "2026-11-06",
@@ -1774,7 +1788,9 @@
   "target": 372.0,
   "rr": 13.59,
   "size_pct": 7.0,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-11"
  },
  {
   "edition_date": "2026-11-06",
@@ -1807,7 +1823,9 @@
   "target": 0.4002,
   "rr": 3.42,
   "size_pct": 3.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-11"
  },
  {
   "edition_date": "2026-11-07",
@@ -2007,7 +2025,9 @@
   "target": 5.68e-06,
   "rr": 1.04,
   "size_pct": 4.7,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-11"
  },
  {
   "edition_date": "2026-11-10",
@@ -2112,6 +2132,83 @@
   "target": 1.7341,
   "rr": 3.97,
   "size_pct": 3.8,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-12",
+  "close_date": "2026-11-11",
+  "symbol": "AVAX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 8.507,
+  "stop": 7.767,
+  "target": 12.002,
+  "rr": 4.72,
+  "size_pct": 5.7,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-12",
+  "close_date": "2026-11-11",
+  "symbol": "ICP",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 2.5823,
+  "stop": 2.263,
+  "target": 3.6145,
+  "rr": 3.23,
+  "size_pct": 4.0,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-12",
+  "close_date": "2026-11-11",
+  "symbol": "RENDER",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.5548,
+  "stop": 1.4407,
+  "target": 2.2271,
+  "rr": 5.89,
+  "size_pct": 6.8,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-12",
+  "close_date": "2026-11-11",
+  "symbol": "COMP",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 19.94,
+  "stop": 18.87,
+  "target": 29.15,
+  "rr": 8.61,
+  "size_pct": 9.3,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-12",
+  "close_date": "2026-11-11",
+  "symbol": "TON",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 1.1724,
+  "stop": 0.99,
+  "target": 1.7341,
+  "rr": 3.08,
+  "size_pct": 3.2,
   "status": "open"
  }
 ]
