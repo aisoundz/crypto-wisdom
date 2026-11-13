@@ -1466,7 +1466,9 @@
   "target": 5.68e-06,
   "rr": 1.63,
   "size_pct": 4.3,
-  "status": "open"
+  "status": "time",
+  "r": -0.45,
+  "resolved": "2026-11-12"
  },
  {
   "edition_date": "2026-11-03",
@@ -1498,7 +1500,9 @@
   "target": 0.46,
   "rr": 2.34,
   "size_pct": 2.8,
-  "status": "open"
+  "status": "time",
+  "r": -0.69,
+  "resolved": "2026-11-12"
  },
  {
   "edition_date": "2026-11-04",
@@ -1728,7 +1732,9 @@
   "target": 187.65,
   "rr": 4.2,
   "size_pct": 4.6,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-12"
  },
  {
   "edition_date": "2026-11-06",
@@ -1872,7 +1878,9 @@
   "target": 0.25524,
   "rr": 4.08,
   "size_pct": 4.0,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-12"
  },
  {
   "edition_date": "2026-11-08",
@@ -1902,7 +1910,9 @@
   "target": 0.25524,
   "rr": 4.97,
   "size_pct": 4.6,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-12"
  },
  {
   "edition_date": "2026-11-09",
@@ -1932,7 +1942,9 @@
   "target": 5.68e-06,
   "rr": 1.12,
   "size_pct": 3.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-12"
  },
  {
   "edition_date": "2026-11-10",
@@ -1963,7 +1975,9 @@
   "target": 0.25524,
   "rr": 3.25,
   "size_pct": 3.5,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-12"
  },
  {
   "edition_date": "2026-11-10",
@@ -2042,7 +2056,9 @@
   "target": 0.60777,
   "rr": 7.57,
   "size_pct": 6.0,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-12"
  },
  {
   "edition_date": "2026-11-11",
@@ -2072,7 +2088,9 @@
   "target": 0.25524,
   "rr": 9.16,
   "size_pct": 7.7,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-12"
  },
  {
   "edition_date": "2026-11-11",
@@ -2209,6 +2227,156 @@
   "target": 1.7341,
   "rr": 3.08,
   "size_pct": 3.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-13",
+  "close_date": "2026-11-12",
+  "symbol": "AVAX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 8.354,
+  "stop": 7.767,
+  "target": 12.002,
+  "rr": 6.21,
+  "size_pct": 7.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-13",
+  "close_date": "2026-11-12",
+  "symbol": "ICP",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 2.5683,
+  "stop": 2.263,
+  "target": 3.6145,
+  "rr": 3.43,
+  "size_pct": 4.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-13",
+  "close_date": "2026-11-12",
+  "symbol": "TIA",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.4385,
+  "stop": 0.3961,
+  "target": 0.7866,
+  "rr": 8.21,
+  "size_pct": 5.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-13",
+  "close_date": "2026-11-12",
+  "symbol": "RENDER",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.5196,
+  "stop": 1.4407,
+  "target": 2.2271,
+  "rr": 8.97,
+  "size_pct": 9.6,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-13",
+  "close_date": "2026-11-12",
+  "symbol": "ATOM",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.4347,
+  "stop": 1.2724,
+  "target": 2.0836,
+  "rr": 4.0,
+  "size_pct": 4.4,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-13",
+  "close_date": "2026-11-12",
+  "symbol": "SNX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.16223,
+  "stop": 0.15246,
+  "target": 0.27737,
+  "rr": 11.79,
+  "size_pct": 8.3,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-13",
+  "close_date": "2026-11-12",
+  "symbol": "COMP",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 19.97,
+  "stop": 18.87,
+  "target": 29.15,
+  "rr": 8.35,
+  "size_pct": 9.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-13",
+  "close_date": "2026-11-12",
+  "symbol": "IMX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.11535,
+  "stop": 0.1111,
+  "target": 0.20836,
+  "rr": 21.88,
+  "size_pct": 13.6,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-13",
+  "close_date": "2026-11-12",
+  "symbol": "TON",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.1372,
+  "stop": 0.99,
+  "target": 1.7341,
+  "rr": 4.06,
+  "size_pct": 3.9,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-13",
+  "close_date": "2026-11-12",
+  "symbol": "FET",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.14809,
+  "stop": 0.1345,
+  "target": 0.27235,
+  "rr": 9.14,
+  "size_pct": 5.4,
   "status": "open"
  }
 ]
