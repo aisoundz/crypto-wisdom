@@ -1,15 +1,15 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-13",
- "close_date": "2026-11-12",
- "day": 37,
+ "edition_date": "2026-11-14",
+ "close_date": "2026-11-13",
+ "day": 38,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 10,
+  "fired": 11,
   "cleared": 0,
-  "cut": 10,
+  "cut": 11,
   "unavailable": 0
  },
  "checks": [
@@ -21,7 +21,7 @@
   {
    "key": "regime",
    "label": "BTC is in an uptrend",
-   "fell": 0
+   "fell": 1
   },
   {
    "key": "liquidity",
@@ -52,6 +52,21 @@
  "cards": [],
  "cut": [
   {
+   "symbol": "SNX",
+   "reason": "BTC below its 50-day average",
+   "detectors": [
+    "Volume expansion",
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "XLM",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
    "symbol": "AVAX",
    "reason": "Single detector",
    "detectors": [
@@ -59,7 +74,7 @@
    ]
   },
   {
-   "symbol": "TON",
+   "symbol": "INJ",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -73,14 +88,14 @@
    ]
   },
   {
-   "symbol": "TIA",
+   "symbol": "FET",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
    ]
   },
   {
-   "symbol": "FET",
+   "symbol": "TON",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -101,14 +116,7 @@
    ]
   },
   {
-   "symbol": "IMX",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "SNX",
+   "symbol": "BONK",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -123,9 +131,9 @@
   }
  ],
  "market": {
-  "btc_close": 71369.9,
-  "btc_7d": -6.05,
-  "btc_sma50": 80860.26,
+  "btc_close": 68236.54,
+  "btc_7d": -9.9,
+  "btc_sma50": 80537.28,
   "btc_uptrend": false
  },
  "record": {
@@ -136,14 +144,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 110,
-   "avg_r": -0.42,
+   "resolved": 114,
+   "avg_r": -0.44,
    "ambiguous": 0,
-   "open": 33
+   "open": 40
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-13T15:27:42+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-13.png"
+ "generated_at": "2026-11-14T13:10:42+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-14.png"
 }
