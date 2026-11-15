@@ -1,0 +1,107 @@
+{
+ "edition": "The Crypto Cut",
+ "edition_date": "2026-11-15",
+ "close_date": "2026-11-14",
+ "day": 39,
+ "window_days": 90,
+ "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
+ "counts": {
+  "scanned": 50,
+  "fired": 4,
+  "cleared": 0,
+  "cut": 4,
+  "unavailable": 0
+ },
+ "checks": [
+  {
+   "key": "confluence",
+   "label": "Two detectors agree",
+   "fell": 4
+  },
+  {
+   "key": "regime",
+   "label": "BTC is in an uptrend",
+   "fell": 0
+  },
+  {
+   "key": "liquidity",
+   "label": "Enough volume to trade",
+   "fell": 0
+  },
+  {
+   "key": "stop",
+   "label": "The stop can survive noise",
+   "fell": 0
+  },
+  {
+   "key": "target",
+   "label": "The target is a level we found",
+   "fell": 0
+  },
+  {
+   "key": "reward",
+   "label": "The reward covers the risk",
+   "fell": 0
+  },
+  {
+   "key": "cooldown",
+   "label": "Not on cooldown",
+   "fell": 0
+  }
+ ],
+ "cards": [],
+ "cut": [
+  {
+   "symbol": "XLM",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "TON",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ATOM",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "COMP",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  }
+ ],
+ "market": {
+  "btc_close": 64118.79,
+  "btc_7d": -15.36,
+  "btc_sma50": 80137.79,
+  "btc_uptrend": false
+ },
+ "record": {
+  "published": {
+   "resolved": 0,
+   "avg_r": null,
+   "ambiguous": 0,
+   "open": 0
+  },
+  "cut": {
+   "resolved": 150,
+   "avg_r": -0.57,
+   "ambiguous": 0,
+   "open": 8
+  },
+  "min_n_to_report": 30
+ },
+ "unavailable": {},
+ "generated_at": "2026-11-15T13:11:10+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-15.png"
+}
