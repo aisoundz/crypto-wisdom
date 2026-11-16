@@ -1,22 +1,22 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-15",
- "close_date": "2026-11-14",
- "day": 39,
+ "edition_date": "2026-11-16",
+ "close_date": "2026-11-15",
+ "day": 40,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 4,
+  "fired": 14,
   "cleared": 0,
-  "cut": 4,
+  "cut": 14,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 4
+   "fell": 14
   },
   {
    "key": "regime",
@@ -52,7 +52,63 @@
  "cards": [],
  "cut": [
   {
+   "symbol": "XRP",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
+   ]
+  },
+  {
+   "symbol": "SOL",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
+   ]
+  },
+  {
    "symbol": "XLM",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "AAVE",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
+   ]
+  },
+  {
+   "symbol": "ICP",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "FET",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ALGO",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
+   ]
+  },
+  {
+   "symbol": "WIF",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
+   ]
+  },
+  {
+   "symbol": "ATOM",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -66,7 +122,14 @@
    ]
   },
   {
-   "symbol": "ATOM",
+   "symbol": "POL",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "GRT",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -78,12 +141,19 @@
    "detectors": [
     "Strength vs BTC"
    ]
+  },
+  {
+   "symbol": "SNX",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
   }
  ],
  "market": {
-  "btc_close": 64118.79,
-  "btc_7d": -15.36,
-  "btc_sma50": 80137.79,
+  "btc_close": 65315.35,
+  "btc_7d": -12.63,
+  "btc_sma50": 79755.77,
   "btc_uptrend": false
  },
  "record": {
@@ -94,14 +164,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 150,
-   "avg_r": -0.57,
+   "resolved": 152,
+   "avg_r": -0.58,
    "ambiguous": 0,
-   "open": 8
+   "open": 20
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-15T13:11:10+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-15.png"
+ "generated_at": "2026-11-16T13:10:55+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-16.png"
 }
