@@ -2898,5 +2898,127 @@
   "rr": 13.44,
   "size_pct": 6.4,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-11-17",
+  "close_date": "2026-11-16",
+  "symbol": "XLM",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.137748,
+  "stop": 0.130323,
+  "target": 0.236942,
+  "rr": 13.36,
+  "size_pct": 9.3,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-17",
+  "close_date": "2026-11-16",
+  "symbol": "ICP",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 2.4912,
+  "stop": 2.1023,
+  "target": 3.6145,
+  "rr": 2.89,
+  "size_pct": 3.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-17",
+  "close_date": "2026-11-16",
+  "symbol": "ATOM",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.3342,
+  "stop": 1.2175,
+  "target": 2.0836,
+  "rr": 6.42,
+  "size_pct": 5.7,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-17",
+  "close_date": "2026-11-16",
+  "symbol": "GRT",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.016703,
+  "stop": 0.015568,
+  "target": 0.036906,
+  "rr": 17.8,
+  "size_pct": 7.4,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-17",
+  "close_date": "2026-11-16",
+  "symbol": "SNX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.14739,
+  "stop": 0.13993,
+  "target": 0.27737,
+  "rr": 17.42,
+  "size_pct": 9.9,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-17",
+  "close_date": "2026-11-16",
+  "symbol": "HYPE",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 69.74,
+  "stop": 60.0,
+  "target": 98.01,
+  "rr": 2.9,
+  "size_pct": 3.6,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-17",
+  "close_date": "2026-11-16",
+  "symbol": "TON",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.0529,
+  "stop": 0.99,
+  "target": 1.7341,
+  "rr": 10.83,
+  "size_pct": 8.4,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-17",
+  "close_date": "2026-11-16",
+  "symbol": "FET",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.13231,
+  "stop": 0.12205,
+  "target": 0.27235,
+  "rr": 13.65,
+  "size_pct": 6.5,
+  "status": "open"
  }
 ]
