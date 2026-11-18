@@ -1,22 +1,22 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-17",
- "close_date": "2026-11-16",
- "day": 41,
+ "edition_date": "2026-11-18",
+ "close_date": "2026-11-17",
+ "day": 42,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 8,
+  "fired": 11,
   "cleared": 0,
-  "cut": 8,
+  "cut": 11,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 6
+   "fell": 9
   },
   {
    "key": "regime",
@@ -52,7 +52,7 @@
  "cards": [],
  "cut": [
   {
-   "symbol": "HYPE",
+   "symbol": "TON",
    "reason": "BTC below its 50-day average",
    "detectors": [
     "Volume expansion",
@@ -60,11 +60,46 @@
    ]
   },
   {
-   "symbol": "ICP",
+   "symbol": "SNX",
    "reason": "BTC below its 50-day average",
    "detectors": [
     "Volume expansion",
     "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "SOL",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
+   ]
+  },
+  {
+   "symbol": "XRP",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "HYPE",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "NEAR",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "AAVE",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
    ]
   },
   {
@@ -75,14 +110,7 @@
    ]
   },
   {
-   "symbol": "FET",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "TON",
+   "symbol": "POL",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -101,19 +129,12 @@
    "detectors": [
     "Strength vs BTC"
    ]
-  },
-  {
-   "symbol": "SNX",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
   }
  ],
  "market": {
-  "btc_close": 64816.79,
-  "btc_7d": -13.88,
-  "btc_sma50": 79362.86,
+  "btc_close": 64873.18,
+  "btc_7d": -11.97,
+  "btc_sma50": 78991.19,
   "btc_uptrend": false
  },
  "record": {
@@ -124,14 +145,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 152,
+   "resolved": 153,
    "avg_r": -0.58,
    "ambiguous": 0,
-   "open": 28
+   "open": 38
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-17T13:10:55+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-17.png"
+ "generated_at": "2026-11-18T13:11:21+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-18.png"
 }
