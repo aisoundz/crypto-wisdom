@@ -3189,5 +3189,200 @@
   "rr": 7.62,
   "size_pct": 6.2,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "XRP",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.9664,
+  "stop": 0.8922,
+  "target": 1.6996,
+  "rr": 9.88,
+  "size_pct": 6.5,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "BCH",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 208.38,
+  "stop": 195.68,
+  "target": 366.13,
+  "rr": 12.42,
+  "size_pct": 8.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "XLM",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.137268,
+  "stop": 0.130323,
+  "target": 0.236942,
+  "rr": 14.35,
+  "size_pct": 9.9,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "NEAR",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 3.2984,
+  "stop": 2.8662,
+  "target": 5.9999,
+  "rr": 6.25,
+  "size_pct": 3.8,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "AAVE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 109.24,
+  "stop": 96.5,
+  "target": 187.65,
+  "rr": 6.15,
+  "size_pct": 4.3,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "INJ",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 6.982,
+  "stop": 6.556,
+  "target": 9.4,
+  "rr": 5.68,
+  "size_pct": 8.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "ATOM",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 1.2995,
+  "stop": 1.2175,
+  "target": 2.0836,
+  "rr": 9.56,
+  "size_pct": 7.9,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "GRT",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.017263,
+  "stop": 0.015568,
+  "target": 0.036906,
+  "rr": 11.59,
+  "size_pct": 5.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "SNX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.15626,
+  "stop": 0.13993,
+  "target": 0.27737,
+  "rr": 7.42,
+  "size_pct": 4.8,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "COMP",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 17.99,
+  "stop": 17.43,
+  "target": 29.15,
+  "rr": 19.93,
+  "size_pct": 16.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "POL",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.08161,
+  "stop": 0.07624,
+  "target": 0.12831,
+  "rr": 8.7,
+  "size_pct": 7.6,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "HYPE",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 66.9,
+  "stop": 60.0,
+  "target": 98.01,
+  "rr": 4.51,
+  "size_pct": 4.8,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-19",
+  "close_date": "2026-11-18",
+  "symbol": "ZEC",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 912.34,
+  "stop": 800.76,
+  "target": 1693.2,
+  "rr": 7.0,
+  "size_pct": 4.1,
+  "status": "open"
  }
 ]
