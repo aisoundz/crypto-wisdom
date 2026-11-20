@@ -1,22 +1,22 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-19",
- "close_date": "2026-11-18",
- "day": 43,
+ "edition_date": "2026-11-20",
+ "close_date": "2026-11-19",
+ "day": 44,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 13,
+  "fired": 9,
   "cleared": 0,
-  "cut": 13,
+  "cut": 9,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 13
+   "fell": 9
   },
   {
    "key": "regime",
@@ -80,7 +80,7 @@
    ]
   },
   {
-   "symbol": "XLM",
+   "symbol": "INJ",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -94,28 +94,7 @@
    ]
   },
   {
-   "symbol": "INJ",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "BCH",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "ATOM",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "POL",
+   "symbol": "STX",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -134,19 +113,12 @@
    "detectors": [
     "Strength vs BTC"
    ]
-  },
-  {
-   "symbol": "COMP",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
   }
  ],
  "market": {
-  "btc_close": 62981.71,
-  "btc_7d": -14.81,
-  "btc_sma50": 78578.05,
+  "btc_close": 61913.23,
+  "btc_7d": -13.25,
+  "btc_sma50": 78145.2,
   "btc_uptrend": false
  },
  "record": {
@@ -157,14 +129,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 153,
+   "resolved": 154,
    "avg_r": -0.58,
    "ambiguous": 0,
-   "open": 51
+   "open": 59
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-19T13:10:49+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-19.png"
+ "generated_at": "2026-11-20T13:11:25+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-20.png"
 }
