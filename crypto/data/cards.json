@@ -2184,7 +2184,9 @@
   "target": 1.7341,
   "rr": 3.97,
   "size_pct": 3.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-12",
@@ -2269,7 +2271,9 @@
   "target": 1.7341,
   "rr": 3.08,
   "size_pct": 3.2,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-13",
@@ -2420,7 +2424,9 @@
   "target": 1.7341,
   "rr": 4.06,
   "size_pct": 3.9,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-13",
@@ -2606,7 +2612,9 @@
   "target": 1.7341,
   "rr": 6.44,
   "size_pct": 5.5,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-14",
@@ -2655,7 +2663,9 @@
   "target": 2.0836,
   "rr": 19.24,
   "size_pct": 14.7,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-15",
@@ -2687,7 +2697,9 @@
   "target": 1.7341,
   "rr": 13.82,
   "size_pct": 10.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2702,7 +2714,9 @@
   "target": 124.93,
   "rr": 9.74,
   "size_pct": 6.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2717,7 +2731,9 @@
   "target": 1.6996,
   "rr": 8.88,
   "size_pct": 6.0,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2732,7 +2748,9 @@
   "target": 0.236942,
   "rr": 8.52,
   "size_pct": 6.3,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2747,7 +2765,9 @@
   "target": 3.6145,
   "rr": 10.34,
   "size_pct": 8.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2762,7 +2782,9 @@
   "target": 187.65,
   "rr": 5.95,
   "size_pct": 4.2,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2777,7 +2799,9 @@
   "target": 2.0836,
   "rr": 8.2,
   "size_pct": 7.0,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2792,7 +2816,9 @@
   "target": 0.14323,
   "rr": 12.18,
   "size_pct": 7.7,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2807,7 +2833,9 @@
   "target": 0.036906,
   "rr": 14.33,
   "size_pct": 6.1,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2854,7 +2882,9 @@
   "target": 0.12831,
   "rr": 9.52,
   "size_pct": 8.2,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2869,7 +2899,9 @@
   "target": 1.7341,
   "rr": 7.99,
   "size_pct": 6.5,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2884,7 +2916,9 @@
   "target": 0.28,
   "rr": 14.99,
   "size_pct": 6.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-16",
@@ -2899,7 +2933,9 @@
   "target": 0.27235,
   "rr": 13.44,
   "size_pct": 6.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-17",
@@ -2914,7 +2950,9 @@
   "target": 0.236942,
   "rr": 13.36,
   "size_pct": 9.3,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-17",
@@ -2930,7 +2968,9 @@
   "target": 3.6145,
   "rr": 2.89,
   "size_pct": 3.2,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-17",
@@ -2945,7 +2985,9 @@
   "target": 2.0836,
   "rr": 6.42,
   "size_pct": 5.7,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-17",
@@ -2960,7 +3002,9 @@
   "target": 0.036906,
   "rr": 17.8,
   "size_pct": 7.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-17",
@@ -2991,7 +3035,9 @@
   "target": 98.01,
   "rr": 2.9,
   "size_pct": 3.6,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-17",
@@ -3006,7 +3052,9 @@
   "target": 1.7341,
   "rr": 10.83,
   "size_pct": 8.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-17",
@@ -3021,7 +3069,9 @@
   "target": 0.27235,
   "rr": 13.65,
   "size_pct": 6.5,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-18",
@@ -3036,7 +3086,9 @@
   "target": 124.93,
   "rr": 6.44,
   "size_pct": 4.9,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-18",
@@ -3051,7 +3103,9 @@
   "target": 1.6996,
   "rr": 7.92,
   "size_pct": 5.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-18",
@@ -3066,7 +3120,9 @@
   "target": 0.236942,
   "rr": 8.67,
   "size_pct": 6.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-18",
@@ -3081,7 +3137,9 @@
   "target": 5.9999,
   "rr": 4.96,
   "size_pct": 3.2,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-18",
@@ -3096,7 +3154,9 @@
   "target": 187.65,
   "rr": 4.71,
   "size_pct": 3.5,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-18",
@@ -3111,7 +3171,9 @@
   "target": 2.0836,
   "rr": 6.47,
   "size_pct": 5.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-18",
@@ -3126,7 +3188,9 @@
   "target": 0.036906,
   "rr": 8.99,
   "size_pct": 4.1,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-18",
@@ -3157,7 +3221,9 @@
   "target": 0.12831,
   "rr": 6.7,
   "size_pct": 6.1,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-18",
@@ -3172,7 +3238,9 @@
   "target": 98.01,
   "rr": 2.83,
   "size_pct": 3.5,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-18",
@@ -3188,7 +3256,9 @@
   "target": 1.7341,
   "rr": 7.62,
   "size_pct": 6.2,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-19",
@@ -3203,7 +3273,9 @@
   "target": 1.6996,
   "rr": 9.88,
   "size_pct": 6.5,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-19",
@@ -3218,7 +3290,9 @@
   "target": 366.13,
   "rr": 12.42,
   "size_pct": 8.2,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-19",
@@ -3233,7 +3307,9 @@
   "target": 0.236942,
   "rr": 14.35,
   "size_pct": 9.9,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-19",
@@ -3248,7 +3324,9 @@
   "target": 5.9999,
   "rr": 6.25,
   "size_pct": 3.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-19",
@@ -3263,7 +3341,9 @@
   "target": 187.65,
   "rr": 6.15,
   "size_pct": 4.3,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-19",
@@ -3278,7 +3358,9 @@
   "target": 9.4,
   "rr": 5.68,
   "size_pct": 8.2,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-19",
@@ -3293,7 +3375,9 @@
   "target": 2.0836,
   "rr": 9.56,
   "size_pct": 7.9,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-19",
@@ -3308,7 +3392,9 @@
   "target": 0.036906,
   "rr": 11.59,
   "size_pct": 5.1,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-19",
@@ -3355,7 +3441,9 @@
   "target": 0.12831,
   "rr": 8.7,
   "size_pct": 7.6,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-19",
@@ -3370,7 +3458,9 @@
   "target": 98.01,
   "rr": 4.51,
   "size_pct": 4.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-19",
@@ -3385,7 +3475,9 @@
   "target": 1693.2,
   "rr": 7.0,
   "size_pct": 4.1,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-20",
@@ -3400,7 +3492,9 @@
   "target": 1.6996,
   "rr": 11.05,
   "size_pct": 7.2,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-20",
@@ -3415,7 +3509,9 @@
   "target": 5.9999,
   "rr": 8.2,
   "size_pct": 4.7,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-20",
@@ -3430,7 +3526,9 @@
   "target": 187.65,
   "rr": 10.23,
   "size_pct": 6.4,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-20",
@@ -3445,7 +3543,9 @@
   "target": 9.4,
   "rr": 4.33,
   "size_pct": 6.6,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-20",
@@ -3460,7 +3560,9 @@
   "target": 0.036906,
   "rr": 15.64,
   "size_pct": 6.6,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-20",
@@ -3490,7 +3592,9 @@
   "target": 98.01,
   "rr": 4.66,
   "size_pct": 5.0,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-20",
@@ -3505,7 +3609,9 @@
   "target": 0.46,
   "rr": 17.2,
   "size_pct": 11.6,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
  },
  {
   "edition_date": "2026-11-20",
@@ -3520,6 +3626,23 @@
   "target": 1693.2,
   "rr": 8.69,
   "size_pct": 4.8,
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-20"
+ },
+ {
+  "edition_date": "2026-11-21",
+  "close_date": "2026-11-20",
+  "symbol": "GRT",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.01586,
+  "stop": 0.01536,
+  "target": 0.036906,
+  "rr": 42.09,
+  "size_pct": 15.9,
   "status": "open"
  }
 ]
