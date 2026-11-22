@@ -1,22 +1,22 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-21",
- "close_date": "2026-11-20",
- "day": 45,
+ "edition_date": "2026-11-22",
+ "close_date": "2026-11-21",
+ "day": 46,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 1,
+  "fired": 7,
   "cleared": 0,
-  "cut": 1,
+  "cut": 7,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 1
+   "fell": 7
   },
   {
    "key": "regime",
@@ -52,7 +52,49 @@
  "cards": [],
  "cut": [
   {
-   "symbol": "GRT",
+   "symbol": "SOL",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "XRP",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "QNT",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "BCH",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "SHIB",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
+   ]
+  },
+  {
+   "symbol": "XTZ",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
+   ]
+  },
+  {
+   "symbol": "SNX",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -60,9 +102,9 @@
   }
  ],
  "market": {
-  "btc_close": 58814.99,
-  "btc_7d": -13.81,
-  "btc_sma50": 77624.52,
+  "btc_close": 60086.0,
+  "btc_7d": -6.29,
+  "btc_sma50": 77136.14,
   "btc_uptrend": false
  },
  "record": {
@@ -73,14 +115,14 @@
    "open": 0
   },
   "cut": {
-   "resolved": 208,
-   "avg_r": -0.69,
+   "resolved": 214,
+   "avg_r": -0.7,
    "ambiguous": 0,
-   "open": 6
+   "open": 7
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-21T13:11:10+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-21.png"
+ "generated_at": "2026-11-22T13:11:08+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-22.png"
 }

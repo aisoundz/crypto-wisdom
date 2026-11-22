@@ -2850,7 +2850,9 @@
   "target": 0.27737,
   "rr": 13.62,
   "size_pct": 7.9,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-21"
  },
  {
   "edition_date": "2026-11-16",
@@ -3019,7 +3021,9 @@
   "target": 0.27737,
   "rr": 17.42,
   "size_pct": 9.9,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-21"
  },
  {
   "edition_date": "2026-11-17",
@@ -3206,7 +3210,9 @@
   "target": 0.27737,
   "rr": 6.88,
   "size_pct": 4.5,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-21"
  },
  {
   "edition_date": "2026-11-18",
@@ -3409,7 +3415,9 @@
   "target": 0.27737,
   "rr": 7.42,
   "size_pct": 4.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-21"
  },
  {
   "edition_date": "2026-11-19",
@@ -3577,7 +3585,9 @@
   "target": 0.27737,
   "rr": 3.92,
   "size_pct": 3.0,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-21"
  },
  {
   "edition_date": "2026-11-20",
@@ -3643,6 +3653,113 @@
   "target": 0.036906,
   "rr": 42.09,
   "size_pct": 15.9,
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-21"
+ },
+ {
+  "edition_date": "2026-11-22",
+  "close_date": "2026-11-21",
+  "symbol": "SOL",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 70.16,
+  "stop": 64.81,
+  "target": 124.93,
+  "rr": 10.24,
+  "size_pct": 6.6,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-22",
+  "close_date": "2026-11-21",
+  "symbol": "XRP",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.9302,
+  "stop": 0.859,
+  "target": 1.6996,
+  "rr": 10.81,
+  "size_pct": 6.5,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-22",
+  "close_date": "2026-11-21",
+  "symbol": "BCH",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 199.36,
+  "stop": 179.54,
+  "target": 366.13,
+  "rr": 8.41,
+  "size_pct": 5.0,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-22",
+  "close_date": "2026-11-21",
+  "symbol": "SHIB",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion"
+  ],
+  "entry": 3.62e-06,
+  "stop": 3.36e-06,
+  "target": 6.27e-06,
+  "rr": 10.19,
+  "size_pct": 7.0,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-22",
+  "close_date": "2026-11-21",
+  "symbol": "SNX",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.14544,
+  "stop": 0.13891,
+  "target": 0.27737,
+  "rr": 20.2,
+  "size_pct": 11.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-22",
+  "close_date": "2026-11-21",
+  "symbol": "XTZ",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion"
+  ],
+  "entry": 0.201,
+  "stop": 0.1866,
+  "target": 0.4002,
+  "rr": 13.83,
+  "size_pct": 7.0,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-22",
+  "close_date": "2026-11-21",
+  "symbol": "QNT",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 143.18,
+  "stop": 126.76,
+  "target": 372.0,
+  "rr": 13.94,
+  "size_pct": 4.4,
   "status": "open"
  }
 ]
