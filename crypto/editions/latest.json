@@ -1,22 +1,22 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-22",
- "close_date": "2026-11-21",
- "day": 46,
+ "edition_date": "2026-11-23",
+ "close_date": "2026-11-22",
+ "day": 47,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 7,
+  "fired": 0,
   "cleared": 0,
-  "cut": 7,
+  "cut": 0,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 7
+   "fell": 0
   },
   {
    "key": "regime",
@@ -50,61 +50,11 @@
   }
  ],
  "cards": [],
- "cut": [
-  {
-   "symbol": "SOL",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "XRP",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "QNT",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "BCH",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  },
-  {
-   "symbol": "SHIB",
-   "reason": "Single detector",
-   "detectors": [
-    "Volume expansion"
-   ]
-  },
-  {
-   "symbol": "XTZ",
-   "reason": "Single detector",
-   "detectors": [
-    "Volume expansion"
-   ]
-  },
-  {
-   "symbol": "SNX",
-   "reason": "Single detector",
-   "detectors": [
-    "Strength vs BTC"
-   ]
-  }
- ],
+ "cut": [],
  "market": {
-  "btc_close": 60086.0,
-  "btc_7d": -6.29,
-  "btc_sma50": 77136.14,
+  "btc_close": 61163.01,
+  "btc_7d": -6.36,
+  "btc_sma50": 76664.56,
   "btc_uptrend": false
  },
  "record": {
@@ -123,6 +73,6 @@
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-22T13:11:08+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-22.png"
+ "generated_at": "2026-11-23T13:12:09+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-23.png"
 }
