@@ -3805,7 +3805,9 @@
   "target": 9.4,
   "rr": 6.71,
   "size_pct": 6.8,
-  "status": "open"
+  "status": "stop",
+  "r": -1.0,
+  "resolved": "2026-11-24"
  },
  {
   "edition_date": "2026-11-24",
@@ -3882,6 +3884,36 @@
   "target": 372.0,
   "rr": 8.04,
   "size_pct": 2.8,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-25",
+  "close_date": "2026-11-24",
+  "symbol": "ALGO",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.07866,
+  "stop": 0.0691,
+  "target": 0.14323,
+  "rr": 6.75,
+  "size_pct": 4.1,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-25",
+  "close_date": "2026-11-24",
+  "symbol": "XTZ",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.2113,
+  "stop": 0.1866,
+  "target": 0.4002,
+  "rr": 7.65,
+  "size_pct": 4.3,
   "status": "open"
  }
 ]
