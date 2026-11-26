@@ -1,8 +1,8 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-25",
- "close_date": "2026-11-24",
- "day": 49,
+ "edition_date": "2026-11-26",
+ "close_date": "2026-11-25",
+ "day": 50,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
@@ -67,9 +67,9 @@
   }
  ],
  "market": {
-  "btc_close": 59740.87,
-  "btc_7d": -7.91,
-  "btc_sma50": 75638.05,
+  "btc_close": 60383.51,
+  "btc_7d": -4.13,
+  "btc_sma50": 75052.36,
   "btc_uptrend": false
  },
  "record": {
@@ -80,7 +80,7 @@
    "open": 0
   },
   "cut": {
-   "resolved": 215,
+   "resolved": 217,
    "avg_r": -0.7,
    "ambiguous": 0,
    "open": 16
@@ -88,6 +88,6 @@
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-25T00:03:39+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-25.png"
+ "generated_at": "2026-11-26T13:11:18+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-26.png"
 }
