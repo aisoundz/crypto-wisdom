@@ -3949,5 +3949,96 @@
   "rr": 7.0,
   "size_pct": 4.0,
   "status": "open"
+ },
+ {
+  "edition_date": "2026-11-27",
+  "close_date": "2026-11-26",
+  "symbol": "LINK",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 9.268,
+  "stop": 7.962,
+  "target": 15.769,
+  "rr": 4.98,
+  "size_pct": 3.5,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-27",
+  "close_date": "2026-11-26",
+  "symbol": "LTC",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 43.744,
+  "stop": 37.4,
+  "target": 80.25,
+  "rr": 5.75,
+  "size_pct": 3.4,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-27",
+  "close_date": "2026-11-26",
+  "symbol": "SEI",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion"
+  ],
+  "entry": 0.03867,
+  "stop": 0.03103,
+  "target": 0.08667,
+  "rr": 6.28,
+  "size_pct": 2.5,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-27",
+  "close_date": "2026-11-26",
+  "symbol": "ALGO",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.08185,
+  "stop": 0.0691,
+  "target": 0.14323,
+  "rr": 4.81,
+  "size_pct": 3.2,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-27",
+  "close_date": "2026-11-26",
+  "symbol": "XTZ",
+  "kind": "cut",
+  "detectors": [
+   "relative_strength"
+  ],
+  "entry": 0.2201,
+  "stop": 0.1866,
+  "target": 0.4002,
+  "rr": 5.38,
+  "size_pct": 3.3,
+  "status": "open"
+ },
+ {
+  "edition_date": "2026-11-27",
+  "close_date": "2026-11-26",
+  "symbol": "WIF",
+  "kind": "cut",
+  "detectors": [
+   "volume_expansion",
+   "relative_strength"
+  ],
+  "entry": 0.13564,
+  "stop": 0.11128,
+  "target": 0.28,
+  "rr": 5.93,
+  "size_pct": 2.8,
+  "status": "open"
  }
 ]

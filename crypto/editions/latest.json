@@ -1,27 +1,27 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-26",
- "close_date": "2026-11-25",
- "day": 50,
+ "edition_date": "2026-11-27",
+ "close_date": "2026-11-26",
+ "day": 51,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 2,
+  "fired": 6,
   "cleared": 0,
-  "cut": 2,
+  "cut": 6,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 2
+   "fell": 5
   },
   {
    "key": "regime",
    "label": "BTC is in an uptrend",
-   "fell": 0
+   "fell": 1
   },
   {
    "key": "liquidity",
@@ -52,6 +52,35 @@
  "cards": [],
  "cut": [
   {
+   "symbol": "WIF",
+   "reason": "BTC below its 50-day average",
+   "detectors": [
+    "Volume expansion",
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "LTC",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "LINK",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "SEI",
+   "reason": "Single detector",
+   "detectors": [
+    "Volume expansion"
+   ]
+  },
+  {
    "symbol": "ALGO",
    "reason": "Single detector",
    "detectors": [
@@ -67,9 +96,9 @@
   }
  ],
  "market": {
-  "btc_close": 60383.51,
-  "btc_7d": -4.13,
-  "btc_sma50": 75052.36,
+  "btc_close": 60495.57,
+  "btc_7d": -2.29,
+  "btc_sma50": 74679.34,
   "btc_uptrend": false
  },
  "record": {
@@ -83,11 +112,11 @@
    "resolved": 217,
    "avg_r": -0.7,
    "ambiguous": 0,
-   "open": 16
+   "open": 22
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-26T13:11:18+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-26.png"
+ "generated_at": "2026-11-27T13:10:55+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-27.png"
 }
