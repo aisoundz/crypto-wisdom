@@ -1,27 +1,27 @@
 {
  "edition": "The Crypto Cut",
- "edition_date": "2026-11-27",
- "close_date": "2026-11-26",
- "day": 51,
+ "edition_date": "2026-11-28",
+ "close_date": "2026-11-27",
+ "day": 52,
  "window_days": 90,
  "badge": "VALIDATION WINDOW \u00b7 UNPROVEN",
  "counts": {
   "scanned": 50,
-  "fired": 6,
+  "fired": 13,
   "cleared": 0,
-  "cut": 6,
+  "cut": 13,
   "unavailable": 0
  },
  "checks": [
   {
    "key": "confluence",
    "label": "Two detectors agree",
-   "fell": 5
+   "fell": 13
   },
   {
    "key": "regime",
    "label": "BTC is in an uptrend",
-   "fell": 1
+   "fell": 0
   },
   {
    "key": "liquidity",
@@ -52,14 +52,6 @@
  "cards": [],
  "cut": [
   {
-   "symbol": "WIF",
-   "reason": "BTC below its 50-day average",
-   "detectors": [
-    "Volume expansion",
-    "Strength vs BTC"
-   ]
-  },
-  {
    "symbol": "LTC",
    "reason": "Single detector",
    "detectors": [
@@ -74,14 +66,63 @@
    ]
   },
   {
+   "symbol": "UNI",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "FET",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
    "symbol": "SEI",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "RENDER",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "ALGO",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "WIF",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "STX",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
+  },
+  {
+   "symbol": "LDO",
    "reason": "Single detector",
    "detectors": [
     "Volume expansion"
    ]
   },
   {
-   "symbol": "ALGO",
+   "symbol": "ETC",
    "reason": "Single detector",
    "detectors": [
     "Strength vs BTC"
@@ -93,12 +134,19 @@
    "detectors": [
     "Strength vs BTC"
    ]
+  },
+  {
+   "symbol": "COMP",
+   "reason": "Single detector",
+   "detectors": [
+    "Strength vs BTC"
+   ]
   }
  ],
  "market": {
-  "btc_close": 60495.57,
-  "btc_7d": -2.29,
-  "btc_sma50": 74679.34,
+  "btc_close": 59858.49,
+  "btc_7d": 1.77,
+  "btc_sma50": 74242.65,
   "btc_uptrend": false
  },
  "record": {
@@ -112,11 +160,11 @@
    "resolved": 217,
    "avg_r": -0.7,
    "ambiguous": 0,
-   "open": 22
+   "open": 35
   },
   "min_n_to_report": 30
  },
  "unavailable": {},
- "generated_at": "2026-11-27T13:10:55+00:00",
- "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-27.png"
+ "generated_at": "2026-11-28T13:10:50+00:00",
+ "card_image": "https://cryptowisdom.io/crypto/editions/2026-11-28.png"
 }
